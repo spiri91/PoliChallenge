@@ -6,9 +6,11 @@ namespace PoliChallenge.Controllers
 {
     public class HiScoresController : ApiController
     {
-        public HiScoresController(IRepository<HiScoreDTO> hiScoresRepo)
+        private readonly IRepository<HiScore> _repo;
+
+        public HiScoresController(IRepository<HiScore> hiScoresRepo)
         {
-                
+            _repo = hiScoresRepo;
         }
     }
 }
