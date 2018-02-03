@@ -1,21 +1,23 @@
-﻿using PoliChallenge.Business.HiScores;
+﻿using System;
+using PoliChallenge.Business.HiScores;
 using PoliChallenge.Business.Places;
 using PoliChallenge.Business.Questions;
 using System.Collections.Generic;
 using System.Data.Entity;
+using WebGrease.Css.Extensions;
 
 namespace PoliChallenge.Business._Core
 {
     public abstract class ContextHolder
     {
-        protected Context DataBaseContext { get; set; }
+        protected Context DataBaseContext { get; private set; }
 
         protected ContextHolder() =>
-#if DEBUG
-            DataBaseContext = new Context();
-#else
-            this.Context = new Context("ConnectionInfo");
-#endif
+            #if DEBUG
+                DataBaseContext = new Context();
+            #else
+                this.Context = new Context("ConnectionInfo");
+            #endif
 
         protected void Populate(IList<Question> questions, IList<Place> places, IList<HiScore> hiScores)
         {
@@ -23,10 +25,13 @@ namespace PoliChallenge.Business._Core
             dbInit.PopulateDb(questions, places, hiScores, DataBaseContext);
         }
 
-        ~ContextHolder()
+        protected void TruncateTables()
         {
-            DataBaseContext.Dispose();
+            var tables = new String[] { "Questions", "Places", "HiScores" };
+            tables.ForEach(t => DataBaseContext.Database.ExecuteSqlCommand($"Truncate table {t}" ));
         }
+
+        ~ContextHolder() => DataBaseContext.Dispose();
 
         private class DatabaseInitializer : DropCreateDatabaseAlways<Context>
         {
@@ -39,6 +44,7 @@ namespace PoliChallenge.Business._Core
                 _questions = questions;
                 _places = places;
                 _hiScores = hiScores;
+
                 Seed(context);
             }
 

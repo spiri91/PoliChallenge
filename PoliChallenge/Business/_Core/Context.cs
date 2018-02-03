@@ -10,21 +10,12 @@ namespace PoliChallenge.Business._Core
     {
         private sealed class MigrationConfiguration : DbMigrationsConfiguration<Context>
         {
-            public MigrationConfiguration()
-            {
-                AutomaticMigrationsEnabled = true;
-            }
+            public MigrationConfiguration() => AutomaticMigrationsEnabled = true;
         }
 
-        public Context() : base()
-        {
-            Database.SetInitializer<Context>(new DropCreateDatabaseAlways<Context>());
-        }
+        public Context() : base() => Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
 
-        public Context(string connectionStringName) : base(connectionStringName)
-        {
-            Database.SetInitializer<Context>(new MigrateDatabaseToLatestVersion<Context,MigrationConfiguration>());
-        }
+        public Context(string connectionStringName) : base(connectionStringName) => Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context,MigrationConfiguration>());
 
         public DbSet<Question> Questions { get; set; }
 
