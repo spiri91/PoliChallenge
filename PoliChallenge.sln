@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliChallenge", "PoliChallenge\PoliChallenge.csproj", "{05CD7CC5-4288-45DF-A01B-BB71561D986F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliChallenge-Tests", "PoliChallenge-Tests\PoliChallenge-Tests.csproj", "{C26677E0-117C-4307-A607-D3D0A1FB4FFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{05CD7CC5-4288-45DF-A01B-BB71561D986F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05CD7CC5-4288-45DF-A01B-BB71561D986F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05CD7CC5-4288-45DF-A01B-BB71561D986F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C26677E0-117C-4307-A607-D3D0A1FB4FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C26677E0-117C-4307-A607-D3D0A1FB4FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C26677E0-117C-4307-A607-D3D0A1FB4FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C26677E0-117C-4307-A607-D3D0A1FB4FFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
