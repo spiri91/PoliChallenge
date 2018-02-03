@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PoliChallenge.Business._Core;
 using PoliChallenge.Contracts;
 
 namespace PoliChallenge.Business.Questions
 {
-    public class QuestionsRepository : IRepository<Question>
+    public class QuestionsRepository : ContextHolder, IRepository<Question>
     {
         public IQueryable<Question> Query()
         {

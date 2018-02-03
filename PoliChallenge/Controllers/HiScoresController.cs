@@ -12,5 +12,7 @@ namespace PoliChallenge.Controllers
         {
             _repo = hiScoresRepo;
         }
+
+        public HiScoresController() : this(new HiScoresRepository()) { }
     }
 }

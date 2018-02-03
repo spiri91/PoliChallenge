@@ -12,5 +12,7 @@ namespace PoliChallenge.Controllers
         {
             _repo = questionsRepository;
         }
+
+        public QuestionsController() : this(new QuestionsRepository()) { }
     }
 }

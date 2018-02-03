@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using PoliChallenge.Business._Core;
 using PoliChallenge.Contracts;
 
 namespace PoliChallenge.Business.HiScores
 {
-    public class HiScoresRepository : IRepository<HiScore>
+    public class HiScoresRepository : ContextHolder, IRepository<HiScore>
     {
         public IQueryable<HiScore> Query()
         {
