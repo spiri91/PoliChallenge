@@ -1,15 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PoliChallenge.Business.HiScores
 {
-    public class HiScoreExtensions
+    public static class HiScoreExtensions
     {
-        public Guid Key { get; set; }
-
-        public string TeamName { get; set; }
-
-        public double Score { get; set; }
-
-        public DateTime Date { get; set; }
+        public static IList<HiScoreDTO> AsDTOs(this IList<HiScore> list) => list.Select(x => (HiScoreDTO) x).ToList();
     }
 }

@@ -13,18 +13,22 @@ namespace PoliChallenge.Controllers
     {
         private readonly IRepository<HiScore> _repo;
 
-        public HiScoresController(IRepository<HiScore> hiScoresRepo)
-        {
-            _repo = hiScoresRepo;
-        }
+        public HiScoresController(IRepository<HiScore> hiScoresRepo) { _repo = hiScoresRepo; }
 
         public HiScoresController() : this(new HiScoresRepository()) { }
 
-        public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll());
+        [Route("")]
+        public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
+        [Route("")]
         public HttpResponseMessage Post(HiScoreDTO hiScore)
         {
-            Ensure.Condition(hiScore.ToNonDTO().IsInTop(), _repo.Add(hiScore));
+            // TODO extract this to configuration file
+            uint totalHiScores = 50;
+
+            Ensure.Condition(hiScore.ToNonDTO().IsInTop(_repo, totalHiScores), () => _repo.Add(hiScore));
+
+            _repo.Save();
 
             return Request.CreateResponse(HttpStatusCode.Created);
         }

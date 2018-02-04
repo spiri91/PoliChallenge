@@ -10,11 +10,11 @@ namespace PoliChallenge.Business._Core
 {
     public abstract class ContextHolder
     {
-        protected Context DataBaseContext { get; private set; }
+        protected Context dbContext { get; }
 
         protected ContextHolder() =>
             #if DEBUG
-                DataBaseContext = new Context();
+                dbContext = new Context();
             #else
                 this.Context = new Context("ConnectionInfo");
             #endif
@@ -22,16 +22,18 @@ namespace PoliChallenge.Business._Core
         protected void Populate(IList<Question> questions, IList<Place> places, IList<HiScore> hiScores)
         {
             var dbInit = new DatabaseInitializer();
-            dbInit.PopulateDb(questions, places, hiScores, DataBaseContext);
+            dbInit.PopulateDb(questions, places, hiScores, dbContext);
         }
 
         protected void TruncateTables()
         {
             var tables = new String[] { "Questions", "Places", "HiScores" };
-            tables.ForEach(t => DataBaseContext.Database.ExecuteSqlCommand($"Truncate table {t}" ));
+            tables.ForEach(t => dbContext.Database.ExecuteSqlCommand($"Truncate table {t}" ));
         }
 
-        ~ContextHolder() => DataBaseContext.Dispose();
+        public virtual void Save() => dbContext.SaveChanges();
+
+        ~ContextHolder() => dbContext.Dispose();
 
         private class DatabaseInitializer : DropCreateDatabaseAlways<Context>
         {
