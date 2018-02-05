@@ -229,6 +229,7 @@
     <Compile Include="Business\Questions\QuestionsRepository.cs" />
     <Compile Include="Business\_Core\Context.cs" />
     <Compile Include="Business\_Core\ContextHolder.cs" />
+    <Compile Include="Business\_Core\GetFromConfiguration.cs" />
     <Compile Include="Business\_Core\IListExtensions.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Controllers\HiScoresController.cs" />

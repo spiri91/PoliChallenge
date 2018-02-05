@@ -23,7 +23,7 @@ namespace PoliChallenge.Controllers
         [Route("{id}")]
         public HttpResponseMessage Get(Guid Id)
         {
-            var questionsForId = _repo.Query().Where(x => x.Key == Id).AsDTOs();
+            var questionsForId = _repo.Query().Where(x => x.Key == Id).ToList().AsDTOs();
 
             return Request.CreateResponse(HttpStatusCode.OK, questionsForId);
         }
@@ -35,6 +35,24 @@ namespace PoliChallenge.Controllers
             _repo.Save();
 
             return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
+        [Route("")]
+        public HttpResponseMessage Put(QuestionDTO dto)
+        {
+            _repo.Put(dto);
+            _repo.Save();
+
+            return Request.CreateResponse(204);
+        }
+
+        [Route("")]
+        public HttpResponseMessage Delete(Guid key)
+        {
+            _repo.Delete(_repo.Query().Single(x => x.Key == key));
+            _repo.Save();
+
+            return Request.CreateResponse(204);
         }
     }
 }

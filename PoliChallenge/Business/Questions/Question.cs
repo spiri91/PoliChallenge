@@ -17,5 +17,19 @@ namespace PoliChallenge.Business.Questions
         public string Answer3 { get; set; }
 
         public string CorrectAnswer { get; set; }
+
+        public static implicit operator QuestionDTO(Question question)
+        {
+            return new QuestionDTO()
+            {
+                Key = question.Key,
+                For = question.For,
+                Statement = question.Statement,
+                Answer1 = question.Answer1,
+                Answer2 = question.Answer2,
+                Answer3 = question.Answer3,
+                CorrectAnswer = question.CorrectAnswer
+            };
+        }
     }
 }

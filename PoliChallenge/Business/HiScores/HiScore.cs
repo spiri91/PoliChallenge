@@ -14,16 +14,7 @@ namespace PoliChallenge.Business.HiScores
         
         public DateTime Date { get; set; }
 
-        public bool IsInTop(IRepository<HiScore> repo, uint totalHiScores)
-        {
-            if (repo.Query().Count() < totalHiScores)
-                return true;
-
-            if (Score > repo.Query().OrderByDescending(x => x.Score).Last().Score)
-                return true;
-
-            return false;
-        }
+       
 
         public static implicit operator HiScoreDTO(HiScore hiScore)
         {

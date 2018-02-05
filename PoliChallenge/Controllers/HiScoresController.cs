@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Web.Http;
 using PoliChallenge.Contracts;
 using PoliChallenge.Business.HiScores;
+using PoliChallenge.Business._Core;
 
 namespace PoliChallenge.Controllers
 {
@@ -23,8 +24,7 @@ namespace PoliChallenge.Controllers
         [Route("")]
         public HttpResponseMessage Post(HiScoreDTO hiScore)
         {
-            // TODO extract this to configuration file
-            uint totalHiScores = 50;
+            uint totalHiScores = uint.Parse(FromConfiguration.Get(SettingsName.TotalHiScores));
 
             Ensure.Condition(hiScore.ToNonDTO().IsInTop(_repo, totalHiScores), () => _repo.Add(hiScore));
 
