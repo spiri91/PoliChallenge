@@ -5,7 +5,7 @@ using PoliChallenge.Business.Questions;
 namespace PoliChallenge_Tests.ControllersTests
 {
     [TestClass]
-    public class QuestionsController_Tests : IControllerTests<QuestionDTO>
+    public class QuestionsController_Tests
     {
         public void Should_Query_Collection()
         {

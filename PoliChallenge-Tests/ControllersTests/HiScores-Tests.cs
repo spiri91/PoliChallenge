@@ -1,50 +1,37 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PoliChallenge.Business.HiScores;
+﻿using NUnit.Framework;
+using PoliChallenge.Controllers;
+using PoliChallenge_Tests.Contracts;
+using PoliChallenge_Tests.Core;
 
 namespace PoliChallenge_Tests.ControllersTests
 {
-    [TestClass]
-    public class HiScores_Tests : IControllerTests<HiScoreDTO>
+    [TestFixture]
+    public class HiScores_Tests : ContextDependent, IAddDataTests, IDeleteDataTests
     {
-        public void Should_Query_Collection()
-        {
-            throw new NotImplementedException();
-        }
+        private HiScoresController controller = new HiScoresController();
 
-        public void Should_Fetch_All()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Should_Put_Entity()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Should_Not_Put_Invalid_Entity()
-        {
-            throw new NotImplementedException();
-        }
-
+        [TestCase]
         public void Should_Add_Entity()
         {
-            throw new NotImplementedException();
+            
         }
 
+        [TestCase]
         public void Should_Not_Add_Invalid_Entity()
         {
-            throw new NotImplementedException();
+            
         }
 
+        [TestCase]
         public void Should_Delete_Entity()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public void Should_Save_Changes()
+        [TestCase]
+        public void Should_Throw_Error_On_Not_Existing_Key_For_Delete()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
