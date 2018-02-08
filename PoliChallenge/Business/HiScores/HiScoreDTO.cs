@@ -1,10 +1,11 @@
 ﻿using System;
+using PoliChallenge.Contracts;
 
 namespace PoliChallenge.Business.HiScores
 {
     using Ensure.NET;
 
-    public class HiScoreDTO
+    public class HiScoreDTO : IIsEqual<HiScoreDTO>
     {
         public Guid? Key { get; set; }
 
@@ -38,6 +39,12 @@ namespace PoliChallenge.Business.HiScores
                 return false;
 
             return true;
+        }
+
+        public bool IsEqual(HiScoreDTO comparator)
+        {
+            return this.Key == comparator.Key && Math.Abs((this.Date.Value - comparator.Date.Value).TotalSeconds) < 1 && this.Score == comparator.Score
+                   && this.TeamName == comparator.TeamName;
         }
     }
 }

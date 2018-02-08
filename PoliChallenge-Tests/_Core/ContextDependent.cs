@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using PoliChallenge.Business.HiScores;
@@ -19,11 +20,13 @@ namespace PoliChallenge_Tests.Core
         [SetUp]
         public void CreateListOfObjectsInDB()
         {
+            var date = DateTime.Now;
+
             hiScores = new List<HiScore>()
             {
-                new HiScore() {Key = Guid.NewGuid(), Score = 100, Date = DateTime.Now, TeamName = "Team Rocket"},
-                new HiScore() {Key = Guid.NewGuid(), Score = 90, Date = DateTime.Now, TeamName = "Bamboo"},
-                new HiScore() {Key = Guid.NewGuid(), Score = 40, Date = DateTime.Now, TeamName = "Foo"}
+                new HiScore() {Key = Guid.NewGuid(), Score = 100, Date = date, TeamName = "Team Rocket"},
+                new HiScore() {Key = Guid.NewGuid(), Score = 90, Date = date, TeamName = "Bamboo"},
+                new HiScore() {Key = Guid.NewGuid(), Score = 40, Date = date, TeamName = "Foo"}
             };
 
             places = new List<Place>()

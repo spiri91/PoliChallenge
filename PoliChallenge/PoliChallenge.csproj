@@ -231,6 +231,7 @@
     <Compile Include="Business\_Core\ContextHolder.cs" />
     <Compile Include="Business\_Core\GetFromConfiguration.cs" />
     <Compile Include="Business\_Core\IListExtensions.cs" />
+    <Compile Include="Contracts\IIsEqual.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Controllers\HiScoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
