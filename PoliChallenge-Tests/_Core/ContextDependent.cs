@@ -22,8 +22,8 @@ namespace PoliChallenge_Tests.Core
             hiScores = new List<HiScore>()
             {
                 new HiScore() {Key = Guid.NewGuid(), Score = 100, Date = DateTime.Now, TeamName = "Team Rocket"},
-                new HiScore() {Key = Guid.NewGuid(), Score = 100, Date = DateTime.Now, TeamName = "Team Rocket"},
-                new HiScore() {Key = Guid.NewGuid(), Score = 100, Date = DateTime.Now, TeamName = "Team Rocket"}
+                new HiScore() {Key = Guid.NewGuid(), Score = 90, Date = DateTime.Now, TeamName = "Bamboo"},
+                new HiScore() {Key = Guid.NewGuid(), Score = 40, Date = DateTime.Now, TeamName = "Foo"}
             };
 
             places = new List<Place>()

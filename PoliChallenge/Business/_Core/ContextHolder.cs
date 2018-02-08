@@ -55,6 +55,8 @@ namespace PoliChallenge.Business._Core
                 context.Questions.AddRange(_questions);
                 context.Places.AddRange(_places);
                 context.HiScores.AddRange(_hiScores);
+
+                context.SaveChanges();
             } 
         }
     }
