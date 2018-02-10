@@ -22,7 +22,10 @@ namespace PoliChallenge.Controllers
         public PlacesController() : this(new PlacesRepository()){ }
 
         [Route("")]
-        public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().Shuffle().AsDTOs());
+        public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
+
+        [Route("GetShuffled")]
+        public HttpResponseMessage GetShuffled() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().Shuffle().AsDTOs());
 
         [Route("")]
         public HttpResponseMessage Post(PlaceDTO dto)

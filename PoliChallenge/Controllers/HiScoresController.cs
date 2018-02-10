@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using PoliChallenge.Contracts;
@@ -7,8 +8,7 @@ using PoliChallenge.Business._Core;
 
 namespace PoliChallenge.Controllers
 {
-    using Ensure.NET;
-
+    [CustomExceptionHandling]
     [RoutePrefix("api/scores")]
     public class HiScoresController : ApiController
     {
@@ -22,11 +22,12 @@ namespace PoliChallenge.Controllers
         public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
         [Route("")]
+        [CustomAuthorize]
         public HttpResponseMessage Post(HiScoreDTO hiScore)
         {
             uint totalHiScores = uint.Parse(FromConfiguration.Get(SettingsName.TotalHiScores));
 
-            Ensure.Condition(hiScore.ToNonDTO().IsInTop(_repo, totalHiScores), () => _repo.Add(hiScore));
+            if (hiScore.ToNonDTO().IsInTop(_repo, totalHiScores)) _repo.Add(hiScore);
 
             _repo.Save();
 

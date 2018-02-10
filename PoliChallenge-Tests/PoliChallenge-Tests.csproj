@@ -86,6 +86,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AtributesTests\AttributesTests.cs" />
     <Compile Include="Contracts\IAddDataTests.cs" />
     <Compile Include="Contracts\IDeleteDataTests.cs" />
     <Compile Include="Contracts\IPutDataTests.cs" />

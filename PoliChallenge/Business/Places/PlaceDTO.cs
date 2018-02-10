@@ -3,8 +3,9 @@
 namespace PoliChallenge.Business.Places
 {
     using Ensure.NET;
+    using PoliChallenge.Contracts;
 
-    public class PlaceDTO
+    public class PlaceDTO : IIsEqual<PlaceDTO>
     {
         public Guid? Key { get; set; }
 
@@ -36,6 +37,13 @@ namespace PoliChallenge.Business.Places
                 return false;
 
             return true;
+        }
+
+        public bool IsEqual(PlaceDTO comparator)
+        {
+            // TODO Compare decimals
+            return Key == comparator.Key && Name == comparator.Name && Latitude == comparator.Latitude && Longitude == comparator.Longitude
+                && Observations == comparator.Observations;
         }
     }
 }

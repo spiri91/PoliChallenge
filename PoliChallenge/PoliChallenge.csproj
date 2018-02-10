@@ -229,6 +229,8 @@
     <Compile Include="Business\Questions\QuestionsRepository.cs" />
     <Compile Include="Business\_Core\Context.cs" />
     <Compile Include="Business\_Core\ContextHolder.cs" />
+    <Compile Include="Business\_Core\CustomAuthorize.cs" />
+    <Compile Include="Business\_Core\CustomExceptionHandling.cs" />
     <Compile Include="Business\_Core\GetFromConfiguration.cs" />
     <Compile Include="Business\_Core\IListExtensions.cs" />
     <Compile Include="Contracts\IIsEqual.cs" />

@@ -20,6 +20,8 @@ namespace PoliChallenge_Tests.Core
         [SetUp]
         public void CreateListOfObjectsInDB()
         {
+            base.TruncateTables();
+
             var date = DateTime.Now;
 
             hiScores = new List<HiScore>()
@@ -44,12 +46,6 @@ namespace PoliChallenge_Tests.Core
             };
 
             base.Populate(questions, places, hiScores);
-        }
-
-        [TearDown]
-        public void DeleteAll()
-        {
-            base.TruncateTables();
         }
     }
 }

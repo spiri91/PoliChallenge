@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using PoliChallenge.Business._Core;
 
 namespace PoliChallenge
 {
@@ -7,6 +8,7 @@ namespace PoliChallenge
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new CustomAuthorize());
         }
     }
 }

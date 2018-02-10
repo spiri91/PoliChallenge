@@ -22,5 +22,14 @@ namespace PoliChallenge_Tests._Core
             first.Count == second.Count;
 
         public static bool IsSame<T>(this IList<T> first, IList<T> second) => first.SequenceEqual(second);
+
+        public static bool DoesContain<T>(this IList<T> list, T element) where T : IIsEqual<T>
+        {
+            foreach (var e in list)
+                if (e.IsEqual(element))
+                    return true;
+
+            return false;
+        }
     }
 }
