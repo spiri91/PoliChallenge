@@ -2,10 +2,12 @@
 using PoliChallenge.Business.Places;
 using PoliChallenge.Contracts;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace PoliChallenge.Controllers
 {
@@ -21,13 +23,22 @@ namespace PoliChallenge.Controllers
 
         public PlacesController() : this(new PlacesRepository()){ }
 
+
+        /// <summary>
+        /// Get all Places in game
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200"></response>
         [Route("")]
+        [HttpGet]
+        [ResponseType(typeof(IEnumerable<PlaceDTO>))]
         public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
         [Route("GetShuffled")]
         public HttpResponseMessage GetShuffled() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().Shuffle().AsDTOs());
 
         [Route("")]
+        [HttpPost]
         public HttpResponseMessage Post(PlaceDTO dto)
         {
             _repo.Add(dto);

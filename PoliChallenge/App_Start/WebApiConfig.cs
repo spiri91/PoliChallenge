@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using Swashbuckle.Application;
+using System.Web.Http;
 
 namespace PoliChallenge
 {
