@@ -1,5 +1,4 @@
-﻿using Swashbuckle.Application;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace PoliChallenge
 {
@@ -14,6 +13,9 @@ namespace PoliChallenge
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var cacheCow = new CacheCow.Server.CachingHandler(config, "");
+            config.MessageHandlers.Add(cacheCow);
         }
     }
 }
