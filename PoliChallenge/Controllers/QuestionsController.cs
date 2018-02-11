@@ -6,9 +6,12 @@ using PoliChallenge.Business.Questions;
 using PoliChallenge.Contracts;
 using System.Web.Http;
 using System.Web.OData;
+using PoliChallenge.Business._Core;
 
 namespace PoliChallenge.Controllers
 {
+    [CustomAuthorize]
+    [CustomExceptionHandling]
     [RoutePrefix("api/questions")]
     public class QuestionsController : ApiController
     {
@@ -21,8 +24,14 @@ namespace PoliChallenge.Controllers
 
         public QuestionsController() : this(new QuestionsRepository()) { }
 
+        /// <summary>
+        /// OData enabled
+        /// Gets all the questions in the game
+        /// </summary>
+        /// <returns code="200"></returns>
         [Route("")]
         [EnableQuery]
+        [AllowAnonymous]
         public HttpResponseMessage Get()
         {
             var questionsForId = _repo.FetchAll().ToList().AsDTOs();
@@ -30,6 +39,12 @@ namespace PoliChallenge.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, questionsForId);
         }
 
+        /// <summary>
+        /// Creates a new Question if valid
+        /// Doesn't return the newly created item!
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns code="201"></returns>
         [Route("")]
         public HttpResponseMessage Post(QuestionDTO dto)
         {
@@ -39,6 +54,11 @@ namespace PoliChallenge.Controllers
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
+        /// <summary>
+        /// It changes the entity with this , if one is already present in the DB
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns code="204"></returns>
         [Route("")]
         public HttpResponseMessage Put(QuestionDTO dto)
         {
@@ -48,6 +68,11 @@ namespace PoliChallenge.Controllers
             return Request.CreateResponse(HttpStatusCode.NoContent);
         }
 
+        /// <summary>
+        /// Deletes the entity with the provided key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns code="204"></returns>
         [Route("")]
         public HttpResponseMessage Delete(Guid key)
         {

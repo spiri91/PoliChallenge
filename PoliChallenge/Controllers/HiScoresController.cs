@@ -9,6 +9,7 @@ using System.Web.OData;
 
 namespace PoliChallenge.Controllers
 {
+    [CustomAuthorize]
     [CustomExceptionHandling]
     [RoutePrefix("api/scores")]
     public class HiScoresController : ApiController
@@ -19,12 +20,22 @@ namespace PoliChallenge.Controllers
 
         public HiScoresController() : this(new HiScoresRepository()) { }
 
+        /// <summary>
+        /// OData enabled
+        /// Gets the Hi Scores of this game
+        /// </summary>
+        /// <returns code="200"></returns>
         [Route("")]
         [EnableQuery]
+        [AllowAnonymous]
         public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
+        /// <summary>
+        /// If the score is in top it will be saved
+        /// </summary>
+        /// <param name="hiScore"></param>
+        /// <returns code="201"></returns>
         [Route("")]
-        [CustomAuthorize]
         public HttpResponseMessage Post(HiScoreDTO hiScore)
         {
             uint totalHiScores = uint.Parse(FromConfiguration.Get(SettingsName.TotalHiScores));

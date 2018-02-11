@@ -4,13 +4,18 @@ using PoliChallenge.Contracts;
 namespace PoliChallenge.Business.HiScores
 {
     using Ensure.NET;
+    using System.ComponentModel.DataAnnotations;
 
     public class HiScoreDTO : IIsEqual<HiScoreDTO>
     {
+        [Required]
         public Guid? Key { get; set; }
 
+        [Required]
+        [MinLength(5)]
         public string TeamName { get; set; }
 
+        [Required]
         public double Score { get; set; }
 
         public DateTime? Date { get; set; }

@@ -5,21 +5,34 @@ namespace PoliChallenge.Business.Questions
 {
     using Ensure.NET;
     using PoliChallenge.Contracts;
+    using System.ComponentModel.DataAnnotations;
 
     public class QuestionDTO : IIsEqual<QuestionDTO>
     {
+        [Required]
         public Guid? Key { get; set; }
 
+        [Required]
         public Guid For { get; set; }
 
+        [Required]
+        [MinLength(12)]
         public string Statement { get; set; }
 
+        [Required]
+        [MinLength(2)]
         public string Answer1 { get; set; }
 
+        [Required]
+        [MinLength(2)]
         public string Answer2 { get; set; }
 
+        [Required]
+        [MinLength(2)]
         public string Answer3 { get; set; }
 
+        [Required]
+        [MinLength(2)]
         public string CorrectAnswer { get; set; }
 
         public static implicit operator Question(QuestionDTO dto)

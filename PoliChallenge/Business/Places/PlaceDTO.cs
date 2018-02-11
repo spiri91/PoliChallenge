@@ -4,17 +4,25 @@ namespace PoliChallenge.Business.Places
 {
     using Ensure.NET;
     using PoliChallenge.Contracts;
+    using System.ComponentModel.DataAnnotations;
 
     public class PlaceDTO : IIsEqual<PlaceDTO>
     {
+        [Required]
         public Guid? Key { get; set; }
 
+        [Required]
+        [MinLength(6)]
         public string Name { get; set; }
 
+        [Required]
         public decimal Latitude { get; set; }
 
+        [Required]
         public decimal Longitude { get; set; }
 
+        [Required]
+        [MinLength(10)]
         public string Observations { get; set; }
 
         public static implicit operator Place(PlaceDTO dto)
