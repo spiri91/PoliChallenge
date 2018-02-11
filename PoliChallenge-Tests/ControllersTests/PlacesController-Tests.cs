@@ -32,13 +32,31 @@ namespace PoliChallenge_Tests.ControllersTests
         [TestCase]
         public void Should_Add_Entity()
         {
-            throw new NotImplementedException();
+            var response = controller.Post(Store.TestPlace);
+
+            Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+
+            var places = controller.Get().Content.ReadAsAsync<IEnumerable<PlaceDTO>>().Result.ToList();
+
+            Assert.IsTrue(places.DoesContain(Store.TestPlace));
         }
 
         [TestCase]
         public void Should_Delete_Entity()
         {
-            throw new NotImplementedException();
+            controller.Post(Store.TestPlace);
+
+            var places = controller.Get().Content.ReadAsAsync<IEnumerable<PlaceDTO>>().Result.ToList();
+
+            Assert.IsTrue(places.DoesContain(Store.TestPlace));
+
+            var response = controller.Delete(Store.TestPlace.Key.Value);
+
+            Assert.IsTrue(HttpStatusCode.NoContent == response.StatusCode);
+
+            places = controller.Get().Content.ReadAsAsync<IEnumerable<PlaceDTO>>().Result.ToList();
+
+            Assert.IsFalse(places.DoesContain(Store.TestPlace));
         }
 
         [TestCase]
@@ -57,25 +75,53 @@ namespace PoliChallenge_Tests.ControllersTests
         [TestCase]
         public void Should_Not_Add_Invalid_Entity()
         {
-            throw new NotImplementedException();
+            var placeDTO = Store.TestPlace;
+
+            placeDTO.Name = string.Empty;
+            placeDTO.Observations = string.Empty;
+
+            Assert.Throws<ArgumentException>(() => controller.Post(placeDTO));
         }
 
         [TestCase]
         public void Should_Not_Put_Invalid_Entity()
         {
-            throw new NotImplementedException();
+            var placeDTO = Store.TestPlace;
+
+            var response = controller.Post(placeDTO);
+            Assert.IsTrue(HttpStatusCode.Created == response.StatusCode);
+
+            placeDTO.Name = string.Empty;
+            placeDTO.Observations = string.Empty;
+
+            Assert.Throws<ArgumentException>(() => controller.Put(placeDTO));
         }
 
         [TestCase]
         public void Should_Put_Entity()
         {
-            throw new NotImplementedException();
+            controller.Post(Store.TestPlace);
+
+            var placeDTO = Store.TestPlace;
+            placeDTO.Latitude++;
+            placeDTO.Longitude++;
+            placeDTO.Name = "Test Place";
+            placeDTO.Observations = "Test Observations";
+
+           var response =  controller.Put(placeDTO);
+
+            Assert.IsTrue(HttpStatusCode.NoContent == response.StatusCode);
+
+            var result = controller.Get().Content.ReadAsAsync<IEnumerable<PlaceDTO>>().Result.ToList();
+
+            Assert.IsTrue(result.DoesContain(placeDTO));
+            Assert.IsFalse(result.DoesContain(Store.TestPlace));
         }
 
         [TestCase]
         public void Should_Throw_Error_On_Not_Existing_Key_For_Delete()
         {
-            throw new NotImplementedException();
+            Assert.Throws<InvalidOperationException>(() => controller.Delete(Guid.NewGuid()));
         }
     }
 }

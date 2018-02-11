@@ -31,6 +31,9 @@ namespace PoliChallenge.Business._Core
 
             if (ex.GetType().IsAssignableFrom(typeof(ArgumentNullException)))
                 throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            if (ex.GetType().IsAssignableFrom(typeof(InvalidOperationException)))
+                throw new HttpResponseException(HttpStatusCode.NotFound);
         }
     }
 }

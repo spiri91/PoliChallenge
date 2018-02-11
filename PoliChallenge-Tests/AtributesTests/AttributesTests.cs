@@ -45,6 +45,16 @@ namespace PoliChallenge_Tests.AtributesTests
             {
                 Assert.IsTrue(ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound);
             }
+
+            context = new HttpActionExecutedContext() { Exception = new InvalidOperationException() };
+            try
+            {
+                exceptionAtt.OnException(context);
+            }
+            catch (HttpResponseException ex)
+            {
+                Assert.IsTrue(ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound);
+            }
         }
 
         [TestCase]

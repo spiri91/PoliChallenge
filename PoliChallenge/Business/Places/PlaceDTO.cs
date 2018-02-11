@@ -41,7 +41,6 @@ namespace PoliChallenge.Business.Places
 
         public bool IsEqual(PlaceDTO comparator)
         {
-            // TODO Compare decimals
             return Key == comparator.Key && Name == comparator.Name && Latitude == comparator.Latitude && Longitude == comparator.Longitude
                 && Observations == comparator.Observations;
         }

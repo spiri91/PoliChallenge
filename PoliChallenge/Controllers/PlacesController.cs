@@ -42,7 +42,7 @@ namespace PoliChallenge.Controllers
             _repo.Delete(_repo.Query().Single(x => x.Key == key));
             _repo.Save();
 
-            return Request.CreateResponse(204);
+            return Request.CreateResponse(HttpStatusCode.NoContent);
         }
 
         [Route("")]
@@ -51,7 +51,7 @@ namespace PoliChallenge.Controllers
             _repo.Put(dto);
             _repo.Save();
 
-            return Request.CreateResponse(204);
+            return Request.CreateResponse(HttpStatusCode.NoContent);
         }
     }
 }
