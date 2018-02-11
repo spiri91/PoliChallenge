@@ -4,8 +4,9 @@ using Microsoft.Ajax.Utilities;
 namespace PoliChallenge.Business.Questions
 {
     using Ensure.NET;
+    using PoliChallenge.Contracts;
 
-    public class QuestionDTO
+    public class QuestionDTO : IIsEqual<QuestionDTO>
     {
         public Guid? Key { get; set; }
 
@@ -45,6 +46,12 @@ namespace PoliChallenge.Business.Questions
                 return false;
 
             return true;
+        }
+
+        public bool IsEqual(QuestionDTO comparator)
+        {
+            return Key == comparator.Key && For == comparator.For && Statement == comparator.Statement && Answer1 == comparator.Answer1
+                && Answer2 == comparator.Answer2 && Answer3 == comparator.Answer3 && CorrectAnswer == comparator.CorrectAnswer;
         }
     }
 }

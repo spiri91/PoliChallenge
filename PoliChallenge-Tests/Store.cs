@@ -26,6 +26,7 @@ namespace PoliChallenge_Tests
         public static QuestionDTO TestQuestion => new QuestionDTO()
         {
             Key = QuestionKey,
+            For = PlaceKey,
             Statement = "Smart question22",
             Answer1 = "Answer22",
             Answer2 = "Answer33",
