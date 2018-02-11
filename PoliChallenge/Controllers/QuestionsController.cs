@@ -5,6 +5,7 @@ using System.Net.Http;
 using PoliChallenge.Business.Questions;
 using PoliChallenge.Contracts;
 using System.Web.Http;
+using System.Web.OData;
 
 namespace PoliChallenge.Controllers
 {
@@ -21,6 +22,7 @@ namespace PoliChallenge.Controllers
         public QuestionsController() : this(new QuestionsRepository()) { }
 
         [Route("")]
+        [EnableQuery]
         public HttpResponseMessage Get()
         {
             var questionsForId = _repo.FetchAll().ToList().AsDTOs();

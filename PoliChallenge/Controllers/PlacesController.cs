@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.OData;
 
 namespace PoliChallenge.Controllers
 {
@@ -30,8 +31,7 @@ namespace PoliChallenge.Controllers
         /// <returns></returns>
         /// <response code="200"></response>
         [Route("")]
-        [HttpGet]
-        [ResponseType(typeof(IEnumerable<PlaceDTO>))]
+        [EnableQuery]
         public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
         [Route("GetShuffled")]

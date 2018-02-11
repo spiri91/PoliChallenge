@@ -5,6 +5,7 @@ using System.Web.Http;
 using PoliChallenge.Contracts;
 using PoliChallenge.Business.HiScores;
 using PoliChallenge.Business._Core;
+using System.Web.OData;
 
 namespace PoliChallenge.Controllers
 {
@@ -19,6 +20,7 @@ namespace PoliChallenge.Controllers
         public HiScoresController() : this(new HiScoresRepository()) { }
 
         [Route("")]
+        [EnableQuery]
         public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
         [Route("")]
