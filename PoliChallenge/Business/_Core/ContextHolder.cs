@@ -8,6 +8,8 @@ using WebGrease.Css.Extensions;
 
 namespace PoliChallenge.Business._Core
 {
+    using Ensure.NET;
+
     public abstract class ContextHolder
     {
         protected Context dbContext { get; }
@@ -31,7 +33,15 @@ namespace PoliChallenge.Business._Core
             tables.ForEach(t => dbContext.Database.ExecuteSqlCommand($"Truncate table {t}" ));
         }
 
-        public virtual void Save() => dbContext.SaveChanges();
+        public virtual void Save()
+        {
+            #if DEBUG
+                if (FromConfiguration.Get(SettingsName.PersistentSave) == "True")
+                    dbContext.SaveChanges();
+            #else
+                dbContext.SaveChanges();
+            #endif
+        }
 
         ~ContextHolder() => dbContext.Dispose();
 

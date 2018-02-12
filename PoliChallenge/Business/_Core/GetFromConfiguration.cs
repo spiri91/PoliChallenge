@@ -3,7 +3,8 @@
     public enum SettingsName
     {
         TotalHiScores = 0,
-        Token
+        Token,
+        PersistentSave
     }
 
     public static class FromConfiguration
