@@ -1,3 +1,3 @@
 ﻿(function() {
-    console.log("something else 2");
+    console.log("something else 3332");
 }) ();
