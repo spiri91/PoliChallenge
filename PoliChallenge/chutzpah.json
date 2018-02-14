@@ -1,0 +1,9 @@
+﻿{
+  "Framework": "jasmine",
+  "References": [
+    { "Path": "Site/guidGenerator.js" }
+  ],
+  "Tests": [
+    { "Path": "JS_Tests/JSTests.js" }
+  ]
+}

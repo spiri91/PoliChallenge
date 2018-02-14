@@ -486,6 +486,19 @@
     <Content Include="bower_components\Geolib\src\geolib.elevation.js" />
     <Content Include="bower_components\Geolib\src\geolib.isPointInsideRobust.js" />
     <Content Include="bower_components\Geolib\src\geolib.js" />
+    <Content Include="bower_components\jasmine-core\images\jasmine-horizontal.png" />
+    <Content Include="bower_components\jasmine-core\images\jasmine-horizontal.svg" />
+    <Content Include="bower_components\jasmine-core\images\jasmine_favicon.png" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core.js" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\boot.js" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\example\node_example\lib\jasmine_examples\Player.js" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\example\node_example\lib\jasmine_examples\Song.js" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\jasmine-html.js" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\jasmine.css" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\jasmine.js" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\json2.js" />
+    <Content Include="bower_components\jasmine-core\lib\jasmine-core\node_boot.js" />
+    <Content Include="bower_components\jasmine-core\requirements.txt" />
     <Content Include="bower_components\jQuery\.gitattributes" />
     <Content Include="bower_components\jQuery\.gitignore" />
     <Content Include="bower_components\jQuery\AUTHORS.txt" />
@@ -905,6 +918,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="gulpfile.js" />
+    <Content Include="JS_Tests\JSTests.js" />
     <Content Include="Output\MyScripts\app.js" />
     <Content Include="Site\guidGenerator.js" />
     <Content Include="Site\MainController.js" />
@@ -1293,6 +1307,15 @@
     <Content Include="bower_components\mui\src\sass\mui\_typography.scss" />
     <Content Include="bower_components\mui\src\sass\mui\_variables.scss" />
     <Content Include="bower_components\mui\yarn.lock" />
+    <Content Include="bower_components\jasmine-core\.bower.json" />
+    <Content Include="bower_components\jasmine-core\bower.json" />
+    <Content Include="bower_components\jasmine-core\CODE_OF_CONDUCT.md" />
+    <Content Include="bower_components\jasmine-core\MANIFEST.in" />
+    <Content Include="bower_components\jasmine-core\MIT.LICENSE" />
+    <Content Include="bower_components\jasmine-core\package.json" />
+    <Content Include="bower_components\jasmine-core\README.md" />
+    <Content Include="bower_components\jasmine-core\RELEASE.md" />
+    <Content Include="chutzpah.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
