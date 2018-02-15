@@ -1,3 +1,5 @@
-﻿(function() {
-    console.log("something else 3332");
-}) ();
+﻿/// <reference path="_config.js" />
+(function (router) {
+    
+
+})(router);

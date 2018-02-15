@@ -912,6 +912,18 @@
     <Content Include="bower_components\mui\src\react\_textfieldHelpers.jsx" />
     <Content Include="bower_components\mui\src\webcomponents\buttons.js" />
     <Content Include="bower_components\mui\src\webcomponents\forms.js" />
+    <Content Include="bower_components\navigo\demo\basic\scripts.js" />
+    <Content Include="bower_components\navigo\demo\basic\styles.css" />
+    <Content Include="bower_components\navigo\demo\html-template-demo\index.html" />
+    <Content Include="bower_components\navigo\demo\html-template-demo\scripts.js" />
+    <Content Include="bower_components\navigo\demo\html-template-demo\templates\first.html" />
+    <Content Include="bower_components\navigo\demo\html-template-demo\templates\second.html" />
+    <Content Include="bower_components\navigo\demo\html-template-demo\templates\third.html" />
+    <Content Include="bower_components\navigo\karma.conf.js" />
+    <Content Include="bower_components\navigo\lib\navigo.js" />
+    <Content Include="bower_components\navigo\lib\navigo.min.js" />
+    <Content Include="bower_components\navigo\src\index.js" />
+    <Content Include="bower_components\navigo\webpack.config.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -920,10 +932,21 @@
     <Content Include="gulpfile.js" />
     <Content Include="JS_Tests\JSTests.js" />
     <Content Include="Output\MyScripts\app.js" />
-    <Content Include="Site\guidGenerator.js" />
+    <Content Include="Site\0_Services\call.js" />
+    <Content Include="Site\0_Services\geo.js" />
+    <Content Include="Site\Game\game.html" />
+    <Content Include="Site\Game\game.js" />
+    <Content Include="Site\HiScores\hiScore.html" />
+    <Content Include="Site\HiScores\hiScore.js" />
+    <Content Include="Site\Places\place.html" />
+    <Content Include="Site\Places\place.js" />
+    <Content Include="Site\0_Services\guidGenerator.js" />
     <Content Include="Site\MainController.js" />
     <Content Include="Site\MainSheet.css" />
-    <Content Include="Views\Home\Index.html" />
+    <Content Include="Site\0_Services\routing.js" />
+    <Content Include="Index.html" />
+    <Content Include="Site\Questions\question.html" />
+    <Content Include="Site\Questions\question.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1316,6 +1339,16 @@
     <Content Include="bower_components\jasmine-core\README.md" />
     <Content Include="bower_components\jasmine-core\RELEASE.md" />
     <Content Include="chutzpah.json" />
+    <Content Include="bower_components\navigo\.bower.json" />
+    <Content Include="bower_components\navigo\bower.json" />
+    <Content Include="bower_components\navigo\CHANGELOG.md" />
+    <Content Include="bower_components\navigo\demo\basic\index.php" />
+    <Content Include="bower_components\navigo\lib\navigo.js.map" />
+    <Content Include="bower_components\navigo\lib\navigo.min.js.map" />
+    <Content Include="bower_components\navigo\LICENSE" />
+    <Content Include="bower_components\navigo\package.json" />
+    <Content Include="bower_components\navigo\README.md" />
+    <Content Include="bower_components\navigo\yarn.lock" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
