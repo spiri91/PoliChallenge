@@ -1,15 +1,97 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polichalenge</title>
     <script src="../../bower_components/jQuery/dist/jquery.min.js"></script>
     <script src="../../bower_components/Geolib/dist/geolib.min.js"></script>
-    <script src="../../bower_components/navigo/lib/navigo.min.js"></script>
+    <script src="../../Output/MyScripts/app.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/bower_components/app-layout/app-layout.html">
+    <link rel="import" href="/bower_components/app-router/src/app-router.html">
 
-    <meta charset="utf-8" />
-    <title></title>
+    <link rel="import" href="/bower_components/app-layout/app-drawer/app-drawer.html">
+    <link rel="import" href="/bower_components/app-layout/app-header/app-header.html">
+    <link rel="import" href="/bower_components/app-layout/app-toolbar/app-toolbar.html">
+    <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+    <link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+    <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+
+    <!--web components-->
+    <link rel="import" href="/Site/Game/game.html">
+
+    <custom-style>
+        <style is="custom-style">
+            html, body {
+                margin: 0;
+                font-family: 'Roboto', 'Noto', sans-serif;
+                -webkit-font-smoothing: antialiased;
+                background: #f1f1f1;
+                max-height: 368px;
+            }
+
+            app-toolbar {
+                background-color: #4285f4;
+                color: #fff;
+            }
+
+            paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+
+                paper-icon-button + [main-title] {
+                    margin-left: 24px;
+                }
+
+            paper-progress {
+                display: block;
+                width: 100%;
+                --paper-progress-active-color: rgba(255, 255, 255, 0.5);
+                --paper-progress-container-color: transparent;
+            }
+
+            app-header {
+                @apply --layout-fixed-top;
+                color: #fff;
+                --app-header-background-rear-layer: {
+              background-color: #ef6c00;
+            };
+            }
+
+            app-drawer {
+                --app-drawer-scrim-background: rgba(0, 0, 100, 0.8);
+                --app-drawer-content-container: {
+              background-color: #B0BEC5;
+            }
+            }
+
+            sample-content {
+                padding-top: 64px;
+            }
+        </style>
+    </custom-style>
 </head>
 <body>
-    <h1>Polichalenge!!</h1>
+    <app-header reveals>
+        <app-toolbar>
+            <paper-icon-button icon="menu" onclick="drawer.toggle()"></paper-icon-button>
+            <div main-title>My app</div>
+            <paper-icon-button icon="delete"></paper-icon-button>
+            <paper-icon-button icon="search"></paper-icon-button>
+            <paper-icon-button icon="close"></paper-icon-button>
+        </app-toolbar>
+    </app-header>
+    <app-drawer id="drawer" swipe-open></app-drawer>
+    <sample-content size="10"></sample-content>
+    <app-router>
+        <app-route path="/game" element="the-game"></app-route>
+        <app-route path="/hiScores" import="/Site/HiScores/hiScore.html"></app-route>
+        <app-route path="/places" import="/Site/Places/place.html"></app-route>
+        <app-route path="/questions" import="/Site/Questions/questions.html"></app-route>
+        <app-route path="*" element="the-game"></app-route>
+    </app-router>
 </body>
 </html>
-<script src="../../Output/MyScripts/app.js"></script>
