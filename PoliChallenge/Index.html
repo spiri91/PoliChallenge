@@ -2,14 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <title>Polichalenge</title>
     <script src="../../bower_components/jQuery/dist/jquery.min.js"></script>
     <script src="../../bower_components/Geolib/dist/geolib.min.js"></script>
     <script src="../../Output/MyScripts/app.js"></script>
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
     <link rel="import" href="/bower_components/polymer/polymer.html">
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <!--<script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>-->
+
     <link rel="import" href="/bower_components/app-layout/app-layout.html">
     <link rel="import" href="/bower_components/app-router/src/app-router.html">
 
@@ -17,8 +20,9 @@
     <link rel="import" href="/bower_components/app-layout/app-header/app-header.html">
     <link rel="import" href="/bower_components/app-layout/app-toolbar/app-toolbar.html">
     <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
-    <link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+    <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="/bower_components/paper-button/paper-button.html">
 
     <!--web components-->
     <link rel="import" href="/Site/Game/game.html">
@@ -75,23 +79,33 @@
     </custom-style>
 </head>
 <body>
-    <app-header reveals>
+    <app-header condenses reveals effects="waterfall">
         <app-toolbar>
             <paper-icon-button icon="menu" onclick="drawer.toggle()"></paper-icon-button>
             <div main-title>My app</div>
-            <paper-icon-button icon="delete"></paper-icon-button>
+            <span class="mToDestination">100m</span>
             <paper-icon-button icon="search"></paper-icon-button>
             <paper-icon-button icon="close"></paper-icon-button>
         </app-toolbar>
     </app-header>
-    <app-drawer id="drawer" swipe-open></app-drawer>
-    <sample-content size="10"></sample-content>
-    <app-router>
-        <app-route path="/game" element="the-game"></app-route>
-        <app-route path="/hiScores" import="/Site/HiScores/hiScore.html"></app-route>
-        <app-route path="/places" import="/Site/Places/place.html"></app-route>
-        <app-route path="/questions" import="/Site/Questions/questions.html"></app-route>
-        <app-route path="*" element="the-game"></app-route>
-    </app-router>
+    <app-drawer id="drawer" swipe-open>
+        <div>
+            <br />
+            <paper-button> <paper-icon-button icon="star"></paper-icon-button> HiScores</paper-button><br />
+            <paper-button> <paper-icon-button icon="star"></paper-icon-button> Add new place</paper-button><br />
+            <paper-button> <paper-icon-button icon="star"></paper-icon-button> Contact</paper-button><br />
+            <paper-button> <paper-icon-button icon="start"></paper-icon-button> Email me</paper-button><br />
+        </div>
+    </app-drawer>
+    <div style="height: 12000px"></div>
+    <div>
+        <app-router>
+            <app-route path="/game" element="the-game"></app-route>
+            <app-route path="/hiScores" import="/Site/HiScores/hiScore.html"></app-route>
+            <app-route path="/places" import="/Site/Places/place.html"></app-route>
+            <app-route path="/questions" import="/Site/Questions/questions.html"></app-route>
+            <app-route path="*" element="the-game"></app-route>
+        </app-router>
+    </div>
 </body>
 </html>
