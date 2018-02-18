@@ -1,4 +1,3 @@
-
 /// <reference path="../../bower_components/jquery/dist/jquery.js" />
 var call = (function () {
     function makeCall({ to, action = 'GET', body = null, token = '' }) {
@@ -41,6 +40,28 @@ var guidGenerator = (function() {
         }
     }
 })();
+/// <reference path="call.js" />
+
+'use strict';
+var repo = (function () {
+    const routes = {
+        places: 'api/places',
+        questions: 'api/questions',
+        hiScores: 'api/scores'
+    };
+
+    let getAll = (route) => {
+        return call.ajax({
+            to: route,
+            action: call.actions.get
+        });
+    };
+
+    return {
+        getAll: getAll,
+        entities: routes
+    };
+})(call)
 ///// <reference path="../bower_components/navigo/lib/navigo.js" />
 ///// <reference path="../bower_components/jquery/dist/jquery.js" />
 
@@ -76,4 +97,3 @@ var guidGenerator = (function() {
 //        content.set("Game/game.html");
 //    }
 //}).resolve()
-

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -10,8 +12,21 @@ namespace PoliChallenge.Business._Core
 
     public class CustomAuthorize : AuthorizeAttribute
     {
-        public override void OnAuthorization(HttpActionContext actionContext) =>
+        private static bool SkipAuthorization(HttpActionContext actionContext)
+        {
+            Contract.Assert(actionContext != null);
+
+            return actionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any()
+                       || actionContext.ControllerContext.ControllerDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any();
+        }
+
+        public override void OnAuthorization(HttpActionContext actionContext)
+        {
+            if (SkipAuthorization(actionContext)) return;
+
             Check(GetAuthorizationHeader(actionContext));
+        }
+           
 
         public override Task OnAuthorizationAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
