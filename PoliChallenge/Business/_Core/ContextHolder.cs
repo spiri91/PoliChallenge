@@ -1,25 +1,25 @@
-﻿using System;
-using PoliChallenge.Business.HiScores;
+﻿using PoliChallenge.Business.HiScores;
 using PoliChallenge.Business.Places;
 using PoliChallenge.Business.Questions;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using WebGrease.Css.Extensions;
 
 namespace PoliChallenge.Business._Core
 {
-    using Ensure.NET;
-
     public abstract class ContextHolder
     {
         protected Context dbContext { get; }
 
-        protected ContextHolder() =>
-            #if DEBUG
-                dbContext = new Context();
-            #else
+        protected ContextHolder()
+        {
+#if DEBUG
+            dbContext = new Context();
+#else
                 this.Context = new Context("ConnectionInfo");
-            #endif
+#endif
+        }
 
         protected void Populate(IList<Question> questions, IList<Place> places, IList<HiScore> hiScores)
         {
@@ -30,17 +30,17 @@ namespace PoliChallenge.Business._Core
         protected void TruncateTables()
         {
             var tables = new String[] { "Questions", "Places", "HiScores" };
-            tables.ForEach(t => dbContext.Database.ExecuteSqlCommand($"Truncate table {t}" ));
+            tables.ForEach(t => dbContext.Database.ExecuteSqlCommand($"Truncate table {t}"));
         }
 
         public virtual void Save()
         {
-            #if DEBUG
-                if (FromConfiguration.Get(SettingsName.PersistentSave) == "True")
-                    dbContext.SaveChanges();
-            #else
+#if DEBUG
+            if (FromConfiguration.Get(SettingsName.PersistentSave) == "True")
                 dbContext.SaveChanges();
-            #endif
+#else
+                dbContext.SaveChanges();
+#endif
         }
 
         ~ContextHolder() => dbContext.Dispose();
@@ -67,9 +67,10 @@ namespace PoliChallenge.Business._Core
                 context.HiScores.AddRange(_hiScores);
 
                 context.SaveChanges();
-            } 
+            }
         }
     }
 }
-                        
-            
+
+
+

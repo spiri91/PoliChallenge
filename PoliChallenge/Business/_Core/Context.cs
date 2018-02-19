@@ -14,7 +14,7 @@ namespace PoliChallenge.Business._Core
             public MigrationConfiguration() => AutomaticMigrationsEnabled = true;
         }
 
-        public Context() : base("PoliCL") => Database.SetInitializer(new DropCreateDatabaseAlways<Context>());
+        public Context() : base("PoliCL") => Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
 
         public Context(string connectionStringName) : base(connectionStringName) => Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context,MigrationConfiguration>());
 

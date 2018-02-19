@@ -21,6 +21,24 @@ var call = (function () {
         ajax: makeCall
     }
 })();
+var dealer = (function () {
+    var shuffle = function (array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+
+    return {
+        shuffle: shuffle
+    }
+})()
 var geo = (function () {
     function getCoords(successFunction, errorFunction) {
         return new Promise((successFunction, errorFunction) => navigator.geolocation.getCurrentPosition(successFunction, errorFunction));
@@ -57,9 +75,69 @@ var repo = (function () {
         });
     };
 
+    let put = (route, object, token) => {
+        return call.ajax({
+            to: route,
+            action: call.actions.put,
+            token: token,
+            body: object
+        });
+    }
+
+    let post = (route, object, token) => {
+        return call.ajax({
+            to: route,
+            action: call.actions.post,
+            token: token,
+            body: object
+        });
+    }
+
+    let createPlace = ({ key, name, latitude, longitude, observations }) => {
+        if (!key || !name || !latitude || !longitude || !observations) throw new Error("Invalid object creation");
+
+        return new {
+            key: key,
+            name: name,
+            latitude: latitude,
+            longitude: longitude,
+            observations: observations
+        }
+    };
+
+    let createQuestion = ({ key, belongsTo, statement, answer1, answer2, answer3, correctAnswer }) => {
+        if (!key || !belongsTo || !statement || !answer1 || !answer2 || !answer3 || !correctAnswer) throw new Error("Invalid object creation");
+
+        return new {
+            key: key,
+            for: belongsTo,
+            statement: statement,
+            answer1: answer1,
+            answer2: answer2,
+            answer3: answer3,
+            correctAnswer: correctAnswer
+        }
+    };
+
+    let createHiScore = ({ key, teamName, score, date }) => {
+        if (!key || !teamName || !score || !date) throw new Error("Invalid object creation");
+
+        return new {
+            key: key,
+            teamName: teamName, 
+            score: score,
+            date: date
+        }
+    };
+
     return {
         getAll: getAll,
-        entities: routes
+        put: put,
+        post: post,
+        entities: routes,
+        createPlace: createPlace, 
+        createQuestion: createQuestion,
+        createHiScore: createHiScore,
     };
 })(call)
 ///// <reference path="../bower_components/navigo/lib/navigo.js" />
@@ -97,3 +175,26 @@ var repo = (function () {
 //        content.set("Game/game.html");
 //    }
 //}).resolve()
+
+var storage = (function () {
+    var set = (name, object) => {
+        let obj = JSON.stringify(object);
+        localStorage.setItem(name, obj);
+    }
+
+    var get = (name) => {
+        let obj = localStorage.getItem(name);
+
+        return JSON.parse(obj);
+    }
+
+    return {
+        set: set,
+        get: get,
+        names: {
+            scores: 'scores',
+            places: 'places',
+            questions: 'questions'
+        }
+    }
+})()

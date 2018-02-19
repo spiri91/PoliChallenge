@@ -16,6 +16,8 @@ namespace PoliChallenge.Business._Core
         {
             Contract.Assert(actionContext != null);
 
+            if (actionContext.ActionDescriptor == null) return false;
+
             return actionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any()
                        || actionContext.ControllerContext.ControllerDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any();
         }
@@ -27,7 +29,6 @@ namespace PoliChallenge.Business._Core
             Check(GetAuthorizationHeader(actionContext));
         }
            
-
         public override Task OnAuthorizationAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
             this.OnAuthorization(actionContext);

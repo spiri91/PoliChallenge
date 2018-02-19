@@ -2,8 +2,6 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <title>Polichalenge</title>
     <script src="../../bower_components/jQuery/dist/jquery.min.js"></script>
     <script src="../../bower_components/Geolib/dist/geolib.min.js"></script>
@@ -23,6 +21,9 @@
     <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="/bower_components/paper-button/paper-button.html">
+
+    <!--scripts-->
+    <script src="Site/MainController.js" type="text/javascript"></script>
 
     <!--web components-->
     <link rel="import" href="/Site/Game/game.html">
@@ -97,7 +98,7 @@
             <paper-button> <paper-icon-button icon="start"></paper-icon-button> Email me</paper-button><br />
         </div>
     </app-drawer>
-    <div style="height: 12000px"></div>
+    <div style="height: 120px"></div>
     <div>
         <app-router>
             <app-route path="/game" element="the-game"></app-route>
@@ -107,6 +108,5 @@
             <app-route path="*" element="the-game"></app-route>
         </app-router>
     </div>
-    <script src="Site/MainController.js" type="text/javascript"></script>
 </body>
 </html>

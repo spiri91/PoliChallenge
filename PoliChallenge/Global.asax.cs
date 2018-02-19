@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using Newtonsoft.Json.Serialization;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.OData.Extensions;
@@ -11,6 +11,10 @@ namespace PoliChallenge
     {
         protected void Application_Start()
         {
+            HttpConfiguration config = GlobalConfiguration.Configuration;
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
+
             GlobalConfiguration.Configuration.EnableDependencyInjection();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

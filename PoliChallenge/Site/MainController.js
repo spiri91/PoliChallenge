@@ -1,15 +1,19 @@
 ﻿/// <reference path="../output/myscripts/app.js" />
 
-var mainApp = (function (repo, entities) {
+var mainApp = (function (repo, entities, storage) {
     var init = () => {
-        repo.getAll(entities.places).then(storeInLocalStorage);
-        repo.getAll(entities.questions).then(storeInLocalStorage);
-        repo.getAll(entities.hiScores).then(storeInLocalStorage);
+        var promises = [
+            repo.getAll(entities.places).then((result) => storage.set(storage.names.places, result)),
+            repo.getAll(entities.questions).then((result) => storage.set(storage.names.questions, result)),
+            repo.getAll(entities.hiScores).then((result) => storage.set(storage.names.scores, result)),
+        ]
+
+        return Promise.all(promises);
     };
 
-    function storeInLocalStorage(value) {
-        debugger;
+    return {
+        init: init
     }
+})(repo, repo.entities, storage);
 
-    $(document).ready(init);
-})(repo, repo.entities);
+$(document).ready(mainApp.init)

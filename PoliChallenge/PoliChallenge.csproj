@@ -1376,6 +1376,7 @@
     <Content Include="JS_Tests\JSTests.js" />
     <Content Include="Output\MyScripts\app.js" />
     <Content Include="Site\Services\call.js" />
+    <Content Include="Site\Services\dealer.js" />
     <Content Include="Site\Services\geo.js" />
     <Content Include="Site\Services\repo.js" />
     <Content Include="Site\Game\game.html" />
@@ -1388,6 +1389,7 @@
     <Content Include="Index.html" />
     <Content Include="Site\Questions\question.html" />
     <Content Include="Site\Questions\question.js" />
+    <Content Include="Site\Services\storage.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
