@@ -1,17 +1,32 @@
-﻿<link rel="import" href="../../bower_components/polymer/polymer-element.html">
-
-<dom-module id="the-game">
-    <template>
-        <div>
-            <h3>GAMEEEE</h3>
-            <input type="button" on-tap="bangbang" value="test" />
+﻿<div class="">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <p id="distanceMessage">Distance to start point: <span id="distance"></span> meters</p>
+            </div>
         </div>
-    </template>
-    <script>
-        Polymer({
-            is: 'the-game',
-            bangbang: () => { alert('bamg') },
-        });
-    </script>
-</dom-module>
+    </div>
+</div>
+
+<h3>GAMEEEE</h3>
+<script>
+    (function (geo, geolib) {
+        let objective = {
+            latitude: 44.434543,
+            longitude: 26.048769
+        }
+
+        setInterval(() => {
+            geo.get().then((result) => {
+                let currentLocation = {
+                    latitude: result.coords.latitude,
+                    longitude: result.coords.longitude
+                }
+
+                let dist = geolib.getDistance(objective, currentLocation);
+                $("#distance").text(dist);
+            });
+        }, 5000);
+    })(geo, geolib);
+</script>
 
