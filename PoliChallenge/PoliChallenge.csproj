@@ -1167,6 +1167,7 @@
     <Content Include="bower_components\navigo\lib\navigo.min.js" />
     <Content Include="bower_components\navigo\src\index.js" />
     <Content Include="bower_components\navigo\webpack.config.js" />
+    <Content Include="bower_components\notify.min.js" />
     <Content Include="bower_components\paper-app-drawer\index.html" />
     <Content Include="bower_components\paper-app-drawer\paper-app-drawer.html" />
     <Content Include="bower_components\paper-behaviors\.gitignore" />
@@ -1375,9 +1376,11 @@
     <Content Include="gulpfile.js" />
     <Content Include="JS_Tests\JSTests.js" />
     <Content Include="Output\MyScripts\app.js" />
+    <Content Include="Site\Places\place.js" />
     <Content Include="Site\Services\call.js" />
     <Content Include="Site\Services\dealer.js" />
     <Content Include="Site\Services\geo.js" />
+    <Content Include="Site\Services\myQuery.js" />
     <Content Include="Site\Services\repo.js" />
     <Content Include="Site\Game\game.html" />
     <Content Include="Site\HiScores\hiScore.html" />

@@ -58,6 +58,46 @@ var guidGenerator = (function() {
         }
     }
 })();
+var _ = (function () {
+    function valueOf(element) {
+        checkElement(element);
+
+        return element.val();
+    }
+
+    function setValueOf(element, value) {
+        checkElement(element);
+
+        element.val(value);
+    }
+
+    function checkElement(element) {
+        if (!element)
+            throw new Error("Invalid element");
+
+        if (element.length == 0)
+            throw new Error("Element not found");
+    }
+
+    function success(message) {
+        message = message || "Created";
+
+        $.notify(message, "success");
+    }
+
+    function error(message) {
+        message = message || "Error :( ";
+
+        $.notify(message, "error");
+    }
+
+    return {
+        valueOf: valueOf,
+        setValueOf: setValueOf,
+        success: success,
+        error: error
+    }
+})();
 /// <reference path="call.js" />
 
 'use strict';
@@ -96,7 +136,7 @@ var repo = (function () {
     let createPlace = ({ key, name, latitude, longitude, observations }) => {
         if (!key || !name || !latitude || !longitude || !observations) throw new Error("Invalid object creation");
 
-        return new {
+        return {
             key: key,
             name: name,
             latitude: latitude,
@@ -108,7 +148,7 @@ var repo = (function () {
     let createQuestion = ({ key, belongsTo, statement, answer1, answer2, answer3, correctAnswer }) => {
         if (!key || !belongsTo || !statement || !answer1 || !answer2 || !answer3 || !correctAnswer) throw new Error("Invalid object creation");
 
-        return new {
+        return {
             key: key,
             for: belongsTo,
             statement: statement,
@@ -122,7 +162,7 @@ var repo = (function () {
     let createHiScore = ({ key, teamName, score, date }) => {
         if (!key || !teamName || !score || !date) throw new Error("Invalid object creation");
 
-        return new {
+        return {
             key: key,
             teamName: teamName, 
             score: score,

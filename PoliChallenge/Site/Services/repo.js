@@ -36,7 +36,7 @@ var repo = (function () {
     let createPlace = ({ key, name, latitude, longitude, observations }) => {
         if (!key || !name || !latitude || !longitude || !observations) throw new Error("Invalid object creation");
 
-        return new {
+        return {
             key: key,
             name: name,
             latitude: latitude,
@@ -48,7 +48,7 @@ var repo = (function () {
     let createQuestion = ({ key, belongsTo, statement, answer1, answer2, answer3, correctAnswer }) => {
         if (!key || !belongsTo || !statement || !answer1 || !answer2 || !answer3 || !correctAnswer) throw new Error("Invalid object creation");
 
-        return new {
+        return {
             key: key,
             for: belongsTo,
             statement: statement,
@@ -62,7 +62,7 @@ var repo = (function () {
     let createHiScore = ({ key, teamName, score, date }) => {
         if (!key || !teamName || !score || !date) throw new Error("Invalid object creation");
 
-        return new {
+        return {
             key: key,
             teamName: teamName, 
             score: score,
