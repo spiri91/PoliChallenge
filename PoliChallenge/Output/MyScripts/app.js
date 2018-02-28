@@ -91,11 +91,19 @@ var _ = (function () {
         $.notify(message, "error");
     }
 
+    function findInArray(array, value) {
+        for (let i in array)
+            for (let j in array[i])
+                if (array[i][j] == value)
+                    return array[i];
+    }
+
     return {
         valueOf: valueOf,
         setValueOf: setValueOf,
         success: success,
-        error: error
+        error: error,
+        findInArray: findInArray
     }
 })();
 /// <reference path="call.js" />
