@@ -22,7 +22,7 @@ namespace PoliChallenge.Controllers
             _repo = placesRepository;
         }
 
-        public PlacesController() : this(new PlacesRepository()){ }
+        public PlacesController() : this(new PlacesRepository()) { }
 
         /// <summary>
         /// OData enabled
@@ -66,7 +66,7 @@ namespace PoliChallenge.Controllers
         /// </summary>
         /// <param name="key"></param>
         /// <returns code="204"></returns>
-        [Route("")]
+        [Route("{key}")]
         public HttpResponseMessage Delete(Guid key)
         {
             _repo.Delete(_repo.Query().Single(x => x.Key == key));

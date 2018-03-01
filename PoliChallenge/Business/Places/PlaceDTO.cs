@@ -41,7 +41,7 @@ namespace PoliChallenge.Business.Places
 
         private bool IsValid()
         {
-            if (string.IsNullOrWhiteSpace(Name))
+            if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrEmpty(Observations))
                 return false;
 
             return true;

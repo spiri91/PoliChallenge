@@ -1379,6 +1379,7 @@
     <Content Include="Site\Places\place.js" />
     <Content Include="Site\Services\call.js" />
     <Content Include="Site\Services\dealer.js" />
+    <Content Include="Site\Services\entities.js" />
     <Content Include="Site\Services\geo.js" />
     <Content Include="Site\Services\myQuery.js" />
     <Content Include="Site\Services\repo.js" />

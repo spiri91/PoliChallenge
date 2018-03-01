@@ -39,6 +39,21 @@ var dealer = (function () {
         shuffle: shuffle
     }
 })()
+var entities = (function () {
+    var fillAll = (repo, storage) => {
+        var promises = [
+            repo.getAll(entities.places).then((result) => storage.set(storage.names.places, result)),
+            repo.getAll(entities.questions).then((result) => storage.set(storage.names.questions, result)),
+            repo.getAll(entities.hiScores).then((result) => storage.set(storage.names.scores, result)),
+        ]
+
+        return Promise.all(promises);
+    }
+
+    return {
+        fillAll: fillAll
+    }
+})()
 var geo = (function () {
     function getCoords(successFunction, errorFunction) {
         return new Promise((successFunction, errorFunction) => navigator.geolocation.getCurrentPosition(successFunction, errorFunction));
@@ -85,8 +100,15 @@ var _ = (function () {
         $.notify(message, "success");
     }
 
+    function warning(message) {
+        $.notify(message, "warning");
+    }
+
     function error(message) {
-        message = message || "Error :( ";
+        if (message.statusText)
+            message = message.statusText;
+        else
+            message = message || "Error :( ";
 
         $.notify(message, "error");
     }
@@ -96,6 +118,22 @@ var _ = (function () {
             for (let j in array[i])
                 if (array[i][j] == value)
                     return array[i];
+
+        return null;
+    }
+
+    function disableElements(elementsArray) {
+        for (let i in elementsArray)
+            elementsArray[i].prop(props.disabled, true);
+    }
+
+    function enableElements(elementsArray) {
+        for (let i in elementsArray)
+            elementsArray[i].prop(props.disabled, false);
+    }
+
+    var props = {
+        disabled: 'disabled'
     }
 
     return {
@@ -103,7 +141,10 @@ var _ = (function () {
         setValueOf: setValueOf,
         success: success,
         error: error,
-        findInArray: findInArray
+        warning: warning,
+        findInArray: findInArray,
+        disableElements: disableElements,
+        enableElements: enableElements
     }
 })();
 /// <reference path="call.js" />
@@ -138,6 +179,14 @@ var repo = (function () {
             action: call.actions.post,
             token: token,
             body: object
+        });
+    }
+
+    let _delete = (route, id, token) => {
+        return call.ajax({
+            to: route + "/" + id,
+            action: call.actions.delete,
+            token: token,
         });
     }
 
@@ -182,6 +231,7 @@ var repo = (function () {
         getAll: getAll,
         put: put,
         post: post,
+        delete: _delete,
         entities: routes,
         createPlace: createPlace, 
         createQuestion: createQuestion,

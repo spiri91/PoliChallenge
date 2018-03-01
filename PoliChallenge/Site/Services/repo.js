@@ -33,6 +33,14 @@ var repo = (function () {
         });
     }
 
+    let _delete = (route, id, token) => {
+        return call.ajax({
+            to: route + "/" + id,
+            action: call.actions.delete,
+            token: token,
+        });
+    }
+
     let createPlace = ({ key, name, latitude, longitude, observations }) => {
         if (!key || !name || !latitude || !longitude || !observations) throw new Error("Invalid object creation");
 
@@ -74,6 +82,7 @@ var repo = (function () {
         getAll: getAll,
         put: put,
         post: post,
+        delete: _delete,
         entities: routes,
         createPlace: createPlace, 
         createQuestion: createQuestion,
