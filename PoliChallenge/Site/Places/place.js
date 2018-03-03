@@ -30,7 +30,7 @@
 
         elements.placesList
             .empty()
-            .append('<option value="" selected>Select a place for edit</option>')
+            .append('<option value="" selected>Select a place for edit or delete</option>')
 
         $.each(places, function () {
             elements.placesList.append(new Option(this.name, this.key));
@@ -153,7 +153,7 @@
 
         return _.showSpinner()
             .then(() => repo.post(repo.entities.places, newPlace, token))
-            .then(_.success, _.error)
+            .then(() => _.success('Created'), _.error)
             .then(refresh)
             .then(init)
             .then(_.hideSpinner)
