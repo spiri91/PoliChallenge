@@ -35,7 +35,9 @@
     "paper-styles": "v2.1.0",
     "paper-behaviors": "v2.0.1",
     "iron-behaviors": "v2.1.0",
-    "iron-a11y-keys-behavior": "v2.1.0"
+    "iron-a11y-keys-behavior": "v2.1.0",
+    "bootstrap-confirmation2": "v2.4.0",
+    "jquery-confirm2": "v3.3.2"
   },
   "resolutions": {
     "iron-meta": "^2.1.0",
@@ -46,6 +48,7 @@
     "paper-header-panel": "v2.0.0",
     "paper-toolbar": "v2.1.0",
     "paper-styles": "v2.1.0",
-    "paper-icon-button": "v2.1.0"
+    "paper-icon-button": "v2.1.0",
+    "bootstrap": "v4.0.0"
   }
 }

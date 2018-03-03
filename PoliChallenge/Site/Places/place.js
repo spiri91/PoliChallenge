@@ -4,6 +4,7 @@
 (function (repo, geo, guidGenerator, _, storage, entities) {
     let places = [];
     let selectedElement = null;
+    let eventsAddedToBtns = false;
 
     let elements = {
         name: $("#name"),
@@ -37,11 +38,16 @@
     }
 
     function addEventsToBtns() {
+        if (eventsAddedToBtns)
+            return;
+
         elements.autoFillBtn.click(getCoords);
         elements.submitBtn.click(submit);
         elements.deleteBtn.click(deleteFunction);
         elements.updateBtn.click(update);
         elements.placesList.change(changeSelectedPlace);
+
+        eventsAddedToBtns = true;
     }
 
     function changeSelectedPlace(e) {
@@ -105,7 +111,12 @@
         selectedElement.latitude = _.valueOf(elements.latitude);
         selectedElement.longitude = _.valueOf(elements.longitude);
 
-        repo.put(repo.entities.places, selectedElement, token).then(refresh).then(() => _.success("Updated"), _.error).then(init);
+        return _.showSpinner()
+            .then(() => repo.put(repo.entities.places, selectedElement, token))
+            .then(() => _.success("Updated"), _.error)
+            .then(refresh)
+            .then(init)
+            .then(_.hideSpinner)
     }
 
     function deleteFunction() {
@@ -115,7 +126,12 @@
             return;
         }
 
-        repo.delete(repo.entities.places, selectedElement.key, token).then(refresh).then(() => _.success("Deleted"), _.error).then(init);
+        _.confirm("Delete this place?", () => _.showSpinner()
+            .then(() => repo.delete(repo.entities.places, selectedElement.key, token))
+            .then(() => _.success('deleted'), _.error)
+            .then(refresh)
+            .then(init)
+            .then(_.hideSpinner));
     }
 
     function getCoords() {
@@ -135,7 +151,12 @@
 
         let newPlace = repo.createPlace({ key: key, name: name, latitude: latitude, longitude: longitude, observations: observations });
 
-        repo.post(repo.entities.places, newPlace, token).then(refresh).then(_.success, _.error).then(init);
+        return _.showSpinner()
+            .then(() => repo.post(repo.entities.places, newPlace, token))
+            .then(_.success, _.error)
+            .then(refresh)
+            .then(init)
+            .then(_.hideSpinner)
     }
 
     function refresh() {

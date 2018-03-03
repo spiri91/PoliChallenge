@@ -404,6 +404,10 @@
     <Content Include="bower_components\app-router\preview.png" />
     <Content Include="bower_components\app-router\src\app-router.html" />
     <Content Include="bower_components\app-router\src\app-router.js" />
+    <Content Include="bower_components\bootstrap-confirmation2\bootstrap-confirmation.js" />
+    <Content Include="bower_components\bootstrap-confirmation2\bootstrap-confirmation.min.js" />
+    <Content Include="bower_components\bootstrap-confirmation2\example\index.html" />
+    <Content Include="bower_components\bootstrap-confirmation2\Gruntfile.js" />
     <Content Include="bower_components\bootstrap\.babelrc.js" />
     <Content Include="bower_components\bootstrap\.gitattributes" />
     <Content Include="bower_components\bootstrap\.gitignore" />
@@ -742,6 +746,25 @@
     <Content Include="bower_components\jasmine-core\lib\jasmine-core\json2.js" />
     <Content Include="bower_components\jasmine-core\lib\jasmine-core\node_boot.js" />
     <Content Include="bower_components\jasmine-core\requirements.txt" />
+    <Content Include="bower_components\jquery-confirm2\animations.html" />
+    <Content Include="bower_components\jquery-confirm2\callback.html" />
+    <Content Include="bower_components\jquery-confirm2\css\jquery-confirm.css" />
+    <Content Include="bower_components\jquery-confirm2\demo\demo.css" />
+    <Content Include="bower_components\jquery-confirm2\demo\demo.js" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\bundled.css" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\bundled.js" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\fonts\fontawesome-webfont.svg" />
+    <Content Include="bower_components\jquery-confirm2\demo\logo-name.svg" />
+    <Content Include="bower_components\jquery-confirm2\dist\jquery-confirm.min.css" />
+    <Content Include="bower_components\jquery-confirm2\dist\jquery-confirm.min.js" />
+    <Content Include="bower_components\jquery-confirm2\form.html" />
+    <Content Include="bower_components\jquery-confirm2\index.html" />
+    <Content Include="bower_components\jquery-confirm2\jquery-confirm.png" />
+    <Content Include="bower_components\jquery-confirm2\js\jquery-confirm.js" />
+    <Content Include="bower_components\jquery-confirm2\table.html" />
+    <Content Include="bower_components\jquery-confirm2\text.txt" />
+    <Content Include="bower_components\jquery-confirm2\themelayout.png" />
+    <Content Include="bower_components\jquery-confirm2\themes.html" />
     <Content Include="bower_components\jQuery\.gitattributes" />
     <Content Include="bower_components\jQuery\.gitignore" />
     <Content Include="bower_components\jQuery\AUTHORS.txt" />
@@ -1376,6 +1399,7 @@
     <Content Include="gulpfile.js" />
     <Content Include="JS_Tests\JSTests.js" />
     <Content Include="Output\MyScripts\app.js" />
+    <Content Include="Output\myStyles.css" />
     <Content Include="Site\Places\place.js" />
     <Content Include="Site\Services\call.js" />
     <Content Include="Site\Services\dealer.js" />
@@ -2024,6 +2048,21 @@
     <Content Include="bower_components\iron-icons\bower.json" />
     <Content Include="bower_components\iron-icons\CONTRIBUTING.md" />
     <Content Include="bower_components\iron-icons\README.md" />
+    <Content Include="bower_components\bootstrap-confirmation2\.bower.json" />
+    <Content Include="bower_components\bootstrap-confirmation2\bower.json" />
+    <Content Include="bower_components\bootstrap-confirmation2\package.json" />
+    <Content Include="bower_components\bootstrap-confirmation2\README.md" />
+    <Content Include="bower_components\jquery-confirm2\.bower.json" />
+    <Content Include="bower_components\jquery-confirm2\bower.json" />
+    <Content Include="bower_components\jquery-confirm2\css\jquery-confirm.less" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\fonts\fontawesome-webfont.eot" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\fonts\fontawesome-webfont.ttf" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\fonts\fontawesome-webfont.woff" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\fonts\fontawesome-webfont.woff2" />
+    <Content Include="bower_components\jquery-confirm2\demo\libs\fonts\FontAwesome.otf" />
+    <Content Include="bower_components\jquery-confirm2\LICENSE" />
+    <Content Include="bower_components\jquery-confirm2\package.json" />
+    <Content Include="bower_components\jquery-confirm2\README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

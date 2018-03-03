@@ -61,6 +61,37 @@
         disabled: 'disabled'
     }
 
+    function showSpinner() {
+        return new Promise((resolve) => {
+            let element = $('body').addClass("loading");
+            resolve(element);
+        });
+    }
+
+    function hideSpinner() {
+        return new Promise((resolve) => {
+            let element = $('body').removeClass("loading");
+            resolve(element);
+        });
+    }
+
+    function handleAjaxResult(ajaxResult, successMessage) {
+        debugger;
+
+
+    }
+
+    function confirm(contentString,  okFunction) {
+        $.confirm({
+            title: 'Confirm!',
+            content: contentString,
+            buttons: {
+                confirm: () => okFunction(),
+                cancel: () => { }
+            }
+        });
+    }
+
     return {
         valueOf: valueOf,
         setValueOf: setValueOf,
@@ -69,6 +100,10 @@
         warning: warning,
         findInArray: findInArray,
         disableElements: disableElements,
-        enableElements: enableElements
+        enableElements: enableElements,
+        showSpinner: showSpinner,
+        hideSpinner: hideSpinner,
+        confirm: confirm,
+        handleAjaxResult: handleAjaxResult
     }
 })();

@@ -1,6 +1,6 @@
 ﻿/// <reference path="../output/myscripts/app.js" />
 
-var mainApp = (function (entites, repo, storage) {
+var mainApp = (function (entities, repo, storage) {
     var init = () => {
         return entities.fillAll(repo, storage);
     };
