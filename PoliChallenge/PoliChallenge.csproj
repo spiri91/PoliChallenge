@@ -1190,7 +1190,7 @@
     <Content Include="bower_components\navigo\lib\navigo.min.js" />
     <Content Include="bower_components\navigo\src\index.js" />
     <Content Include="bower_components\navigo\webpack.config.js" />
-    <Content Include="bower_components\notify.min.js" />
+    <Content Include="NonBower_Components\notify.min.js" />
     <Content Include="bower_components\paper-app-drawer\index.html" />
     <Content Include="bower_components\paper-app-drawer\paper-app-drawer.html" />
     <Content Include="bower_components\paper-behaviors\.gitignore" />
@@ -1402,6 +1402,7 @@
     <Content Include="Output\myStyles.css" />
     <Content Include="Site\Places\place.css" />
     <Content Include="Site\Places\place.js" />
+    <Content Include="Site\Questions\question.css" />
     <Content Include="Site\Services\call.js" />
     <Content Include="Site\Services\dealer.js" />
     <Content Include="Site\Services\entities.js" />

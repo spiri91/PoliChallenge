@@ -1,13 +1,13 @@
 ﻿/// <reference path="../output/myscripts/app.js" />
 
-var mainApp = (function (entities, repo, storage) {
+var mainApp = (function (entities, repo, storage, _) {
     var init = () => {
-        return entities.fillAll(repo, storage);
+        return _.showSpinner().then(entities.fillAll(repo, storage)).then(_.hideSpinner);
     };
 
     return {
         init: init
     }
-})(entities, repo, storage);
+})(entities, repo, storage, _);
 
 $(document).ready(mainApp.init)
