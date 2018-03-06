@@ -7,6 +7,9 @@
     let places = [];
     let questions = [];
 
+    let selectedPlace = null;
+    let selectedQuestion = null;
+
     let eventsAddedToElements = false;
 
     let elements = {
@@ -20,7 +23,7 @@
         answer3: $('#answer3'),
         correctAnswer: $('#correctAnswer'),
         submit: $('#submit'),
-        update: $('update')
+        update: $('#update')
     }
 
     function init() {
@@ -29,6 +32,7 @@
 
         disableButtonsForDeleteAndUpdate();
         disableSelectOfQuestions();
+        disableSubmitButton();
     }
 
     function disableButtonsForDeleteAndUpdate() {
@@ -43,8 +47,58 @@
         elements.submit.click(submit);
         elements.update.click(update);
         elements.places.change(changedSelectedPlace);
+        elements.questions.change(changedSelectedQuestion);
 
         eventsAddedToElements = true;
+    }
+
+    function changedSelectedQuestion() {
+        let selectedId = elements.questions.find(':selected');
+        if (selectedId.length == 0)
+            return;
+
+        let fullElement = _.findInArray(questions, selectedId[0].value);
+
+        if (fullElement) {
+            selectedQuestion = fullElement;
+            enableButtonsForDeleteAndUpdate();
+            setFieldProperties(fullElement);
+            disableSubmitButton();
+        }
+        else {
+            selectedQuestion = null;
+            disableButtonsForDeleteAndUpdate();
+            enableSubmitButton();
+            clearFieldProperties();
+        }
+    }
+
+    function clearFieldProperties() {
+        _.setValueOf(elements.statement, '');
+        _.setValueOf(elements.answer1, '');
+        _.setValueOf(elements.answer2, '');
+        _.setValueOf(elements.answer3, '');
+        _.setValueOf(elements.correctAnswer, '');
+    }
+
+    function enableSubmitButton() {
+        _.enableElements([elements.submit]);
+    }
+
+    function disableSubmitButton() {
+        _.disableElements([elements.submit]);
+    }
+
+    function enableButtonsForDeleteAndUpdate() {
+        _.enableElements([elements.delete, elements.update]);
+    }
+
+    function setFieldProperties(element) {
+        _.setValueOf(elements.statement, element.statement);
+        _.setValueOf(elements.answer1, element.answer1);
+        _.setValueOf(elements.answer2, element.answer2);
+        _.setValueOf(elements.answer3, element.answer3);
+        _.setValueOf(elements.correctAnswer, element.correctAnswer);
     }
 
     function changedSelectedPlace() {
@@ -57,17 +111,24 @@
         if (fullElement) {
             populateListOfQuestions(fullElement);
             enableSelectOfQuestions();
+            enableSubmitButton();
+            disableButtonsForDeleteAndUpdate();
         }
         else {
             disableSelectOfQuestions();
             clearSelectQuestionElement();
+            clearFieldProperties();
+            disableSubmitButton();
+            disableButtonsForDeleteAndUpdate();
         }
     }
 
     function populateListOfQuestions(element) {
-        let questions = storage.get(storage.names.questions);
+        let allQuestions = storage.get(storage.names.questions);
 
-        let questionsOfElement = questions.filter((x) => x.for == element.key);
+        let questionsOfElement = allQuestions.filter((x) => x.for == element.key);
+
+        questions = questionsOfElement;
 
         elements.questions.empty().append('<option value= "" selected> Select a place to edit a question of it</option>');
 
@@ -108,14 +169,6 @@
         $.each(places, function () {
             elements.places.append(new Option(this.name, this.key));
         });
-    }
-
-    function disableDeleteAndUpdateButtons() {
-
-    }
-
-    function disableSelectOfQuestions() {
-
     }
 
     init();
