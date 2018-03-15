@@ -25,11 +25,20 @@
         $.notify(message, "success");
     }
 
+    function setSelectedIndexOfSelectElement(element, index) {
+        element.attr('selectedIndex', index);
+    }
+
     function warning(message) {
         $.notify(message, "warning");
     }
 
     function error(message) {
+        if (message.status < 300) {
+            $.notify(message.statusText, 'success')
+            return;
+        }
+
         if (message.statusText)
             message = message.statusText;
         else
@@ -75,12 +84,6 @@
         });
     }
 
-    function handleAjaxResult(ajaxResult, successMessage) {
-        debugger;
-
-
-    }
-
     function confirm(contentString,  okFunction) {
         $.confirm({
             title: 'Confirm!',
@@ -104,6 +107,6 @@
         showSpinner: showSpinner,
         hideSpinner: hideSpinner,
         confirm: confirm,
-        handleAjaxResult: handleAjaxResult
+        setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
     }
 })();

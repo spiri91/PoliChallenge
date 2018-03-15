@@ -100,11 +100,20 @@ var _ = (function () {
         $.notify(message, "success");
     }
 
+    function setSelectedIndexOfSelectElement(element, index) {
+        element.attr('selectedIndex', index);
+    }
+
     function warning(message) {
         $.notify(message, "warning");
     }
 
     function error(message) {
+        if (message.status < 300) {
+            $.notify(message.statusText, 'success')
+            return;
+        }
+
         if (message.statusText)
             message = message.statusText;
         else
@@ -150,12 +159,6 @@ var _ = (function () {
         });
     }
 
-    function handleAjaxResult(ajaxResult, successMessage) {
-        debugger;
-
-
-    }
-
     function confirm(contentString,  okFunction) {
         $.confirm({
             title: 'Confirm!',
@@ -179,7 +182,7 @@ var _ = (function () {
         showSpinner: showSpinner,
         hideSpinner: hideSpinner,
         confirm: confirm,
-        handleAjaxResult: handleAjaxResult
+        setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
     }
 })();
 /// <reference path="call.js" />
