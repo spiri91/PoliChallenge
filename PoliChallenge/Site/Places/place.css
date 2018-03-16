@@ -32,3 +32,9 @@
 .smallPaddingTop{
     padding-top: 3%;
 }
+
+@media (min-width: 640px) {
+    .row {
+        width: 100%;
+    }
+}
