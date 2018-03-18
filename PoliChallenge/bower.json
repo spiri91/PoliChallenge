@@ -37,7 +37,9 @@
     "iron-behaviors": "v2.1.0",
     "iron-a11y-keys-behavior": "v2.1.0",
     "bootstrap-confirmation2": "v2.4.0",
-    "jquery-confirm2": "v3.3.2"
+    "jquery-confirm2": "v3.3.2",
+    "font-awesome": "Font-Awesome#v4.7.0",
+    "moment": "2.21.0"
   },
   "resolutions": {
     "iron-meta": "^2.1.0",
