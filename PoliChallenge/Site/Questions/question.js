@@ -54,7 +54,7 @@
 
     function changedSelectedQuestion() {
         let selectedId = elements.questions.find(':selected');
-        if (selectedId.length == 0)
+        if (selectedId.length === 0)
             return;
 
         let fullElement = _.findInArray(questions, selectedId[0].value);
@@ -103,7 +103,7 @@
 
     function changedSelectedPlace() {
         let selectedId = elements.places.find(':selected');
-        if (selectedId.length == 0)
+        if (selectedId.length === 0)
             return;
 
         let fullElement = _.findInArray(places, selectedId[0].value)
@@ -130,7 +130,7 @@
     function populateListOfQuestions(element) {
         let allQuestions = storage.get(storage.names.questions);
 
-        let questionsOfElement = allQuestions.filter((x) => x.for == element.key);
+        let questionsOfElement = allQuestions.filter((x) => x.for === element.key);
 
         questions = questionsOfElement;
 
@@ -156,7 +156,7 @@
 
     function deleteFunction() {
         let token = _.valueOf(elements.token);
-        if (!token || token == '') {
+        if (!token || token === '') {
             _.warning('Missing token');
 
             return;

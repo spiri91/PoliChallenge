@@ -90,7 +90,7 @@ var _ = (function () {
         if (!element)
             throw new Error("Invalid element");
 
-        if (element.length == 0)
+        if (element.length === 0)
             throw new Error("Element not found");
     }
 
@@ -125,7 +125,7 @@ var _ = (function () {
     function findInArray(array, value) {
         for (let i in array)
             for (let j in array[i])
-                if (array[i][j] == value)
+                if (array[i][j] === value)
                     return array[i];
 
         return null;
