@@ -95,6 +95,10 @@
         });
     }
 
+    function setTextOf(element, text) {
+        element.text(text);
+    }
+
     return {
         valueOf: valueOf,
         setValueOf: setValueOf,
@@ -108,5 +112,6 @@
         hideSpinner: hideSpinner,
         confirm: confirm,
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
+        setTextOf: setTextOf
     }
 })();

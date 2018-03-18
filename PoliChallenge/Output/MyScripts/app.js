@@ -170,6 +170,10 @@ var _ = (function () {
         });
     }
 
+    function setTextOf(element, text) {
+        element.text(text);
+    }
+
     return {
         valueOf: valueOf,
         setValueOf: setValueOf,
@@ -183,6 +187,7 @@ var _ = (function () {
         hideSpinner: hideSpinner,
         confirm: confirm,
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
+        setTextOf: setTextOf
     }
 })();
 /// <reference path="call.js" />

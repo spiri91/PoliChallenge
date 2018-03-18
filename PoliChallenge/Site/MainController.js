@@ -10,4 +10,9 @@ var mainApp = (function (entities, repo, storage, _) {
     }
 })(entities, repo, storage, _);
 
-$(document).ready(mainApp.init)
+$(document).ready(mainApp.init);
+
+// for debugging
+window.debugModeOn = true;
+window.checkDistanceValue = false;
+window.getDistanceValue = 100;

@@ -1405,6 +1405,8 @@
     <Content Include="JS_Tests\JSTests.js" />
     <Content Include="Output\MyScripts\app.js" />
     <Content Include="Output\myStyles.css" />
+    <Content Include="Site\Game\game.css" />
+    <Content Include="Site\Game\game.js" />
     <Content Include="Site\HiScores\hiScore.css" />
     <Content Include="Site\HiScores\hiScore.js" />
     <Content Include="Site\Places\place.css" />

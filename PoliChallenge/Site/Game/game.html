@@ -1,32 +1,14 @@
-﻿<div class="">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-success">
-                <p id="distanceMessage">Distance to start point: <span id="distance"></span> meters</p>
+﻿<link href="Site/Game/game.css" rel="stylesheet" />
+<div>
+    <div class="alert alert-success ">
+        <div class="row">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <p id="distanceMessage">Start point in: <span id="distance"></span> meters</p>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <p>Score: <span id="score"></span></p>
             </div>
         </div>
     </div>
 </div>
-
-<h3>GAMEEEE</h3>
-<script>
-    (function (geo, geolib) {
-        let objective = {
-            latitude: 44.434543,
-            longitude: 26.048769
-        }
-
-        setInterval(() => {
-            geo.get().then((result) => {
-                let currentLocation = {
-                    latitude: result.coords.latitude,
-                    longitude: result.coords.longitude
-                }
-
-                let dist = geolib.getDistance(objective, currentLocation);
-                $("#distance").text(dist);
-            });
-        }, 5000);
-    })(geo, geolib);
-</script>
-
+<script src="Site/Game/game.js"></script>
