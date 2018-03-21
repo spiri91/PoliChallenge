@@ -170,6 +170,14 @@ var _ = (function () {
         });
     }
 
+    function hideElement(jqueryElement) {
+        jqueryElement.css('display', 'none')
+    }
+
+    function showElement(jqueryElement) {
+        jqueryElement.css('display', 'block')
+    }
+
     function setTextOf(element, text) {
         element.text(text);
     }
@@ -187,7 +195,9 @@ var _ = (function () {
         hideSpinner: hideSpinner,
         confirm: confirm,
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
-        setTextOf: setTextOf
+        setTextOf: setTextOf,
+        hideElement: hideElement,
+        showElement: showElement,
     }
 })();
 /// <reference path="call.js" />

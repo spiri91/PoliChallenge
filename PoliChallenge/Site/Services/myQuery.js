@@ -95,6 +95,14 @@
         });
     }
 
+    function hideElement(jqueryElement) {
+        jqueryElement.css('display', 'none')
+    }
+
+    function showElement(jqueryElement) {
+        jqueryElement.css('display', 'block')
+    }
+
     function setTextOf(element, text) {
         element.text(text);
     }
@@ -112,6 +120,8 @@
         hideSpinner: hideSpinner,
         confirm: confirm,
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
-        setTextOf: setTextOf
+        setTextOf: setTextOf,
+        hideElement: hideElement,
+        showElement: showElement,
     }
 })();
