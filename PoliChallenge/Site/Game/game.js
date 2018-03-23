@@ -5,11 +5,15 @@ var gameState = {
     score: 0
 };
 
-(function (geo, geolib, _, storage, dealer, repo) {
+(function (geo, geolib, _, storage, dealer, repo, guidGenerator) {
     let elements = {
         distance: $("#distance"),
         score: $('#score'),
-        tip: $('#tip')
+        tip: $('#tip'),
+        startBtn: $('#start'),
+        teamNameTxt: $('#teamName'),
+        teamSelectionContainer: $('#teamNameSelection'),
+        mainBody: $('#mainBody')
     }
 
     let places = [];
@@ -17,6 +21,7 @@ var gameState = {
     let failedQuestions = 0;
     let score = 0;
     let inPlay = false;
+    var teamName = '';
 
     let objective = {
         latitude: 44.434543,
@@ -27,25 +32,31 @@ var gameState = {
         _.setTextOf(elements.distance, distance);
     }
 
-    function intervaledFunction() {
-        geo.get().then((result) => {
-            if (gameState.inProgress) return;
-            if (allPlacesHaveBeenVisited()) {
-                markHiScore(gameState.score);
-                intervaledFunction = endOfGameFunction();
-                return;
-            }
+    function intervaledFunction(coords) {
+        if (gameState.inProgress) return;
+        if (allPlacesHaveBeenVisited()) {
+            markHiScore(gameState.score);
+            intervaledFunction = endOfGameFunction();
+            return;
+        }
 
-            let distance = getDistance();
-            showDistance(distance);
+        let distance = getDistance(coords);
+        showDistance(distance);
 
-            if (checkDistance(distance)) startGameOnPlace();
-            else showTipForNextPlace();
-        });
+        if (checkDistance(distance)) startGameOnPlace();
+        else showTipForNextPlace();
     }
 
     function markHiScore(score) {
-       // send score to DB
+        markHiScore = () => { };
+
+        _.showSpinner()
+            .then(() => {
+                debugger;
+                let score = repo.createHiScore({ key: guidGenerator.generate(), teamName: teamName, score: gameState.score, date: new Date() });
+                return repo.post(repo.entities.hiScores, score, '');
+            })
+            .then(_.hideSpinner);
     }
 
     function endOfGameFunction() {
@@ -95,13 +106,13 @@ var gameState = {
         return distance < 15;
     }
 
-    function getDistance() {
+    function getDistance(coords) {
         if (window.debugModeOn)
             return window.getDistanceValue;
 
         let currentLocation = {
-            latitude: result.coords.latitude,
-            longitude: result.coords.longitude
+            latitude: coords.coords.latitude,
+            longitude: coords.coords.longitude
         }
 
         let distance = geolib.getDistance(objective, currentLocation);
@@ -109,16 +120,52 @@ var gameState = {
         return distance;
     }
 
-    function init() {
+    function getPlacesAndQuestions() {
         places = dealer.shuffle(storage.get(storage.names.places));
         questions = storage.get(storage.names.questions);
-        //choseTeamName then =>
-        setInterval(intervaledFunction, 5000);
-        showTipForNextPlace();
     }
 
-    init();
-})(geo, geolib, _, storage, dealer, repo);
+    function start() {
+        showTipForNextPlace();
+        geo.watchPosition(intervaledFunction);
+    }
+
+    function disableStartButton() {
+        _.disableElements([elements.startBtn]);
+    }
+
+    function teamNameChanged() {
+        let name = _.valueOf(elements.teamNameTxt);
+        if (name.length > 3)
+            _.enableElements([elements.startBtn]);
+        else
+            _.disableElements([elements.startBtn]);
+    }
+    function startGame() {
+        _.hideElement(elements.teamSelectionContainer);
+        _.showElement(elements.mainBody);
+
+        teamName = _.valueOf(elements.teamNameTxt);
+        start();
+    }
+
+    function addEventToTeamNameTextBoxAndStartButton() {
+        elements.teamNameTxt.keyup(teamNameChanged);
+        elements.startBtn.click(startGame);
+    }
+
+    function hideMainBodyOfGame() {
+        _.hideElement(elements.mainBody);
+    }
+
+    getPlacesAndQuestions();
+    disableStartButton();
+    addEventToTeamNameTextBoxAndStartButton();
+    hideMainBodyOfGame();
+
+
+
+})(geo, geolib, _, storage, dealer, repo, guidGenerator);
 
 
 var gamePlay = (function (dealer) {

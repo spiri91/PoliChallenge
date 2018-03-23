@@ -9,7 +9,6 @@ using System.Web.OData;
 
 namespace PoliChallenge.Controllers
 {
-    [CustomAuthorize]
     [CustomExceptionHandling]
     [RoutePrefix("api/scores")]
     public class HiScoresController : ApiController
@@ -27,7 +26,6 @@ namespace PoliChallenge.Controllers
         /// <returns code="200"></returns>
         [Route("")]
         [EnableQuery]
-        [AllowAnonymous]
         public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
         /// <summary>

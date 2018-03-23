@@ -13,6 +13,6 @@ var mainApp = (function (entities, repo, storage, _) {
 $(document).ready(mainApp.init);
 
 // for debugging
-window.debugModeOn = true;
+window.debugModeOn = false;
 window.checkDistanceValue = false;
 window.getDistanceValue = 100;
