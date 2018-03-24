@@ -2,25 +2,17 @@
 <div>
     <div class="row" id="teamNameSelection">
         <div class="col-sm-12 smallPaddingTop">
-            <input type="text" id="teamName" class="form-control" placeholder="Team Name"/>
+            <input type="text" id="teamName" class="form-control" placeholder="Team Name" />
         </div>
         <div class="col-sm-12 text-center smallPaddingTop">
             <input type="button" class="btn btn-success fixedSizedBtnSmall" value="Start" id="start" />
         </div>
     </div>
     <div id="mainBody">
-        <div class="alert alert-success">
-            <div class="row">
-                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                    <p id="distanceMessage">Start point in: <span id="distance"></span> meters</p>
-                </div>
-                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <p>Score: <span id="score">0</span></p>
-                </div>
-            </div>
+        <div class="alert alert-dark hint">
+            <h4>Hint...</h4>
+            <span id="tip"></span>
         </div>
-        <br />
-        <span id="tip"></span>
         <br />
         <div id="questionsContainer">
             <p>Wrong answered questions: <span id="wrAnsQ">0</span></p>
@@ -30,6 +22,25 @@
             <span id="answer2"></span><br />
             <span id="answer3"></span><br />
             <span id="answer4"></span><br />
+        </div>
+    </div>
+    <div class="row pulse" id="searchForIT">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <h1>Search</h1>
+                <h1>for</h1>
+                <h1>next place</h1>
+            </div>
+        </div>
+    </div>
+    <div class="bottomBar bg-dark text-center" id="bottomBar">
+        <div class="row">
+            <div class="col-sm-12 noPaddingOrMarginBottom">
+                <p id="scoreContainer">Score: <span id="score">0</span></p>
+            </div>
+            <div class="col-sm-12 noPaddingOrMarginBottom">
+                <p id="distanceContainer" class="">Next stop in: <span id="distance"></span> meters</p>
+            </div>
         </div>
     </div>
 </div>

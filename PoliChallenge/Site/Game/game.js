@@ -40,8 +40,7 @@ var gameState = {
             return;
         }
 
-        let distance = getDistance(coords);
-        showDistance(distance);
+        let distance = getDistanceAndShowIt(coords);
 
         if (checkDistance(distance)) startGameOnPlace();
         else showTipForNextPlace();
@@ -52,7 +51,6 @@ var gameState = {
 
         _.showSpinner()
             .then(() => {
-                debugger;
                 let score = repo.createHiScore({ key: guidGenerator.generate(), teamName: teamName, score: gameState.score, date: new Date() });
                 return repo.post(repo.entities.hiScores, score, '');
             })
@@ -106,7 +104,7 @@ var gameState = {
         return distance < 15;
     }
 
-    function getDistance(coords) {
+    function getDistanceAndShowIt(coords) {
         if (window.debugModeOn)
             return window.getDistanceValue;
 
@@ -116,6 +114,7 @@ var gameState = {
         }
 
         let distance = geolib.getDistance(objective, currentLocation);
+        showDistance(distance);
 
         return distance;
     }
@@ -162,9 +161,7 @@ var gameState = {
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButton();
     hideMainBodyOfGame();
-
-
-
+    geo.get().then(getDistanceAndShowIt);
 })(geo, geolib, _, storage, dealer, repo, guidGenerator);
 
 
