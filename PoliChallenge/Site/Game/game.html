@@ -9,19 +9,29 @@
         </div>
     </div>
     <div id="mainBody">
-        <div class="alert alert-dark hint">
+        <div class="alert alert-dark hint noMarginBottom">
             <h4>Hint...</h4>
             <span id="tip"></span>
         </div>
         <br />
         <div id="questionsContainer">
-            <p>Wrong answered questions: <span id="wrAnsQ">0</span></p>
+            <div class="row">
+                <div class="col-sm-12 noLateralPadding">
+                    <div class="alert alert-info noMarginBottom ">
+                        <p>Wrong answered questions: <span id="wrAnsQ">0</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <h3 id="statement"></h3><br />
+                </div>
+            </div>
             <br />
-            <p4 id="statement"></p4><br />
-            <span id="answer1"></span><br />
-            <span id="answer2"></span><br />
-            <span id="answer3"></span><br />
-            <span id="answer4"></span><br />
+            <p class="answer">A)   <span id="answer1"></span><br /></p>
+            <p class="answer">B)   <span id="answer2"></span><br /></p>
+            <p class="answer">C)   <span id="answer3"></span><br /></p>
+            <p class="answer">D)   <span id="answer4"></span><br /></p>
         </div>
     </div>
     <div class="row pulse" id="searchForIT">

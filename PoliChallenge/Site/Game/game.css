@@ -74,8 +74,12 @@
     font-style: oblique;
 }
 
-#searchForIT{
+#searchForIT {
     margin-top: 20%;
+}
+
+.noMarginBottom {
+    margin-bottom: 0;
 }
 
 .pulse {
@@ -83,6 +87,16 @@
     -webkit-animation-duration: 3s;
     -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-iteration-count: infinite
+}
+
+.noLateralPadding{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.answer {
+    margin-left: 3rem;
+    font-size: x-large;
 }
 
 @-webkit-keyframes pulsate {

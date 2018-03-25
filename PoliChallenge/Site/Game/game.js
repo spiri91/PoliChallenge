@@ -13,7 +13,8 @@ var gameState = {
         startBtn: $('#start'),
         teamNameTxt: $('#teamName'),
         teamSelectionContainer: $('#teamNameSelection'),
-        mainBody: $('#mainBody')
+        mainBody: $('#mainBody'),
+        pulsatingElement: $('#searchForIT')
     }
 
     let places = [];
@@ -34,16 +35,17 @@ var gameState = {
 
     function intervaledFunction(coords) {
         if (gameState.inProgress) return;
+
         if (allPlacesHaveBeenVisited()) {
             markHiScore(gameState.score);
             intervaledFunction = endOfGameFunction();
             return;
         }
+        showTipAndPulsatingElementForNextPlace();
 
         let distance = getDistanceAndShowIt(coords);
 
         if (checkDistance(distance)) startGameOnPlace();
-        else showTipForNextPlace();
     }
 
     function markHiScore(score) {
@@ -63,11 +65,15 @@ var gameState = {
         endOfGameFunction = () => { };
     }
 
-    function showTipForNextPlace() {
+    function showTipAndPulsatingElementForNextPlace() {
         let place = places[0];
         let tip = place.observations;
+        objective.latitude = place.latitude;
+        objective.longitude = place.longitude;
 
         _.setTextOf(elements.tip, tip);
+        _.showElement(elements.tip);
+        _.showElement(elements.pulsatingElement);
     }
 
     function allPlacesHaveBeenVisited() {
@@ -75,10 +81,16 @@ var gameState = {
     }
 
     function startGameOnPlace() {
+        hideTipAndPulsationElement();
         let place = getNextPlaceAndRemoveIt();
         let questionsForPlace = getQuestionsForPlace(place);
 
         gamePlay.start(questionsForPlace);
+    }
+
+    function hideTipAndPulsationElement() {
+        _.hideElement(elements.tip);
+        _.hideElement(elements.pulsatingElement);
     }
 
     function getQuestionsForPlace(place) {
@@ -121,11 +133,23 @@ var gameState = {
 
     function getPlacesAndQuestions() {
         places = dealer.shuffle(storage.get(storage.names.places));
+        addStartPointToPlaces();
         questions = storage.get(storage.names.questions);
     }
 
+    function addStartPointToPlaces() {
+        let startingPoint = {
+            name: 'Starting Point',
+            observations: 'Entry point to Politehnica Park from Iuliu Maniu',
+            latitude: 44.434543,
+            longitude: 26.048769
+        }
+
+        places.unshift(startingPoint);
+    }
+
     function start() {
-        showTipForNextPlace();
+        showTipAndPulsatingElementForNextPlace();
         geo.watchPosition(intervaledFunction);
     }
 
@@ -143,8 +167,9 @@ var gameState = {
     function startGame() {
         _.hideElement(elements.teamSelectionContainer);
         _.showElement(elements.mainBody);
-
+        _.showElement(elements.pulsatingElement);
         teamName = _.valueOf(elements.teamNameTxt);
+
         start();
     }
 
@@ -157,11 +182,19 @@ var gameState = {
         _.hideElement(elements.mainBody);
     }
 
+    function hidePulsatingElement() {
+        _.hideElement(elements.pulsatingElement);
+    }
+
     getPlacesAndQuestions();
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButton();
     hideMainBodyOfGame();
+    hidePulsatingElement();
     geo.get().then(getDistanceAndShowIt);
+
+    window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
+
 })(geo, geolib, _, storage, dealer, repo, guidGenerator);
 
 
@@ -217,6 +250,7 @@ var gamePlay = (function (dealer) {
     function stopGame() {
         gameState.inProgress = false;
         _.hideElement(elements.qContainer);
+        window.showTipAndPulsatingElementForNextPlace();
     }
 
     function showQuestion() {
@@ -272,4 +306,4 @@ var gamePlay = (function (dealer) {
     }
 })(dealer);
 
-// TODO extract constants object in separate file
+// TODO extract constants object in separate file 
