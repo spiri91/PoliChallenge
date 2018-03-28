@@ -9,29 +9,31 @@
         </div>
     </div>
     <div id="mainBody">
-        <div class="alert alert-dark hint noMarginBottom">
+        <div class="alert alert-dark hint noMarginBottom" id="tipContainer">
             <h4>Hint...</h4>
             <span id="tip"></span>
         </div>
-        <br />
         <div id="questionsContainer">
-            <div class="row">
-                <div class="col-sm-12 noLateralPadding">
-                    <div class="alert alert-info noMarginBottom ">
-                        <p>Wrong answered questions: <span id="wrAnsQ">0</span></p>
-                    </div>
+            <div class="row badAnswersContainer">
+                <div class="badAnswers">
+                        <span>Wrong answers: <span id="wrAnsQ" class="badge">0</span></span>
                 </div>
             </div>
-            <div class="row">
+            <div class="row statementContainer">
                 <div class="col-sm-12 text-center">
                     <h3 id="statement"></h3><br />
                 </div>
             </div>
             <br />
+            <hr />
             <p class="answer">A)   <span id="answer1"></span><br /></p>
+            <hr />
             <p class="answer">B)   <span id="answer2"></span><br /></p>
+            <hr />
             <p class="answer">C)   <span id="answer3"></span><br /></p>
+            <hr />
             <p class="answer">D)   <span id="answer4"></span><br /></p>
+            <hr />
         </div>
     </div>
     <div class="row pulse" id="searchForIT">

@@ -14,7 +14,8 @@ var gameState = {
         teamNameTxt: $('#teamName'),
         teamSelectionContainer: $('#teamNameSelection'),
         mainBody: $('#mainBody'),
-        pulsatingElement: $('#searchForIT')
+        pulsatingElement: $('#searchForIT'), 
+        tipContainer: $('#tipContainer')
     }
 
     let places = [];
@@ -72,7 +73,7 @@ var gameState = {
         objective.longitude = place.longitude;
 
         _.setTextOf(elements.tip, tip);
-        _.showElement(elements.tip);
+        _.showElement(elements.tipContainer);
         _.showElement(elements.pulsatingElement);
     }
 
@@ -89,7 +90,7 @@ var gameState = {
     }
 
     function hideTipAndPulsationElement() {
-        _.hideElement(elements.tip);
+        _.hideElement(elements.tipContainer);
         _.hideElement(elements.pulsatingElement);
     }
 
