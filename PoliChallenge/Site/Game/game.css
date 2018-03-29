@@ -50,7 +50,7 @@
     left: 0;
     width: 100%;
     color: white;
-    height: 4rem;
+    height: 6rem;
     font-size: larger;
 }
 
@@ -144,8 +144,12 @@
 
 .answer {
     cursor: pointer;
-    margin-left: 3rem;
+    padding-left: 3rem;
     font-size: large;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    width: 100%;
 }
 
     .answer:hover {
@@ -156,12 +160,23 @@
 hr {
     background-color: #101010;
     width: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 .statementContainer {
     height: 3rem !important;
     padding: 5% !important;
-    margin-bottom: 10% !important;
+    margin-bottom: 20% !important;
+}
+
+.statement {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 1.5rem !important;
 }
 
 .badAnswers {
@@ -174,7 +189,7 @@ hr {
     border-radius: 0%;
 }
 
-.badge{
+.badge {
     font-size: 100%;
 }
 
@@ -187,14 +202,17 @@ hr {
         margin-top: 10% !important;
     }
 
-    .badAnswersContainer{
+    .badAnswersContainer {
         padding: 0;
     }
 
-    .badAnswers{
+    .badAnswers {
         padding-left: 2%;
     }
 
+    .bottomBar {
+        height: 4rem;
+    }
     .statementContainer {
         height: 1rem !important;
         padding: 4% !important;
