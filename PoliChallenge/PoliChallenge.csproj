@@ -1195,6 +1195,7 @@
     <Content Include="bower_components\navigo\lib\navigo.min.js" />
     <Content Include="bower_components\navigo\src\index.js" />
     <Content Include="bower_components\navigo\webpack.config.js" />
+    <Content Include="favicon.png" />
     <Content Include="NonBower_Components\notify.min.js" />
     <Content Include="bower_components\paper-app-drawer\index.html" />
     <Content Include="bower_components\paper-app-drawer\paper-app-drawer.html" />
@@ -1429,6 +1430,7 @@
     <Content Include="Site\Questions\question.html" />
     <Content Include="Site\Questions\question.js" />
     <Content Include="Site\Services\storage.js" />
+    <Content Include="sw.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2111,6 +2113,7 @@
     <Content Include="bower_components\font-awesome\scss\_screen-reader.scss" />
     <Content Include="bower_components\font-awesome\scss\_stacked.scss" />
     <Content Include="bower_components\font-awesome\scss\_variables.scss" />
+    <Content Include="manifest.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
