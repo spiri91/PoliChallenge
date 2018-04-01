@@ -34,6 +34,11 @@
     }
 
     function error(message) {
+        if (message.status == 0) {
+            $.notify('No internet :(', 'error');
+            return;
+        }
+
         if (message.status < 300) {
             $.notify(message.statusText, 'success')
             return;
