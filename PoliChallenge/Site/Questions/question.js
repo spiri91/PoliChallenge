@@ -1,9 +1,7 @@
 ﻿/// <reference path="../../output/myscripts/app.js" />
 "use strict";
 
-(function (repo, guidGenerator, _, storage, entities) {
-    'use strict';
-
+(function (repo, guidGenerator, _, storage, entities, constants) {
     let places = [];
     let questions = [];
 
@@ -134,7 +132,7 @@
 
         questions = questionsOfElement;
 
-        elements.questions.empty().append('<option value= "" selected> Select a place to edit a question of it</option>');
+        elements.questions.empty().append('<option value= "" selected>' + constants.questions.QUESTIONS_SELECT_QUESTION_FOR_EDIT + '</option>');
 
         $.each(questionsOfElement,
             function () {
@@ -157,15 +155,15 @@
     function deleteFunction() {
         let token = _.valueOf(elements.token);
         if (!token || token === '') {
-            _.warning('Missing token');
+            _.warning(constants.messages.MISSING_TOKEN);
 
             return;
         }
 
-        _.confirm("Delete this question?", () =>
+        _.confirm(constants.questions.DELETE_QUESTION, () =>
             _.showSpinner()
                 .then(() => repo.delete(repo.entities.questions, selectedQuestion.key, token))
-                .then(() => _.success('deleted'), _.error)
+                .then(() => _.success(constants.messages.DELETED_ITEM), _.error)
                 .then(refresh)
                 .then(setAllControlsToEmpty)
                 .then(init)
@@ -194,7 +192,7 @@
 
         return _.showSpinner()
             .then(() => repo.post(repo.entities.questions, newQuestion, token))
-            .then(() => _.success('Created'), _.error)
+            .then(() => _.success(constants.messages.CREATED_ITEM), _.error)
             .then(refresh)
             .then(setAllControlsToEmpty)
             .then(init)
@@ -214,7 +212,7 @@
 
         return _.showSpinner()
             .then(() => repo.put(repo.entities.questions, newQuestion, token))
-            .then(() => _.handleAjaxResponse('Updated'), _.error)
+            .then(() => _.handleAjaxResponse(constants.messages.UPDATED_ITEM), _.error)
             .then(refresh)
             .then(setAllControlsToEmpty)
             .then(init)
@@ -236,7 +234,7 @@
 
         elements.places
             .empty()
-            .append('<option value="" selected>Select a place to edit a question of it</option>')
+            .append('<option value="" selected>' + constants.questions.QUESTIONS_SELECT_PLACE + '</option>')
 
         $.each(places, function () {
             elements.places.append(new Option(this.name, this.key));
@@ -244,4 +242,4 @@
     }
 
     init();
-})(repo, guidGenerator, _, storage, entities);
+})(repo, guidGenerator, _, storage, entities, constants);

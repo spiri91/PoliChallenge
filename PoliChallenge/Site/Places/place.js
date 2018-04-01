@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../output/myscripts/app.js" />
 'use strict';
 
-(function (repo, geo, guidGenerator, _, storage, entities) {
+(function (repo, geo, guidGenerator, _, storage, entities, constants) {
     let places = [];
     let selectedElement = null;
     let eventsAddedToBtns = false;
@@ -30,7 +30,7 @@
 
         elements.placesList
             .empty()
-            .append('<option value="" selected>Select a place for edit or delete</option>')
+            .append('<option value="" selected>' + constants.places.SELECT_PLACE + '</option>')
 
         $.each(places, function () {
             elements.placesList.append(new Option(this.name, this.key));
@@ -102,7 +102,7 @@
     function update() {
         let token = _.valueOf(elements.token);
         if (!token || token == '') {
-            _.warning('Missing token');
+            _.warning(constants.messages.MISSING_TOKEN);
             return;
         }
 
@@ -113,7 +113,7 @@
 
         return _.showSpinner()
             .then(() => repo.put(repo.entities.places, selectedElement, token))
-            .then(() => _.success("Updated"), _.error)
+            .then(() => _.success(constants.messages.UPDATED_ITEM), _.error)
             .then(refresh)
             .then(init)
             .then(_.hideSpinner)
@@ -122,13 +122,13 @@
     function deleteFunction() {
         let token = _.valueOf(elements.token);
         if (!token || token == '') {
-            _.warning('Missing token');
+            _.warning(constants.messages.MISSING_TOKEN);
             return;
         }
 
-        _.confirm("Delete this place?", () => _.showSpinner()
+        _.confirm(constants.places.DELETE_PLACE, () => _.showSpinner()
             .then(() => repo.delete(repo.entities.places, selectedElement.key, token))
-            .then(() => _.success('deleted'), _.error)
+            .then(() => _.success(constants.messages.DELETED_ITEM), _.error)
             .then(refresh)
             .then(init)
             .then(_.hideSpinner));
@@ -153,7 +153,7 @@
 
         return _.showSpinner()
             .then(() => repo.post(repo.entities.places, newPlace, token))
-            .then(() => _.success('Created'), _.error)
+            .then(() => _.success(constants.messages.CREATED_ITEM), _.error)
             .then(refresh)
             .then(init)
             .then(_.hideSpinner)
@@ -164,4 +164,4 @@
     }
 
     init();
-})(repo, geo, guidGenerator, _, storage, entities)
+})(repo, geo, guidGenerator, _, storage, entities, constants)

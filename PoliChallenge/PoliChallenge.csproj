@@ -1413,6 +1413,7 @@
     <Content Include="Site\Places\place.css" />
     <Content Include="Site\Places\place.js" />
     <Content Include="Site\Questions\question.css" />
+    <Content Include="Site\Services\appConstants.js" />
     <Content Include="Site\Services\call.js" />
     <Content Include="Site\Services\dealer.js" />
     <Content Include="Site\Services\entities.js" />

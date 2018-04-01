@@ -2,7 +2,7 @@
 /// <reference path="../../bower_components/moment/min/moment.min.js" />
 "use strict";
 
-(function (repo, _, storage, entities) {
+(function (repo, _, storage, entities, constants) {
     let elements = {
         tBody : $('#tableBody')
     }
@@ -13,7 +13,6 @@
     }
 
     function displayHiScores(hiScores) {
-        //<tr><th scope="row">1</th><td>Mark</td><td>Otto</td><td>@mdo</td></tr>
         let index = 1;
         for (let i in hiScores) {
             let score = hiScores[i];
@@ -23,7 +22,7 @@
     }
 
     function formatDate(date) {
-        return moment(date).format("DD/MM/YYYY hh:mm")
+        return moment(date).format(constants.hiScores.DATE_FORMAT)
     }
 
     function getHiScores() {
@@ -33,4 +32,4 @@
     }
 
     init();
-})(repo, _, storage, entities)
+})(repo, _, storage, entities, constants)

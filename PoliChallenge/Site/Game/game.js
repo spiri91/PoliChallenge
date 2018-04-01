@@ -1,11 +1,12 @@
 ﻿/// <reference path="../../output/myscripts/app.js" />
 "use strict";
+
 var gameState = {
     inProgress: false,
     score: 0
 };
 
-(function (geo, geolib, _, storage, dealer, repo, guidGenerator) {
+(function (geo, geolib, _, storage, dealer, repo, guidGenerator, constants) {
     let elements = {
         distance: $("#distance"),
         score: $('#score'),
@@ -25,17 +26,15 @@ var gameState = {
     let inPlay = false;
     var teamName = '';
 
-    let objective = {
-        latitude: 44.434543,
-        longitude: 26.048769
-    }
+    let objective = constants.game.ENTRY_POINT;
 
     function showDistance(distance) {
         _.setTextOf(elements.distance, distance);
     }
 
     function intervaledFunction(coords) {
-        if (gameState.inProgress) return;
+        if (gameState.inProgress)
+            return;
 
         if (allPlacesHaveBeenVisited()) {
             markHiScore(gameState.score);
@@ -61,7 +60,7 @@ var gameState = {
     }
 
     function endOfGameFunction() {
-        _.confirm('You just finished the game. :) Start over?', () => location.reload());
+        _.confirm(constants.game.END_GAME_MESSAGE, () => location.reload());
 
         endOfGameFunction = () => { };
     }
@@ -114,7 +113,7 @@ var gameState = {
         if (window.debugModeOn)
             return window.checkDistanceValue;
 
-        return distance < 15;
+        return distance < constants.game.DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS;
     }
 
     function getDistanceAndShowIt(coords) {
@@ -139,12 +138,7 @@ var gameState = {
     }
 
     function addStartPointToPlaces() {
-        let startingPoint = {
-            name: 'Starting Point',
-            observations: 'Entry point to Politehnica Park from Iuliu Maniu',
-            latitude: 44.434543,
-            longitude: 26.048769
-        }
+        let startingPoint = constants.game.ENTRY_POINT;
 
         places.unshift(startingPoint);
     }
@@ -196,7 +190,7 @@ var gameState = {
 
     window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
 
-})(geo, geolib, _, storage, dealer, repo, guidGenerator);
+})(geo, geolib, _, storage, dealer, repo, guidGenerator, constants);
 
 
 var gamePlay = (function (dealer) {
@@ -239,7 +233,7 @@ var gamePlay = (function (dealer) {
     }
 
     function moveNext() {
-        if (wrongAnsweredQuestions == 2 || _questions.length == 0) {
+        if (wrongAnsweredQuestions == constants.game.ALLOWED_WRONG_ANSWERED_QUESTIONS || _questions.length == 0) {
             stopGame();
             return;
         }
@@ -277,7 +271,7 @@ var gamePlay = (function (dealer) {
     function checkAnswear(e) {
         let text = getTextOfAnswer(e);
         if (answerIsCorrect(text))
-            gameState.score += 10;
+            gameState.score += constants.game.ANSWERED_QUESTION_POINTS;
         else
             wrongAnsweredQuestions++;
 
