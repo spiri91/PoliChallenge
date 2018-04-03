@@ -144,7 +144,7 @@
 
 .answer {
     cursor: pointer;
-    padding-left: 3rem;
+    padding-left: 1rem;
     font-size: large;
     margin-bottom: 0;
     padding-bottom: 1rem;
@@ -153,8 +153,14 @@
 }
 
     .answer:hover {
-        background-color: #808080;
+        background-color: #80808C;
         cursor: pointer;
+        color: white;
+        font-size: x-large;
+    }
+
+    .answer a {
+        padding-left: 2rem;
     }
 
 hr {
@@ -207,15 +213,22 @@ hr {
     }
 
     .badAnswers {
+        padding: 0.4rem;
         padding-left: 2%;
+        height: 2.5rem;
     }
 
     .bottomBar {
         height: 4rem;
     }
+
     .statementContainer {
         height: 1rem !important;
         padding: 4% !important;
         margin-bottom: 0 !important;
+    }
+
+    #scoreContainer, #distanceContainer{
+        padding-top: 1rem;
     }
 }

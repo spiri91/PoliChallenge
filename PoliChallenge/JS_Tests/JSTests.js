@@ -9,7 +9,7 @@
 /// <reference path="../bower_components/jquery/test/unit/selector.js" />
 
 /// <reference path="../bower_components/jasmine-core/lib/jasmine-core/jasmine.js" />
-/// <reference path="../Site/Services/guidgenerator.js" />
+/// <reference path="../Site/Services/guidGenerator.js" />
 
 describe("Guid_Generator_Tests", function () {
     var sut = guidGenerator;
