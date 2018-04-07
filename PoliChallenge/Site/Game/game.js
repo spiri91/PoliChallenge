@@ -125,8 +125,16 @@ var gameState = {
         return distance;
     }
 
+    function checkIfPlacesAreAvailable() {
+        if (!places || places.length == 0) {
+            _.error("Server unavaible :(");
+            throw new Error('no places have been retrieved from the DB');
+        }
+    }
+
     function getPlacesAndQuestions() {
         places = dealer.shuffle(storage.get(storage.names.places));
+        checkIfPlacesAreAvailable();
         addStartPointToPlaces();
         questions = storage.get(storage.names.questions);
     }
@@ -154,6 +162,8 @@ var gameState = {
             _.disableElements([elements.startBtn]);
     }
     function startGame() {
+        getPlacesAndQuestions();
+
         _.hideElement(elements.teamSelectionContainer);
         _.showElement(elements.mainBody);
         _.showElement(elements.pulsatingElement);
@@ -175,7 +185,6 @@ var gameState = {
         _.hideElement(elements.pulsatingElement);
     }
 
-    getPlacesAndQuestions();
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButton();
     hideMainBodyOfGame();
@@ -183,8 +192,6 @@ var gameState = {
     geo.get().then(getDistanceAndShowIt);
 
     window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
-
-// ReSharper disable once UndeclaredGlobalVariableUsing
 })(geo, geolib, _, storage, dealer, repo, guidGenerator, constants);
 
 
