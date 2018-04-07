@@ -1196,6 +1196,10 @@
     <Content Include="bower_components\navigo\src\index.js" />
     <Content Include="bower_components\navigo\webpack.config.js" />
     <Content Include="favicon.png" />
+    <Content Include="favicon_144.png" />
+    <Content Include="favicon_152.png" />
+    <Content Include="favicon_192.png" />
+    <Content Include="favicon_512.png" />
     <Content Include="NonBower_Components\notify.min.js" />
     <Content Include="bower_components\paper-app-drawer\index.html" />
     <Content Include="bower_components\paper-app-drawer\paper-app-drawer.html" />

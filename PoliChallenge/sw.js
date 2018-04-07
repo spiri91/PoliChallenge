@@ -27,6 +27,7 @@ var filesToCache = [
     '/bower_components/bootstrap/dist/js/bootstrap.min.js',
     '/bower_components/jquery-confirm2/dist/jquery-confirm.min.js',
     '/bower_components/Geolib/dist/geolib.min.js',
+    '/bower_components/moment/min/moment.min.js',
     '/bower_components/navigo/lib/navigo.min.js',
     '/NonBower_Components/notify.min.js'
 ]
