@@ -6,7 +6,7 @@ var call = (function () {
             headers: { 'Authorization': token },
             method: action,
             dataType: 'json',
-            data: body,
+            data: body
         });
     }
 

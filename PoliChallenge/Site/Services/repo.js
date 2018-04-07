@@ -86,6 +86,6 @@ var repo = (function () {
         entities: routes,
         createPlace: createPlace, 
         createQuestion: createQuestion,
-        createHiScore: createHiScore,
+        createHiScore: createHiScore
     };
 })(call)

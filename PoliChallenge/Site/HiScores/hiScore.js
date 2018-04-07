@@ -22,7 +22,7 @@
     }
 
     function formatDate(date) {
-        return moment(date).format(constants.hiScores.DATE_FORMAT)
+        return moment(date).format(constants.hiScores.DATE_FORMAT);
     }
 
     function getHiScores() {

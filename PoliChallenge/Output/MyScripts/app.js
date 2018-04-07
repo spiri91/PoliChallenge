@@ -15,10 +15,10 @@ var constants = (function () {
         questions: {
             QUESTIONS_SELECT_PLACE: 'Select a place to edit a question of it',
             QUESTIONS_SELECT_QUESTION_FOR_EDIT: 'Select the question you want to edit',
-            DELETE_QUESTION: 'Delete this question?',
+            DELETE_QUESTION: 'Delete this question?'
         },
         places: {
-            SELECT_PLACE: 'Select a place for edit or delete',
+            SELECT_PLACE: 'Select a place for edit or delete'
         },
         hiScores: {
             DATE_FORMAT: 'DD/MM/YYYY hh:mm'
@@ -27,7 +27,7 @@ var constants = (function () {
             MISSING_TOKEN: 'Token is missing :(',
             DELETED_ITEM: 'Item deleted.', 
             CREATED_ITEM: 'Item created.',
-            UPDATED_ITEM: 'Item updated.',
+            UPDATED_ITEM: 'Item updated.'
         }
     }
 })()
@@ -39,7 +39,7 @@ var call = (function () {
             headers: { 'Authorization': token },
             method: action,
             dataType: 'json',
-            data: body,
+            data: body
         });
     }
 
@@ -78,7 +78,7 @@ var entities = (function () {
             () => repo.getAll(entities.places).then((result) => storage.set(storage.names.places, result)),
             () => repo.getAll(entities.questions).then((result) => storage.set(storage.names.questions, result)),
             () => repo.getAll(entities.hiScores).then((result) => storage.set(storage.names.scores, result)),
-        ]
+        ];
 
         return Promise.all(promises);
     }
@@ -112,6 +112,10 @@ var guidGenerator = (function() {
     }
 })();
 var _ = (function () {
+    var props = {
+        disabled: 'disabled'
+    }
+
     function valueOf(element) {
         checkElement(element);
 
@@ -153,7 +157,7 @@ var _ = (function () {
         }
 
         if (message.status < 300) {
-            $.notify(message.statusText, 'success')
+            $.notify(message.statusText, 'success');
             return;
         }
 
@@ -184,10 +188,7 @@ var _ = (function () {
             elementsArray[i].prop(props.disabled, false);
     }
 
-    var props = {
-        disabled: 'disabled'
-    }
-
+   
     function showSpinner() {
         return new Promise((resolve) => {
             let element = $('body').addClass("loading");
@@ -214,11 +215,11 @@ var _ = (function () {
     }
 
     function hideElement(jqueryElement) {
-        jqueryElement.css('display', 'none')
+        jqueryElement.css('display', 'none');
     }
 
     function showElement(jqueryElement) {
-        jqueryElement.css('display', 'block')
+        jqueryElement.css('display', 'block');
     }
 
     function setTextOf(element, text) {
@@ -240,7 +241,7 @@ var _ = (function () {
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
         setTextOf: setTextOf,
         hideElement: hideElement,
-        showElement: showElement,
+        showElement: showElement
     }
 })();
 /// <reference path="call.js" />
@@ -331,7 +332,7 @@ var repo = (function () {
         entities: routes,
         createPlace: createPlace, 
         createQuestion: createQuestion,
-        createHiScore: createHiScore,
+        createHiScore: createHiScore
     };
 })(call)
 /// <reference path="../bower_components/navigo/lib/navigo.js" />
@@ -348,7 +349,7 @@ var content = (($) => {
             getContent(extension).then(setContent);
         }
     }
-})(jQuery)
+})(jQuery);
 
 var root = null;
 var useHash = true; 
@@ -356,19 +357,19 @@ var hash = '#';
 var router = new Navigo(root, useHash, hash);
 
 route: router.on({
-    'questions': function () {
+    'questions': function() {
         content.set("Questions/question.html");
     },
-    'places': function () {
+    'places': function() {
         content.set("Places/place.html");
     },
-    'hiScores': function () {
+    'hiScores': function() {
         content.set("HiScores/hiScore.html");
     },
-    '*': function () {
+    '*': function() {
         content.set("Game/game.html");
     }
-}).resolve()
+}).resolve();
 
 var storage = (function () {
     var set = (name, object) => {

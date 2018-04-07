@@ -12,7 +12,7 @@ var content = (($) => {
             getContent(extension).then(setContent);
         }
     }
-})(jQuery)
+})(jQuery);
 
 var root = null;
 var useHash = true; 
@@ -20,16 +20,16 @@ var hash = '#';
 var router = new Navigo(root, useHash, hash);
 
 route: router.on({
-    'questions': function () {
+    'questions': function() {
         content.set("Questions/question.html");
     },
-    'places': function () {
+    'places': function() {
         content.set("Places/place.html");
     },
-    'hiScores': function () {
+    'hiScores': function() {
         content.set("HiScores/hiScore.html");
     },
-    '*': function () {
+    '*': function() {
         content.set("Game/game.html");
     }
-}).resolve()
+}).resolve();

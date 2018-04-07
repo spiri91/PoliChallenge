@@ -30,7 +30,7 @@
 
         elements.placesList
             .empty()
-            .append('<option value="" selected>' + constants.places.SELECT_PLACE + '</option>')
+            .append('<option value="" selected>' + constants.places.SELECT_PLACE + '</option>');
 
         $.each(places, function () {
             elements.placesList.append(new Option(this.name, this.key));
@@ -50,12 +50,12 @@
         eventsAddedToBtns = true;
     }
 
-    function changeSelectedPlace(e) {
+    function changeSelectedPlace() {
         let selectedId = elements.placesList.find(':selected');
-        if (selectedId.length == 0)
+        if (selectedId.length === 0)
             return;
 
-        let fullElement = _.findInArray(places, selectedId[0].value)
+        let fullElement = _.findInArray(places, selectedId[0].value);
         selectedElement = fullElement;
 
         if (selectedElement) {
@@ -103,6 +103,7 @@
         let token = _.valueOf(elements.token);
         if (!token || token == '') {
             _.warning(constants.messages.MISSING_TOKEN);
+
             return;
         }
 
@@ -116,7 +117,7 @@
             .then(() => _.success(constants.messages.UPDATED_ITEM), _.error)
             .then(refresh)
             .then(init)
-            .then(_.hideSpinner)
+            .then(_.hideSpinner);
     }
 
     function deleteFunction() {
@@ -156,7 +157,7 @@
             .then(() => _.success(constants.messages.CREATED_ITEM), _.error)
             .then(refresh)
             .then(init)
-            .then(_.hideSpinner)
+            .then(_.hideSpinner);
     }
 
     function refresh() {

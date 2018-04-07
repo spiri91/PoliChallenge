@@ -21,9 +21,6 @@ var gameState = {
 
     let places = [];
     let questions = [];
-    let failedQuestions = 0;
-    let score = 0;
-    let inPlay = false;
     var teamName = '';
 
     let objective = constants.game.ENTRY_POINT;
@@ -32,7 +29,7 @@ var gameState = {
         _.setTextOf(elements.distance, distance);
     }
 
-    function intervaledFunction(coords) {
+    var intervaledFunction = function(coords) {
         if (gameState.inProgress)
             return;
 
@@ -41,14 +38,15 @@ var gameState = {
             intervaledFunction = endOfGameFunction();
             return;
         }
-        showTipAndPulsatingElementForNextPlace();
 
+        showTipAndPulsatingElementForNextPlace();
         let distance = getDistanceAndShowIt(coords);
 
-        if (checkDistance(distance)) startGameOnPlace();
+        if (checkDistance(distance))
+            startGameOnPlace();
     }
 
-    function markHiScore(score) {
+    var markHiScore = function() {
         markHiScore = () => { };
 
         _.showSpinner()
@@ -59,7 +57,7 @@ var gameState = {
             .then(_.hideSpinner);
     }
 
-    function endOfGameFunction() {
+    var endOfGameFunction = function() {
         _.confirm(constants.game.END_GAME_MESSAGE, () => location.reload());
 
         endOfGameFunction = () => { };
@@ -77,7 +75,7 @@ var gameState = {
     }
 
     function allPlacesHaveBeenVisited() {
-        return places.length == 0;
+        return places.length === 0;
     }
 
     function startGameOnPlace() {
@@ -94,7 +92,7 @@ var gameState = {
     }
 
     function getQuestionsForPlace(place) {
-        let questionsForPlace = questions.filter((x) => x.for == place.key);
+        let questionsForPlace = questions.filter((x) => x.for === place.key);
 
         return questionsForPlace;
     }
@@ -103,10 +101,6 @@ var gameState = {
         let place = places.shift();
 
         return place;
-    }
-
-    function showScore() {
-        _.setTextOf(elements.score, gameState.score);
     }
 
     function checkDistance(distance) {
@@ -190,6 +184,7 @@ var gameState = {
 
     window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
 
+// ReSharper disable once UndeclaredGlobalVariableUsing
 })(geo, geolib, _, storage, dealer, repo, guidGenerator, constants);
 
 
@@ -217,7 +212,6 @@ var gamePlay = (function (dealer) {
 
     let wrongAnsweredQuestions = 0;
     let _questions = [];
-
     let currentQuestion = {};
 
     function start(questions) {
@@ -233,8 +227,9 @@ var gamePlay = (function (dealer) {
     }
 
     function moveNext() {
-        if (wrongAnsweredQuestions == constants.game.ALLOWED_WRONG_ANSWERED_QUESTIONS || _questions.length == 0) {
+        if (wrongAnsweredQuestions === constants.game.ALLOWED_WRONG_ANSWERED_QUESTIONS || _questions.length === 0) {
             stopGame();
+
             return;
         }
 
@@ -300,5 +295,3 @@ var gamePlay = (function (dealer) {
         start: start
     }
 })(dealer);
-
-// TODO extract constants object in separate file 

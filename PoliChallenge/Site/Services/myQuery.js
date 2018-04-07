@@ -1,4 +1,8 @@
 ﻿var _ = (function () {
+    var props = {
+        disabled: 'disabled'
+    }
+
     function valueOf(element) {
         checkElement(element);
 
@@ -40,7 +44,7 @@
         }
 
         if (message.status < 300) {
-            $.notify(message.statusText, 'success')
+            $.notify(message.statusText, 'success');
             return;
         }
 
@@ -71,10 +75,7 @@
             elementsArray[i].prop(props.disabled, false);
     }
 
-    var props = {
-        disabled: 'disabled'
-    }
-
+   
     function showSpinner() {
         return new Promise((resolve) => {
             let element = $('body').addClass("loading");
@@ -101,11 +102,11 @@
     }
 
     function hideElement(jqueryElement) {
-        jqueryElement.css('display', 'none')
+        jqueryElement.css('display', 'none');
     }
 
     function showElement(jqueryElement) {
-        jqueryElement.css('display', 'block')
+        jqueryElement.css('display', 'block');
     }
 
     function setTextOf(element, text) {
@@ -127,6 +128,6 @@
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
         setTextOf: setTextOf,
         hideElement: hideElement,
-        showElement: showElement,
+        showElement: showElement
     }
 })();

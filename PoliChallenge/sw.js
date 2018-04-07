@@ -30,7 +30,7 @@ var filesToCache = [
     '/bower_components/moment/min/moment.min.js',
     '/bower_components/navigo/lib/navigo.min.js',
     '/NonBower_Components/notify.min.js'
-]
+];
 
 self.addEventListener('install', function (e) {
     console.log('[ServiceWorker] Install');
@@ -60,7 +60,7 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
     console.log('[ServiceWorker] Fetch', e.request.url);
-    if ((e.request.method == "PUT" || e.request.method == "POST") && (false == navigator.onLine)) {
+    if ((e.request.method === "PUT" || e.request.method === "POST") && (false === navigator.onLine)) {
         e.respondWith(alert("No internet :("));
         new Error('No internet connectivity!');
     }
@@ -71,46 +71,3 @@ self.addEventListener('fetch', function (e) {
             })
         );
 });
-
-//self.addEventListener('fetch', function (event) {
-
-//});
-
-//self.addEventListener('install', function (e) {
-//    e.waitUntil(caches.open(cacheName).then(function (cache) { }));
-//});
-
-//self.addEventListener('install', function (e) {
-//    e.waitUntil(
-//        caches.open(cacheName).then(function (cache) {
-//            return cache.addAll([
-//                '/',
-//                '/Index.html',
-//                '/game.html',
-//                '/game.js',
-//                '/game.css',
-//                '/hiScore.css',
-//                '/hiScore.html',
-//                '/hiScore.js',
-//                '/place.css',
-//                '/place.html',
-//                '/place.js',
-//                '/question.css',
-//                '/question.js',
-//                '/question.html',
-//                '/MainController',
-//                '/MainSheet.css',
-//                '/app.js',
-//                '/myStyles.css',
-//            ]);
-//        })
-//    );
-//});
-
-//self.addEventListener('fetch', function (event) {
-//    event.respondWith(
-//        caches.match(event.request).then(function (response) {
-//            return response || fetch(event.request);
-//        })
-//    );
-//});

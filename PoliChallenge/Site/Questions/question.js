@@ -104,7 +104,7 @@
         if (selectedId.length === 0)
             return;
 
-        let fullElement = _.findInArray(places, selectedId[0].value)
+        let fullElement = _.findInArray(places, selectedId[0].value);
         selectedPlace = fullElement;
 
         if (fullElement) {
@@ -154,7 +154,7 @@
 
     function deleteFunction() {
         let token = _.valueOf(elements.token);
-        if (!token || token === '') {
+        if (!token || token == '') {
             _.warning(constants.messages.MISSING_TOKEN);
 
             return;
@@ -234,7 +234,7 @@
 
         elements.places
             .empty()
-            .append('<option value="" selected>' + constants.questions.QUESTIONS_SELECT_PLACE + '</option>')
+            .append('<option value="" selected>' + constants.questions.QUESTIONS_SELECT_PLACE + '</option>');
 
         $.each(places, function () {
             elements.places.append(new Option(this.name, this.key));

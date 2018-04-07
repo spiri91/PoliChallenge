@@ -15,10 +15,10 @@
         questions: {
             QUESTIONS_SELECT_PLACE: 'Select a place to edit a question of it',
             QUESTIONS_SELECT_QUESTION_FOR_EDIT: 'Select the question you want to edit',
-            DELETE_QUESTION: 'Delete this question?',
+            DELETE_QUESTION: 'Delete this question?'
         },
         places: {
-            SELECT_PLACE: 'Select a place for edit or delete',
+            SELECT_PLACE: 'Select a place for edit or delete'
         },
         hiScores: {
             DATE_FORMAT: 'DD/MM/YYYY hh:mm'
@@ -27,7 +27,7 @@
             MISSING_TOKEN: 'Token is missing :(',
             DELETED_ITEM: 'Item deleted.', 
             CREATED_ITEM: 'Item created.',
-            UPDATED_ITEM: 'Item updated.',
+            UPDATED_ITEM: 'Item updated.'
         }
     }
 })()
