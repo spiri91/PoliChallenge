@@ -126,7 +126,7 @@ var gameState = {
     }
 
     function checkIfPlacesAreAvailable() {
-        if (!places || places.length == 0) {
+        if (!places || places.length === 0) {
             _.error("Server unavaible :(");
             throw new Error('no places have been retrieved from the DB');
         }

@@ -4,19 +4,19 @@ using PoliChallenge.Business.Questions;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using PoliChallenge.Migrations;
 
 namespace PoliChallenge.Business._Core
 {
     public class Context : DbContext
     {
-        private sealed class MigrationConfiguration : DbMigrationsConfiguration<Context>
-        {
-            public MigrationConfiguration() => AutomaticMigrationsEnabled = true;
-        }
-
+#if DEBUG
         public Context() : base("PoliCL") => Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
+#else
+        public Context() : base("ConnectionInfo") => Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
+#endif
 
-        public Context(string connectionStringName) : base(connectionStringName) => Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context,MigrationConfiguration>());
+        public Context(string connectionStringName) : base(connectionStringName) => Database.SetInitializer(new MigrateDatabaseToLatestVersion<Context, Configuration>());
 
         public DbSet<Question> Questions { get; set; }
 

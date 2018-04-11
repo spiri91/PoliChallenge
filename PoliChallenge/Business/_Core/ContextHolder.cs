@@ -17,17 +17,19 @@ namespace PoliChallenge.Business._Core
 #if DEBUG
             dbContext = new Context();
 #else
-                this.Context = new Context("ConnectionInfo");
+            dbContext = new Context("ConnectionInfo");
 #endif
+
+            dbContext.Database.CommandTimeout = 180;
         }
 
-        protected void Populate(IList<Question> questions, IList<Place> places, IList<HiScore> hiScores)
+        public void Populate(IList<Question> questions, IList<Place> places, IList<HiScore> hiScores)
         {
             var dbInit = new DatabaseInitializer();
             dbInit.PopulateDb(questions, places, hiScores, dbContext);
         }
 
-        protected void TruncateTables()
+        public void TruncateTables()
         {
             var tables = new String[] { "Questions", "Places", "HiScores" };
             tables.ForEach(t => dbContext.Database.ExecuteSqlCommand($"Truncate table {t}"));
@@ -39,7 +41,7 @@ namespace PoliChallenge.Business._Core
             if (FromConfiguration.Get(SettingsName.PersistentSave) == "True")
                 dbContext.SaveChanges();
 #else
-                dbContext.SaveChanges();
+            dbContext.SaveChanges();
 #endif
         }
 
