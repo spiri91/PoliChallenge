@@ -28,6 +28,6 @@
             DELETED_ITEM: 'Item deleted.', 
             CREATED_ITEM: 'Item created.',
             UPDATED_ITEM: 'Item updated.'
-        }
+        },
     }
 })()

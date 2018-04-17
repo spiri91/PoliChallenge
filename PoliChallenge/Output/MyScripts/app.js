@@ -28,7 +28,7 @@ var constants = (function () {
             DELETED_ITEM: 'Item deleted.', 
             CREATED_ITEM: 'Item created.',
             UPDATED_ITEM: 'Item updated.'
-        }
+        },
     }
 })()
 /// <reference path="../../bower_components/jquery/dist/jquery.js" />

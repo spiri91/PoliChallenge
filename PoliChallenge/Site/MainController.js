@@ -6,9 +6,15 @@ window.checkDistanceValue = false;
 window.getDistanceValue = 100;
 
 var mainApp = (function (entities, repo, storage, _) {
+    let howToPlayBtn = $('#howToPlay');
+
     var init = () => {
-        return _.showSpinner().then(entities.fillAll(repo, storage)).then(_.hideSpinner);
+        return _.showSpinner().then(entities.fillAll(repo, storage)).then(_.hideSpinner).then(showHowToPlayModal);
     };
+
+    function showHowToPlayModal() {
+        howToPlayBtn.click();
+    }
 
     return {
         init: init

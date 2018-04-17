@@ -21,3 +21,12 @@ body.loading .loader {
 body.loading .loader {
     display: block;
 }
+
+.handOverCursor {
+    cursor: pointer;
+}
+
+#howToPlayModal .modal-body{
+    height: 27rem;
+    overflow: scroll;
+}
