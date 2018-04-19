@@ -26,7 +26,23 @@ body.loading .loader {
     cursor: pointer;
 }
 
-#howToPlayModal .modal-body{
+#howToPlayModal .modal-body {
     height: 27rem;
     overflow: scroll;
+}
+
+#howToPlayModal p {
+    text-indent: 4%;
+}
+
+#howToPlayModal h5 {
+    text-align: center;
+}
+
+.italicFont{
+    font-style:italic;
+}
+
+.justifyAlign{
+    text-align: justify;
 }
