@@ -28,7 +28,7 @@ body.loading .loader {
 
 #howToPlayModal .modal-body {
     height: 27rem;
-    overflow: scroll;
+    overflow: auto;
 }
 
 #howToPlayModal p {

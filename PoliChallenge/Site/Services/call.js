@@ -3,6 +3,7 @@ var call = (function () {
     function makeCall({ to, action = 'GET', body = null, token = '' }) {
         return $.ajax({
             url: to,
+            async: true,
             headers: { 'Authorization': token },
             method: action,
             dataType: 'json',

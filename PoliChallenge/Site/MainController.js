@@ -5,6 +5,11 @@ window.debugModeOn = false;
 window.checkDistanceValue = false;
 window.getDistanceValue = 100;
 
+window.onerror = function (message, file, line, col, error) {
+    // TODO send error message to server;
+    return false;
+};
+
 var mainApp = (function (entities, repo, storage, _) {
     let howToPlayBtn = $('#howToPlay');
 

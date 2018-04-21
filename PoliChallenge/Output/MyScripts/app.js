@@ -1,4 +1,3 @@
-var constants={game:{ENTRY_POINT:{name:"Starting Point",observations:"Entry point to Politehnica Park from Iuliu Maniu",latitude:44.434543,longitude:26.048769},END_GAME_MESSAGE:"You just finished the game. :) Start over?",ALLOWED_WRONG_ANSWERED_QUESTIONS:2,ANSWERED_QUESTION_POINTS:10,DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS:15},questions:{QUESTIONS_SELECT_PLACE:"Select a place to edit a question of it",QUESTIONS_SELECT_QUESTION_FOR_EDIT:"Select the question you want to edit",DELETE_QUESTION:"Delete this question?"},places:{SELECT_PLACE:"Select a place for edit or delete"},hiScores:{DATE_FORMAT:"DD/MM/YYYY hh:mm"},messages:{MISSING_TOKEN:"Token is missing :(",DELETED_ITEM:"Item deleted.",CREATED_ITEM:"Item created.",UPDATED_ITEM:"Item updated."}};
 var constants = (function () {
     return {
         game: {
@@ -32,12 +31,12 @@ var constants = (function () {
         },
     }
 })()
-var call=function(){return{actions:{get:"GET",post:"POST",delete:"DELETE",put:"PUT"},ajax:function({to:t,action:a="GET",body:n=null,token:o=""}){return $.ajax({url:t,headers:{Authorization:o},method:a,dataType:"json",data:n})}}}();
 /// <reference path="../../bower_components/jquery/dist/jquery.js" />
 var call = (function () {
     function makeCall({ to, action = 'GET', body = null, token = '' }) {
         return $.ajax({
             url: to,
+            async: true,
             headers: { 'Authorization': token },
             method: action,
             dataType: 'json',
@@ -56,7 +55,6 @@ var call = (function () {
         ajax: makeCall
     }
 })();
-var dealer={shuffle:function(r){if(r){for(var a,f,e=r.length;0!==e;)f=Math.floor(Math.random()*e),a=r[e-=1],r[e]=r[f],r[f]=a;return r}}};
 var dealer = (function () {
     var shuffle = function (array) {
         if (!array)
@@ -78,7 +76,6 @@ var dealer = (function () {
         shuffle: shuffle
     }
 })()
-var entities={fillAll:(e,s)=>Promise.all([e.getAll(e.entities.places).then(e=>s.set(s.names.places,e)),e.getAll(e.entities.questions).then(e=>s.set(s.names.questions,e)),e.getAll(e.entities.hiScores).then(e=>s.set(s.names.scores,e))])};
 var entities = (function () {
     var fillAll = (repo, storage) => {
         return Promise.all([
@@ -92,7 +89,6 @@ var entities = (function () {
         fillAll: fillAll
     }
 })()
-var geo=function(){return{get:function(o,n){return new Promise((o,n)=>navigator.geolocation.getCurrentPosition(o,n))},watchPosition:function(o){navigator.geolocation.watchPosition(o)}}}();
 var geo = (function () {
     function getCoords(successFunction, errorFunction) {
         return new Promise((successFunction, errorFunction) => navigator.geolocation.getCurrentPosition(successFunction, errorFunction));
@@ -107,7 +103,6 @@ var geo = (function () {
         watchPosition: watchPosition
     }
 })();
-var guidGenerator={generate:function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(x){var r=16*Math.random()|0;return("x"==x?r:3&r|8).toString(16)})}};
 var guidGenerator = (function() {
     return {
         generate : function() {
@@ -118,7 +113,6 @@ var guidGenerator = (function() {
         }
     }
 })();
-var _=function(){var n={disabled:"disabled"};function e(n){if(!n)throw new Error("Invalid element");if(0===n.length)throw new Error("Element not found")}return{valueOf:function(n){return e(n),n.val()},setValueOf:function(n,t){e(n),n.val(t)},success:function(n){n=n||"Created",$.notify(n,"success")},error:function(n){0!=n.status?n.status<300?$.notify(n.statusText,"success"):(n=n.statusText?n.statusText:n||"Error :( ",$.notify(n,"error")):$.notify("No internet :(","error")},warning:function(n){$.notify(n,"warning")},findInArray:function(n,e){for(let t in n)for(let o in n[t])if(n[t][o]===e)return n[t];return null},disableElements:function(e){for(let t in e)e[t].prop(n.disabled,!0)},enableElements:function(e){for(let t in e)e[t].prop(n.disabled,!1)},showSpinner:function(){return new Promise(n=>{n($("body").addClass("loading"))})},hideSpinner:function(){return new Promise(n=>{n($("body").removeClass("loading"))})},confirm:function(n,e){$.confirm({title:"Confirm!",content:n,buttons:{confirm:()=>e(),cancel:()=>{}}})},setSelectedIndexOfSelectElement:function(n,e){n.attr("selectedIndex",e)},setTextOf:function(n,e){n.text(e)},hideElement:function(n){n.css("display","none")},showElement:function(n){n.css("display","block")}}}();
 var _ = (function () {
     var props = {
         disabled: 'disabled'
@@ -252,7 +246,6 @@ var _ = (function () {
         showElement: showElement
     }
 })();
-"use strict";var repo=(call,{getAll:e=>call.ajax({to:e,action:call.actions.get}),put:(e,t,a)=>call.ajax({to:e,action:call.actions.put,token:a,body:t}),post:(e,t,a)=>call.ajax({to:e,action:call.actions.post,token:a,body:t}),delete:(e,t,a)=>call.ajax({to:e+"/"+t,action:call.actions.delete,token:a}),entities:{places:"api/places",questions:"api/questions",hiScores:"api/scores"},createPlace:({key:e,name:t,latitude:a,longitude:o,observations:r})=>{if(!(e&&t&&a&&o&&r))throw new Error("Invalid object creation");return{key:e,name:t,latitude:a,longitude:o,observations:r}},createQuestion:({key:e,belongsTo:t,statement:a,answer1:o,answer2:r,answer3:n,correctAnswer:c})=>{if(!(e&&t&&a&&o&&r&&n&&c))throw new Error("Invalid object creation");return{key:e,for:t,statement:a,answer1:o,answer2:r,answer3:n,correctAnswer:c}},createHiScore:({key:e,teamName:t,score:a,date:o})=>{if(!(e&&t&&a&&o))throw new Error("Invalid object creation");return{key:e,teamName:t,score:a,date:o}}});
 /// <reference path="call.js" />
 
 'use strict';
@@ -344,19 +337,32 @@ var repo = (function () {
         createHiScore: createHiScore
     };
 })(call)
-var content=(t=>{let e=e=>{t("#body").html(e)};return{set:n=>{(e=>t.get("Site/"+e).then(t=>t))(n).then(e)}}})(jQuery),root=null,useHash=!0,hash="#",router=new Navigo(root,useHash,hash);router.on({questions:function(){content.set("Questions/question.html")},places:function(){content.set("Places/place.html")},hiScores:function(){content.set("HiScores/hiScore.html")},"*":function(){content.set("Game/game.html")}}).resolve();
 /// <reference path="../bower_components/navigo/lib/navigo.js" />
 /// <reference path="../bower_components/jquery/dist/jquery.js" />
 
 var content = (($) => {
-    let getContent = (extension) => $.get("Site/" + extension).then((result) => result);
+    //let getContent = (extension) => $.ajax({
+    //    url: 'Site/' + extension,
+    //    async: true,
+    //    method: 'GET',
+    //});
+    let getContent = (extension) => $.get("Site/" + extension);
     let setContent = (content) => {
         $('#body').html(content);
     }
 
+    let getHtml = (extension) => $.get("Site/" + extension + ".html");
+    let getScript = (extension) => $.get("Site/" + extension + ".js");
+    let appendScript = (script) => {
+        var scriptElement = document.createElement("script");
+        scriptElement.innerText = script;
+        $('#body').append(scriptElement);
+    }
+
     return {
         set: (extension) => {
-            getContent(extension).then(setContent);
+            getHtml(extension).then(setContent).then(function () { return getScript(extension);}).then(appendScript);
+            //getContent(extension).then(setContent)
         }
     }
 })(jQuery);
@@ -368,20 +374,19 @@ var router = new Navigo(root, useHash, hash);
 
 route: router.on({
     'questions': function() {
-        content.set("Questions/question.html");
+        content.set("Questions/question");
     },
     'places': function() {
-        content.set("Places/place.html");
+        content.set("Places/place");
     },
     'hiScores': function() {
-        content.set("HiScores/hiScore.html");
+        content.set("HiScores/hiScore");
     },
     '*': function() {
-        content.set("Game/game.html");
+        content.set("Game/game");
     }
 }).resolve();
 
-var storage={set:(e,s)=>{let t=JSON.stringify(s);localStorage.setItem(e,t)},get:e=>{let s=localStorage.getItem(e);return JSON.parse(s)},names:{scores:"scores",places:"places",questions:"questions"}};
 var storage = (function () {
     var set = (name, object) => {
         let obj = JSON.stringify(object);

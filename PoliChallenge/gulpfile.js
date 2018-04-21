@@ -13,7 +13,7 @@ gulp.task('default', function () {
 
 gulp.task('bundle-js', function () {
     return gulp.src('Site/Services/*.js')
-        .pipe(minifyJS())
+        //.pipe(minifyJS())
         .pipe(concat('app.js'))
         //.pipe(uglify())
         .pipe(gulp.dest('./Output/MyScripts/'));

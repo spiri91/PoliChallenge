@@ -22,6 +22,7 @@ var gameState = {
     let places = [];
     let questions = [];
     var teamName = '';
+    var regex = new RegExp("^[a-zA-Z0-9]*$");
 
     let objective = constants.game.ENTRY_POINT;
 
@@ -154,14 +155,18 @@ var gameState = {
         _.disableElements([elements.startBtn]);
     }
 
-    function teamNameChanged() {
+    function teamNameChanged(e) {
         let name = _.valueOf(elements.teamNameTxt);
-        if (name.length > 3)
+        if (name.length > 3) {
             _.enableElements([elements.startBtn]);
+            checkIfEnter(e);
+        }
         else
             _.disableElements([elements.startBtn]);
     }
     function startGame() {
+        checkIfTeamNameIsTaken();
+
         getPlacesAndQuestions();
 
         _.hideElement(elements.teamSelectionContainer);
@@ -172,11 +177,53 @@ var gameState = {
         start();
     }
 
+    function checkIfTeamNameIsTaken() {
+        let chosenTeamName = _.valueOf(elements.teamNameTxt).toUpperCase();
+        let teamNamesInHiScores = storage.get(storage.names.scores).map((s) => s.teamName.toUpperCase());
+        if (teamNamesInHiScores.indexOf(chosenTeamName) == -1)
+            return;
+
+        _.warning('Team name already taken :(');
+        elements.teamNameTxt.focus();
+
+        throw new Error('Bad team name');
+    }
+
     function addEventToTeamNameTextBoxAndStartButton() {
         elements.teamNameTxt.keyup(teamNameChanged);
+        elements.teamNameTxt.keypress(checkIfAlphaNumeric);
+        elements.teamNameTxt.on('paste', checkPastedCode);
         elements.startBtn.click(startGame);
     }
 
+    function checkPastedCode(e) {
+        var clipboardData = e.clipboardData || e.originalEvent.clipboardData || window.clipboardData;
+        var pastedData = clipboardData.getData('text');
+
+        if (regex.test(pastedData))
+            return true;
+
+        e.preventDefault();
+
+        return false;
+    }
+
+    function checkIfAlphaNumeric(e) {
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) 
+            return true;
+
+        e.preventDefault();
+
+        return false;
+    }
+
+    function checkIfEnter(e) {
+        if (e.keyCode === 13) {
+            elements.startBtn.click();
+        }
+    }
+    
     function hideMainBodyOfGame() {
         _.hideElement(elements.mainBody);
     }
