@@ -11,7 +11,7 @@ namespace PoliChallenge.Business._Core
     public class Context : DbContext
     {
 #if DEBUG
-        public Context() : base("PoliCL") => Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
+        public Context() : base("PoliCL") => Database.SetInitializer(new DBConfigurationForTest());
 #else
         public Context() : base("ConnectionInfo") => Database.SetInitializer(new DropCreateDatabaseIfModelChanges<Context>());
 #endif

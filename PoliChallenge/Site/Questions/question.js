@@ -1,5 +1,5 @@
-﻿/// <reference path="../../output/myscripts/app.js" />
-"use strict";
+/// <reference path="../../output/myscripts/app.js" />
+'use strict';
 
 (function (repo, guidGenerator, _, storage, entities, constants) {
     let places = [];
@@ -7,7 +7,6 @@
 
     let selectedPlace = null;
     let selectedQuestion = null;
-
     let eventsAddedToElements = false;
 
     let elements = {
@@ -36,7 +35,7 @@
     function disableButtonsForDeleteAndUpdate() {
         _.disableElements([elements.delete, elements.update]);
     }
-
+     
     function addEventsToElements() {
         if (eventsAddedToElements)
             return;
@@ -180,10 +179,16 @@
     }
 
     function submit() {
+        let token = _.valueOf(elements.token);
+        if (!token || token == '') {
+            _.warning(constants.messages.MISSING_TOKEN);
+
+            return;
+        }
+
         let key = guidGenerator.generate();
         let belongsTo = selectedPlace.key;
         let properties = getValuesOfAllControls();
-        let token = _.valueOf(elements.token);
 
         let newQuestion = repo.createQuestion({
             key: key, belongsTo: belongsTo, statement: properties.statement, answer1: properties.answer1,
@@ -200,10 +205,16 @@
     }
 
     function update() {
+        let token = _.valueOf(elements.token);
+        if (!token || token == '') {
+            _.warning(constants.messages.MISSING_TOKEN);
+
+            return;
+        }
+
         let key = selectedQuestion.key;
         let belongsTo = selectedPlace.key;
         let properties = getValuesOfAllControls();
-        let token = _.valueOf(elements.token);
 
         let newQuestion = repo.createQuestion({
             key: key, belongsTo: belongsTo, statement: properties.statement, answer1: properties.answer1,
@@ -212,7 +223,7 @@
 
         return _.showSpinner()
             .then(() => repo.put(repo.entities.questions, newQuestion, token))
-            .then(() => _.handleAjaxResponse(constants.messages.UPDATED_ITEM), _.error)
+            .then(() => _.success(constants.messages.UPDATED_ITEM), _.error)
             .then(refresh)
             .then(setAllControlsToEmpty)
             .then(init)
@@ -242,4 +253,4 @@
     }
 
     init();
-})(repo, guidGenerator, _, storage, entities, constants);
+})(repo, guidGenerator, _, storage, entities, constants)

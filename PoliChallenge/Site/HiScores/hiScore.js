@@ -1,4 +1,4 @@
-﻿/// <reference path="../../output/myscripts/app.js" />
+/// <reference path="../../output/myscripts/app.js" />
 /// <reference path="../../bower_components/moment/min/moment.min.js" />
 "use strict";
 

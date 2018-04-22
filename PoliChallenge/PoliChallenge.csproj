@@ -268,6 +268,7 @@
     <Compile Include="Business\_Core\ContextHolder.cs" />
     <Compile Include="Business\_Core\CustomAuthorize.cs" />
     <Compile Include="Business\_Core\CustomExceptionHandling.cs" />
+    <Compile Include="Business\_Core\DBConfigurationForTest.cs" />
     <Compile Include="Business\_Core\GetFromConfiguration.cs" />
     <Compile Include="Business\_Core\IListExtensions.cs" />
     <Compile Include="Contracts\IIsEqual.cs" />
@@ -1778,10 +1779,14 @@
     <Content Include="JS_Tests\JSTests.js" />
     <Content Include="Output\MyScripts\app.js" />
     <Content Include="Output\myStyles.css" />
+    <Content Include="Site\Game\game-min.js" />
     <Content Include="Site\Game\game.css" />
     <Content Include="Site\Game\game.js" />
+    <Content Include="Site\HiScores\hiScore-min.js" />
     <Content Include="Site\HiScores\hiScore.css" />
     <Content Include="Site\HiScores\hiScore.js" />
+    <Content Include="Site\MainController-min.js" />
+    <Content Include="Site\Places\place-min.js" />
     <Content Include="Site\Places\place.css" />
     <Content Include="Site\Places\place.js" />
     <Content Include="Site\Questions\question.css" />

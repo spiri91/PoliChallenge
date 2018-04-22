@@ -1,5 +1,7 @@
 ﻿var storage = (function () {
     var set = (name, object) => {
+        localStorage.removeItem(name);
+
         let obj = JSON.stringify(object);
         localStorage.setItem(name, obj);
     }

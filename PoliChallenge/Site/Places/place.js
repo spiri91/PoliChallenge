@@ -1,4 +1,4 @@
-﻿/// <reference path="../../output/myscripts/app.js" />
+/// <reference path="../../output/myscripts/app.js" />
 'use strict';
 
 (function (repo, geo, guidGenerator, _, storage, entities, constants) {
@@ -24,7 +24,7 @@
         populateListOfPlaces();
         disableButtonsForDeleteAndUpdate();
     }
-
+     
     function populateListOfPlaces() {
         places = storage.get(storage.names.places);
 
@@ -38,7 +38,7 @@
     }
 
     function addEventsToBtns() {
-        if (eventsAddedToBtns)
+        if (true == eventsAddedToBtns) 
             return;
 
         elements.autoFillBtn.click(getCoords);
@@ -99,7 +99,7 @@
         _.enableElements([elements.deleteBtn, elements.updateBtn]);
     }
 
-    function update() {
+    function update(e) {
         let token = _.valueOf(elements.token);
         if (!token || token == '') {
             _.warning(constants.messages.MISSING_TOKEN);

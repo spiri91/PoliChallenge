@@ -1,4 +1,4 @@
-﻿/// <reference path="../../output/myscripts/app.js" />
+/// <reference path="../../output/myscripts/app.js" />
 "use strict";
 
 var gameState = {

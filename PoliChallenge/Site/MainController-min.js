@@ -1,0 +1,1 @@
+window.debugModeOn=!1,window.checkDistanceValue=!1,window.getDistanceValue=100,window.onerror=function(n,e,i,t,o){return!1};var mainApp=function(n,e,i,t){let o=$("#howToPlay");function r(){o.click()}return{init:()=>t.showSpinner().then(n.fillAll(e,i)).then(t.hideSpinner).then(r)}}(entities,repo,storage,_);$(document).ready(mainApp.init);

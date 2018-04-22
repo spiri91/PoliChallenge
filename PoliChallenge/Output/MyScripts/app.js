@@ -349,27 +349,17 @@ var repo = (function () {
 /// <reference path="../bower_components/jquery/dist/jquery.js" />
 
 var content = (($) => {
-    //let getContent = (extension) => $.ajax({
-    //    url: 'Site/' + extension,
-    //    async: true,
-    //    method: 'GET',
-    //});
     let getContent = (extension) => $.get("Site/" + extension);
     let setContent = (content) => {
         $('#body').html(content);
     }
 
     let getHtml = (extension) => $.get("Site/" + extension + ".html");
-    let getScript = (extension) => $.get("Site/" + extension + ".js");
-    let appendScript = (script) => {
-        var scriptElement = document.createElement("script");
-        scriptElement.innerText = script;
-        $('#body').append(scriptElement);
-    }
-
+    let getScript = (extension) => $.get("Site/" + extension + ".js")// "-min.js");
+   
     return {
         set: (extension) => {
-            getHtml(extension).then(setContent).then(function () { return getScript(extension);}).then(appendScript);
+            getHtml(extension).then(setContent).then(function () { return getScript(extension); });
         }
     }
 })(jQuery);
@@ -396,6 +386,8 @@ route: router.on({
 
 var storage = (function () {
     var set = (name, object) => {
+        localStorage.removeItem(name);
+
         let obj = JSON.stringify(object);
         localStorage.setItem(name, obj);
     }
