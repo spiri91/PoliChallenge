@@ -8,7 +8,10 @@ var repo = (function () {
         hiScores: 'api/scores'
     };
 
-    let getAll = (route) => {
+    let getAll = (route, storageService, storageNameForObject) => {
+        if (!navigator.onLine)
+            return $.Deferred().resolve(storageService.get(storageNameForObject));
+
         return call.ajax({
             to: route,
             action: call.actions.get

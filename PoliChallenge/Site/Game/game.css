@@ -232,3 +232,15 @@ hr {
         padding-top: 1rem;
     }
 }
+
+.choseTeamNameBanner {
+    display: block;
+    position: fixed;
+    bottom: 4rem;
+    text-align: center;
+    width: 100%;
+}
+
+#teamNameSelection{
+    margin-top: 1rem;
+}

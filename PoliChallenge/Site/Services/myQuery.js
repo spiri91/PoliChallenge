@@ -113,6 +113,10 @@
         element.text(text);
     }
 
+    function setOpacityOfElement(jqueryElement, opacityLevel) {
+        jqueryElement.css('opacity', opacityLevel);
+    }
+
     return {
         valueOf: valueOf,
         setValueOf: setValueOf,
@@ -128,6 +132,7 @@
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
         setTextOf: setTextOf,
         hideElement: hideElement,
-        showElement: showElement
+        showElement: showElement,
+        setOpacityOfElement: setOpacityOfElement
     }
 })();

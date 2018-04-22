@@ -25,30 +25,28 @@ var filesToCache = [
     '/bower_components/jQuery/dist/jquery.min.js',
     '/bower_components/bootstrap/dist/js/bootstrap.min.js',
     '/bower_components/jquery-confirm2/dist/jquery-confirm.min.css',
+    '/bower_components/jquery-confirm2/dist/jquery-confirm.min.js',
     '/bower_components/Geolib/dist/geolib.min.js',
     '/bower_components/moment/min/moment.min.js',
     '/bower_components/navigo/lib/navigo.min.js',
-    '/NonBower_Components/notify.min.js'
+    '/NonBower_Components/notify.min.js',
+    // other,
+    '/Output/loader.gif'
 ];
 
 self.addEventListener('install', function (e) {
-    console.log('[ServiceWorker] Install');
     e.waitUntil(
         caches.open(cacheName).then(function (cache) {
-            console.log('[ServiceWorker] Caching app shell');
             return cache.addAll(filesToCache);
         })
     );
 });
 
 self.addEventListener('activate', function (e) {
-    console.log('[ServiceWorker] Activate');
-
     e.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
                 if (key !== cacheName) {
-                    console.log('[ServiceWorker] Removing old cache', key);
                     return caches.delete(key);
                 }
             }));
@@ -58,7 +56,6 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (e) {
-    console.log('[ServiceWorker] Fetch', e.request.url);
     if ((e.request.method === "PUT" || e.request.method === "POST") && (false === navigator.onLine)) {
         e.respondWith(alert("No internet :("));
         new Error('No internet connectivity!');

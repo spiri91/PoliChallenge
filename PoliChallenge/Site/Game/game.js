@@ -16,7 +16,9 @@ var gameState = {
         teamSelectionContainer: $('#teamNameSelection'),
         mainBody: $('#mainBody'),
         pulsatingElement: $('#searchForIT'), 
-        tipContainer: $('#tipContainer')
+        tipContainer: $('#tipContainer'), 
+        bottomBar: $('#bottomBar'),
+        choseTeamNameBanner: $('#choseTeamNameBanner')
     }
 
     let places = [];
@@ -168,6 +170,8 @@ var gameState = {
         checkIfTeamNameIsTaken();
 
         getPlacesAndQuestions();
+        hideChoseTeamBanner();
+        showBottomBar();
 
         _.hideElement(elements.teamSelectionContainer);
         _.showElement(elements.mainBody);
@@ -176,6 +180,10 @@ var gameState = {
 
         start();
     }
+
+    function showBottomBar() {
+        _.setOpacityOfElement(elements.bottomBar, 1);
+    } 
 
     function checkIfTeamNameIsTaken() {
         let chosenTeamName = _.valueOf(elements.teamNameTxt).toUpperCase();
@@ -228,15 +236,24 @@ var gameState = {
         _.hideElement(elements.mainBody);
     }
 
-    function hidePulsatingElement() {
+    function hidePulsatingElementAndBottomBar() {
         _.hideElement(elements.pulsatingElement);
+        _.setOpacityOfElement(elements.bottomBar, 0.5);
+    }
+
+    function showChoseTeamBanner() {
+        _.showElement(elements.choseTeamNameBanner);
+    }
+
+    function hideChoseTeamBanner() {
+        _.hideElement(elements.choseTeamNameBanner);
     }
 
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButton();
     hideMainBodyOfGame();
-    hidePulsatingElement();
-    geo.get().then(getDistanceAndShowIt);
+    hidePulsatingElementAndBottomBar();
+    showChoseTeamBanner();
 
     window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
 })(geo, geolib, _, storage, dealer, repo, guidGenerator, constants);

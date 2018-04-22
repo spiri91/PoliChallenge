@@ -79,9 +79,9 @@ var dealer = (function () {
 var entities = (function () {
     var fillAll = (repo, storage) => {
         return Promise.all([
-            repo.getAll(repo.entities.places).then((result) => storage.set(storage.names.places, result)),
-            repo.getAll(repo.entities.questions).then((result) => storage.set(storage.names.questions, result)),
-            repo.getAll(repo.entities.hiScores).then((result) => storage.set(storage.names.scores, result)),
+            repo.getAll(repo.entities.places, storage, storage.names.places).then((result) => storage.set(storage.names.places, result)),
+            repo.getAll(repo.entities.questions, storage, storage.names.questions).then((result) => storage.set(storage.names.questions, result)),
+            repo.getAll(repo.entities.hiScores, storage, storage.names.scores).then((result) => storage.set(storage.names.scores, result)),
         ]);
     }
 
@@ -228,6 +228,10 @@ var _ = (function () {
         element.text(text);
     }
 
+    function setOpacityOfElement(jqueryElement, opacityLevel) {
+        jqueryElement.css('opacity', opacityLevel);
+    }
+
     return {
         valueOf: valueOf,
         setValueOf: setValueOf,
@@ -243,7 +247,8 @@ var _ = (function () {
         setSelectedIndexOfSelectElement: setSelectedIndexOfSelectElement,
         setTextOf: setTextOf,
         hideElement: hideElement,
-        showElement: showElement
+        showElement: showElement,
+        setOpacityOfElement: setOpacityOfElement
     }
 })();
 /// <reference path="call.js" />
@@ -256,7 +261,10 @@ var repo = (function () {
         hiScores: 'api/scores'
     };
 
-    let getAll = (route) => {
+    let getAll = (route, storageService, storageNameForObject) => {
+        if (!navigator.onLine)
+            return $.Deferred().resolve(storageService.get(storageNameForObject));
+
         return call.ajax({
             to: route,
             action: call.actions.get
@@ -362,7 +370,6 @@ var content = (($) => {
     return {
         set: (extension) => {
             getHtml(extension).then(setContent).then(function () { return getScript(extension);}).then(appendScript);
-            //getContent(extension).then(setContent)
         }
     }
 })(jQuery);
