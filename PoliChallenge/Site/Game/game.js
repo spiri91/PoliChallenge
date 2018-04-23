@@ -68,6 +68,9 @@ var gameState = {
 
     function showTipAndPulsatingElementForNextPlace() {
         let place = places[0];
+
+        if (!place) return;
+
         let tip = place.observations;
         objective.latitude = place.latitude;
         objective.longitude = place.longitude;
@@ -311,7 +314,6 @@ var gamePlay = (function (dealer) {
     function stopGame() {
         gameState.inProgress = false;
         _.hideElement(elements.qContainer);
-        window.showTipAndPulsatingElementForNextPlace();
     }
 
     function showQuestion() {

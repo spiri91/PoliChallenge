@@ -56,7 +56,7 @@ self.addEventListener('activate', function (e) {
 });
 
 self.addEventListener('fetch', function (e) {
-    if ((e.request.method === "PUT" || e.request.method === "POST") && (false === navigator.onLine)) {
+    if ((e.request.method === "PUT" || e.request.method === "POST") && false === navigator.onLine) {
         e.respondWith(alert("No internet :("));
         new Error('No internet connectivity!');
     }
