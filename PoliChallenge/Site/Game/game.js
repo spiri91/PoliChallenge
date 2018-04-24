@@ -252,17 +252,27 @@ var gameState = {
         _.hideElement(elements.choseTeamNameBanner);
     }
 
+    function addFadeInOutBottomBarEffectOnScrool() {
+        $(window).scroll(() => {
+            if ($(window).scrollTop() < 15)
+                elements.bottomBar.fadeIn();
+            else
+                elements.bottomBar.fadeOut();
+        });
+    }
+
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButton();
     hideMainBodyOfGame();
     hidePulsatingElementAndBottomBar();
     showChoseTeamBanner();
+    addFadeInOutBottomBarEffectOnScrool()
 
     window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
 })(geo, geolib, _, storage, dealer, repo, guidGenerator, constants);
 
 
-var gamePlay = (function (dealer) {
+var gamePlay = (function (dealer, _, constants) {
     let externalElement = {
         score: $('#score')
     }
@@ -338,10 +348,14 @@ var gamePlay = (function (dealer) {
 
     function checkAnswear(e) {
         let text = getTextOfAnswer(e);
-        if (answerIsCorrect(text))
+        if (answerIsCorrect(text)) {
             gameState.score += constants.game.ANSWERED_QUESTION_POINTS;
-        else
+            _.success(constants.game.CORRECT_ANSWER_MESSAGE);
+        }
+        else {
             wrongAnsweredQuestions++;
+            _.warning(constants.game.WRONG_ANSWER_MESSAGE);
+        }
 
         showScoreAndWrongAnsweredQuestions();
         moveNext();
@@ -367,4 +381,4 @@ var gamePlay = (function (dealer) {
     return {
         start: start
     }
-})(dealer);
+})(dealer, _, constants);

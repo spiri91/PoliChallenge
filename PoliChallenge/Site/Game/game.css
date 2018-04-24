@@ -150,6 +150,8 @@
     padding-bottom: 1rem;
     padding-top: 1rem;
     width: 100%;
+    transition-duration: 0.5s;
+    padding-left: 2.5rem;
 }
 
     .answer:hover {
@@ -157,7 +159,18 @@
         cursor: pointer;
         color: white;
         font-size: x-large;
+        transition-duration: 0.5s;
+        padding-left: 3rem;
     }
+
+        .answer:hover span {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 45%;
+            transition-duration: 0.8s;
+        }
 
     .answer a {
         padding-left: 2rem;
@@ -171,9 +184,8 @@ hr {
 }
 
 .statementContainer {
-    height: 3rem !important;
+    height: auto;
     padding: 5% !important;
-    margin-bottom: 20% !important;
 }
 
 .statement {
@@ -225,10 +237,10 @@ hr {
     .statementContainer {
         height: 1rem !important;
         padding: 4% !important;
-        margin-bottom: 0 !important;
+        margin-bottom: 1rem !important;
     }
 
-    #scoreContainer, #distanceContainer{
+    #scoreContainer, #distanceContainer {
         padding-top: 1rem;
     }
 }
@@ -241,6 +253,6 @@ hr {
     width: 100%;
 }
 
-#teamNameSelection{
+#teamNameSelection {
     margin-top: 1rem;
 }

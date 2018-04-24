@@ -7,10 +7,12 @@
                 latitude: 44.434543,
                 longitude: 26.048769
             },
-            END_GAME_MESSAGE: 'You just finished the game. :) Start over?', 
+            END_GAME_MESSAGE: 'You just finished the game. :) Start over?',
             ALLOWED_WRONG_ANSWERED_QUESTIONS: 2,
             ANSWERED_QUESTION_POINTS: 10,
-            DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS: 15
+            DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS: 15,
+            CORRECT_ANSWER_MESSAGE: 'Correct !!',
+            WRONG_ANSWER_MESSAGE: 'Wrong :('
         },
         questions: {
             QUESTIONS_SELECT_PLACE: 'Select a place to edit a question of it',
@@ -25,7 +27,7 @@
         },
         messages: {
             MISSING_TOKEN: 'Token is missing :(',
-            DELETED_ITEM: 'Item deleted.', 
+            DELETED_ITEM: 'Item deleted.',
             CREATED_ITEM: 'Item created.',
             UPDATED_ITEM: 'Item updated.'
         },
