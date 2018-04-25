@@ -18,7 +18,8 @@
         names: {
             scores: 'scores',
             places: 'places',
-            questions: 'questions'
+            questions: 'questions',
+            howToPlay: 'howToPlay'
         }
     }
 })()

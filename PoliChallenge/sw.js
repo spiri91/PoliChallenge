@@ -19,9 +19,11 @@ var filesToCache = [
     '/Site/MainSheet.css',
     '/Output/MyScripts/app.js',
     '/Output/myStyles.css',
+    '/sw.js',
     // bower_components,
     '/bower_components/bootstrap/dist/css/bootstrap.min.css',
     '/bower_components/font-awesome/css/font-awesome.min.css',
+    '/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0',
     '/bower_components/jQuery/dist/jquery.min.js',
     '/bower_components/bootstrap/dist/js/bootstrap.min.js',
     '/bower_components/jquery-confirm2/dist/jquery-confirm.min.css',
@@ -31,7 +33,8 @@ var filesToCache = [
     '/bower_components/navigo/lib/navigo.min.js',
     '/NonBower_Components/notify.min.js',
     // other,
-    '/Output/loader.gif'
+    '/Output/loader.gif',
+    '/manifest.json'
 ];
 
 self.addEventListener('install', function (e) {

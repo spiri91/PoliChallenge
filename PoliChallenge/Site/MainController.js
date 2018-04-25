@@ -18,6 +18,10 @@ var mainApp = (function (entities, repo, storage, _) {
     };
 
     function showHowToPlayModal() {
+        let modalWasShownBefore = storage.get(storage.names.howToPlay);
+        if (modalWasShownBefore == 1) return;
+
+        storage.set(storage.names.howToPlay, 1);
         howToPlayBtn.click();
     }
 
