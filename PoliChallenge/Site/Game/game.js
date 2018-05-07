@@ -19,7 +19,8 @@ var gameState = {
         tipContainer: $('#tipContainer'), 
         bottomBar: $('#bottomBar'),
         choseTeamNameBanner: $('#choseTeamNameBanner'),
-        gameBody: $('#gameBody')
+        gameBody: $('#gameBody'),
+        teamNameLabel: $('#teamNameLabel')
     }
 
     let places = [];
@@ -157,8 +158,13 @@ var gameState = {
         _.error(constants.game.LOCATION_DISABLED_MESSAGE);
     }
 
+    function showTeamName() {
+        _.setTextOf(elements.teamNameLabel, teamName);
+    }
+
     function start() {
         showTipAndPulsatingElementForNextPlace();
+        showTeamName();
         geo.watchPosition(intervaledFunction, onErrorFunctionWhileGettingCoords);
     }
 

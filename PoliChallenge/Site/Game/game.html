@@ -2,7 +2,7 @@
 <div id="gameBody" class="hidden">
     <div class="row" id="teamNameSelection">
         <div class="col-sm-12 smallPaddingTop">
-            <input type="text" id="teamName" class="form-control" placeholder="Team Name" />
+            <input type="text" id="teamName" class="form-control" maxlength="8" placeholder="Team Name" />
         </div>
         <div class="col-sm-12 text-center smallPaddingTop">
             <input type="button" class="btn btn-success fixedSizedBtnSmall" value="Start" id="start" />
@@ -47,10 +47,11 @@
         </div>
     </div>
     <h5 class="choseTeamNameBanner" id="choseTeamNameBanner">Chose a team name and start</h5>
+    
     <div class="bottomBar bg-dark text-center" id="bottomBar">
         <div class="row">
             <div class="col-md-6 col-sm-12 noPaddingOrMarginBottom">
-                <p id="scoreContainer"><i class="fa fa-star-half-empty"></i> Score: <span id="score">0</span></p>
+                <p id="scoreContainer"><i class="fa fa-star-half-empty">&nbsp;</i><spam id="teamNameLabel"></spam> score: <span id="score">0</span></p>
             </div>
             <div class="col-md-6 col-sm-12 noPaddingOrMarginBottom">
                 <p id="distanceContainer" class=""><i class="fa fa-location-arrow"> </i> Distance: <span id="distance">0</span> m</p>
