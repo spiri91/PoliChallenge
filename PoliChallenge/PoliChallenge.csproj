@@ -288,6 +288,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.html" />
     <Content Include="favicon.png" />
     <Content Include="favicon_144.png" />
     <Content Include="favicon_152.png" />
@@ -310,7 +311,6 @@
     <Content Include="Site\Game\game.js" />
     <Content Include="Site\HiScores\hiScore.css" />
     <Content Include="Site\HiScores\hiScore.js" />
-    <Content Include="Site\MainController-min.js" />
     <Content Include="Site\Places\place.css" />
     <Content Include="Site\Places\place.js" />
     <Content Include="Site\Questions\question.css" />
