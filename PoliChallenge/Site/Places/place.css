@@ -29,8 +29,8 @@
     padding-bottom: 0;
 }
 
-.smallPaddingTop{
-    padding-top: 3%;
+.smallPaddingTop {
+    padding-top: 1rem;
 }
 
 @media (min-width: 640px) {

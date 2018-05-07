@@ -9,7 +9,7 @@ using System.Web;
 
 namespace PoliChallenge.Business._Core
 {
-    internal sealed class DBConfigurationForTest : DropCreateDatabaseAlways<Context>
+    internal sealed class DBConfigurationForTest : DropCreateDatabaseIfModelChanges<Context>
     {
         protected override void Seed(Context context)
         {

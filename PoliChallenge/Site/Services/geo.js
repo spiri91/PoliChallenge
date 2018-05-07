@@ -3,8 +3,8 @@
         return new Promise((successFunction, errorFunction) => navigator.geolocation.getCurrentPosition(successFunction, errorFunction));
     }
 
-    function watchPosition(successFunction) {
-        navigator.geolocation.watchPosition(successFunction);
+    function watchPosition(successFunction, onErrorFunction) {
+        navigator.geolocation.watchPosition(successFunction, onErrorFunction);
     }
 
     return {

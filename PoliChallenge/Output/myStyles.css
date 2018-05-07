@@ -46,3 +46,11 @@ body.loading .loader {
 .justifyAlign{
     text-align: justify;
 }
+
+.hidden{
+    visibility:hidden;
+}
+
+.smallPaddingTop {
+    padding-top: 1rem;
+}

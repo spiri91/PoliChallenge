@@ -30,7 +30,7 @@
 }
 
 .smallPaddingTop {
-    padding-top: 3%;
+    padding-top: 1rem;
 }
 
 @media (min-width: 640px) {

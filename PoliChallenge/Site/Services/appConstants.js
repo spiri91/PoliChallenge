@@ -12,7 +12,9 @@
             ANSWERED_QUESTION_POINTS: 10,
             DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS: 15,
             CORRECT_ANSWER_MESSAGE: 'Correct !!',
-            WRONG_ANSWER_MESSAGE: 'Wrong :('
+            WRONG_ANSWER_MESSAGE: 'Wrong :(',
+            TEAM_NAME_LENGTH_MESSAGE: 'Team name must be \n at least 4 characters long',
+            LOCATION_DISABLED_MESSAGE: 'Please enable location \n service and reload \n the application!'
         },
         questions: {
             QUESTIONS_SELECT_PLACE: 'Select a place to edit a question of it',

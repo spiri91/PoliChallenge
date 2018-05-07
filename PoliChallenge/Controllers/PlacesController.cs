@@ -33,6 +33,7 @@ namespace PoliChallenge.Controllers
         [Route("")]
         [EnableQuery]
         [AllowAnonymous]
+        [HttpGet]
         public HttpResponseMessage Get() => Request.CreateResponse(HttpStatusCode.OK, _repo.FetchAll().AsDTOs());
 
         /// <summary>

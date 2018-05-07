@@ -1,5 +1,5 @@
-﻿using System.Web.Http;
-using System.Web.OData.Extensions;
+﻿
+using System.Web.Http;
 
 namespace PoliChallenge
 {
@@ -9,11 +9,11 @@ namespace PoliChallenge
         {
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            GlobalConfiguration.Configuration.Routes.MapHttpRoute(
+                 name: "DefaultApi",
+                 routeTemplate: "api/{controller}/{id}",
+                 defaults: new { id = RouteParameter.Optional }
+               );
 
             var cacheCow = new CacheCow.Server.CachingHandler(config, "");
             config.MessageHandlers.Add(cacheCow);

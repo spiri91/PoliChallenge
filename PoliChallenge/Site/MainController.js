@@ -12,9 +12,13 @@ window.onerror = function (message, file, line, col, error) {
 
 var mainApp = (function (entities, repo, storage, _) {
     let howToPlayBtn = $('#howToPlay');
+    let body = $('#body');
 
     var init = () => {
-        return _.showSpinner().then(entities.fillAll(repo, storage)).then(_.hideSpinner).then(showHowToPlayModal);
+        return _.showSpinner()
+            .then(entities.fillAll(repo, storage))
+            .then(_.hideSpinner)
+            .then(showHowToPlayModal);
     };
 
     function showHowToPlayModal() {

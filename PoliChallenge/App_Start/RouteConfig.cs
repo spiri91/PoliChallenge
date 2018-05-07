@@ -7,7 +7,7 @@ namespace PoliChallenge
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("");
+
         }
     }
 }

@@ -18,12 +18,14 @@ var gameState = {
         pulsatingElement: $('#searchForIT'), 
         tipContainer: $('#tipContainer'), 
         bottomBar: $('#bottomBar'),
-        choseTeamNameBanner: $('#choseTeamNameBanner')
+        choseTeamNameBanner: $('#choseTeamNameBanner'),
+        gameBody: $('#gameBody')
     }
 
     let places = [];
     let questions = [];
     var teamName = '';
+    var teamNameWarningShown = false;
     var regex = new RegExp("^[a-zA-Z0-9]*$");
 
     let objective = constants.game.ENTRY_POINT;
@@ -151,17 +153,31 @@ var gameState = {
         places.unshift(startingPoint);
     }
 
+    function onErrorFunctionWhileGettingCoords() {
+        _.error(constants.game.LOCATION_DISABLED_MESSAGE);
+    }
+
     function start() {
         showTipAndPulsatingElementForNextPlace();
-        geo.watchPosition(intervaledFunction);
+        geo.watchPosition(intervaledFunction, onErrorFunctionWhileGettingCoords);
     }
 
     function disableStartButton() {
         _.disableElements([elements.startBtn]);
     }
 
+    function showMinLenghtForTeamNameWarning() {
+        _.warning(constants.game.TEAM_NAME_LENGTH_MESSAGE);
+    }
+
     function teamNameChanged(e) {
         let name = _.valueOf(elements.teamNameTxt);
+
+        if (name.length === 1 && (false == teamNameWarningShown)) {
+            showMinLenghtForTeamNameWarning();
+            teamNameWarningShown = true;
+        }
+
         if (name.length > 3) {
             _.enableElements([elements.startBtn]);
             checkIfEnter(e);
@@ -261,12 +277,17 @@ var gameState = {
         });
     }
 
+    function showGameBody() {
+        elements.gameBody.css('visibility', 'visible');
+    }
+
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButton();
     hideMainBodyOfGame();
     hidePulsatingElementAndBottomBar();
     showChoseTeamBanner();
-    addFadeInOutBottomBarEffectOnScrool()
+    addFadeInOutBottomBarEffectOnScrool();
+    showGameBody();
 
     window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
 })(geo, geolib, _, storage, dealer, repo, guidGenerator, constants);
