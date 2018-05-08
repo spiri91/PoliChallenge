@@ -15,12 +15,16 @@ var gameState = {
         teamNameTxt: $('#teamName'),
         teamSelectionContainer: $('#teamNameSelection'),
         mainBody: $('#mainBody'),
-        pulsatingElement: $('#searchForIT'), 
-        tipContainer: $('#tipContainer'), 
+        pulsatingElement: $('#searchForIT'),
+        tipContainer: $('#tipContainer'),
         bottomBar: $('#bottomBar'),
         choseTeamNameBanner: $('#choseTeamNameBanner'),
         gameBody: $('#gameBody'),
-        teamNameLabel: $('#teamNameLabel')
+        teamNameLabel: $('#teamNameLabel'),
+        warmColdMessageContainer: $('#warmColdMessageContainer'),
+        warmColdMessageText: $('#warmColdMessageText'),
+        fireIcon: $('#fireIcon'),
+        snowIcon: $('#snowIcon')
     }
 
     let places = [];
@@ -28,6 +32,7 @@ var gameState = {
     var teamName = '';
     var teamNameWarningShown = false;
     var regex = new RegExp("^[a-zA-Z0-9]*$");
+    var lastKnownDistance;
 
     let objective = constants.game.ENTRY_POINT;
 
@@ -35,7 +40,7 @@ var gameState = {
         _.setTextOf(elements.distance, distance);
     }
 
-    var intervaledFunction = function(coords) {
+    var intervaledFunction = function (coords) {
         if (gameState.inProgress)
             return;
 
@@ -52,7 +57,7 @@ var gameState = {
             startGameOnPlace();
     }
 
-    var markHiScore = function() {
+    var markHiScore = function () {
         markHiScore = () => { };
 
         _.showSpinner()
@@ -63,7 +68,7 @@ var gameState = {
             .then(_.hideSpinner);
     }
 
-    var endOfGameFunction = function() {
+    var endOfGameFunction = function () {
         _.confirm(constants.game.END_GAME_MESSAGE, () => location.reload());
 
         endOfGameFunction = () => { };
@@ -113,10 +118,35 @@ var gameState = {
     }
 
     function checkDistance(distance) {
+        showWormColdMessage(distance);
+
         if (window.debugModeOn)
             return window.checkDistanceValue;
 
         return distance < constants.game.DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS;
+    }
+
+    function showWormColdMessage(distance) {
+        if (!lastKnownDistance || (distance < lastKnownDistance))
+            showWormMessage();
+        else
+            showColdMessage();
+
+        lastKnownDistance = distance;
+    }
+
+    function showWormMessage() {
+        elements.warmColdMessageContainer.css('background-color', '#E25822');
+        _.setTextOf(elements.warmColdMessageText, 'warmer...');
+        _.showElement(elements.fireIcon);
+        _.hideElement(elements.snowIcon);
+    }
+
+    function showColdMessage() {
+        elements.warmColdMessageContainer.css('background-color', '#56C3F0');
+        _.setTextOf(elements.warmColdMessageText, 'colder...');
+        _.showElement(elements.snowIcon);
+        _.hideElement(elements.fireIcon);
     }
 
     function getDistanceAndShowIt(coords) {
@@ -208,7 +238,7 @@ var gameState = {
 
     function showBottomBar() {
         _.setOpacityOfElement(elements.bottomBar, 1);
-    } 
+    }
 
     function checkIfTeamNameIsTaken() {
         let chosenTeamName = _.valueOf(elements.teamNameTxt).toUpperCase();
@@ -243,7 +273,7 @@ var gameState = {
 
     function checkIfAlphaNumeric(e) {
         var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-        if (regex.test(str)) 
+        if (regex.test(str))
             return true;
 
         e.preventDefault();
@@ -256,7 +286,7 @@ var gameState = {
             elements.startBtn.click();
         }
     }
-    
+
     function hideMainBodyOfGame() {
         _.hideElement(elements.mainBody);
     }
