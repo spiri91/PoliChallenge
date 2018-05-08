@@ -23,7 +23,7 @@ var filesToCache = [
     // bower_components,
     '/bower_components/bootstrap/dist/css/bootstrap.min.css',
     '/bower_components/font-awesome/css/font-awesome.min.css',
-    //'/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0',
+    '/bower_components/font-awesome/fonts/fontawesome-webfont2.svg',
     '/bower_components/jQuery/dist/jquery.min.js',
     '/bower_components/bootstrap/dist/js/bootstrap.min.js',
     '/bower_components/jquery-confirm2/dist/jquery-confirm.min.css',
@@ -34,6 +34,7 @@ var filesToCache = [
     '/NonBower_Components/notify.min.js',
     // other,
     '/Output/loader.gif',
+    '/Output/gameloader.gif',
     '/manifest.json'
 ];
 

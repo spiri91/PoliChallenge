@@ -294,6 +294,7 @@
     <Content Include="favicon_152.png" />
     <Content Include="favicon_192.png" />
     <Content Include="favicon_512.png" />
+    <Content Include="Output\gameloader.gif" />
     <Content Include="Output\loader.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
