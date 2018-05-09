@@ -137,14 +137,14 @@ var gameState = {
 
     function showWormMessage() {
         elements.warmColdMessageContainer.css('background-color', '#E25822');
-        _.setTextOf(elements.warmColdMessageText, 'warmer...');
+        _.setTextOf(elements.warmColdMessageText, 'getting warmer...');
         _.showElement(elements.fireIcon);
         _.hideElement(elements.snowIcon);
     }
 
     function showColdMessage() {
         elements.warmColdMessageContainer.css('background-color', '#56C3F0');
-        _.setTextOf(elements.warmColdMessageText, 'colder...');
+        _.setTextOf(elements.warmColdMessageText, 'getting colder...');
         _.showElement(elements.snowIcon);
         _.hideElement(elements.fireIcon);
     }

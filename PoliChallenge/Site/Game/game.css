@@ -286,3 +286,9 @@ hr {
 .lineHeight1rem {
     line-height: 1rem;
 }
+
+.hint {
+    display: block;
+    border: none;
+    background-color: #DFF0C8;
+}
