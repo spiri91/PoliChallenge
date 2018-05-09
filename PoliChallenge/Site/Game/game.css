@@ -312,3 +312,8 @@ hr {
 .ligthRedBorder {
     border: 1px solid #E9967A;
 }
+
+.startBtn {
+    font-family: 'Bangers', Fallback, sans-serif;
+    color: black !important;
+}
