@@ -40,6 +40,10 @@ var gameState = {
         _.setTextOf(elements.distance, distance);
     }
 
+    function showWarmColdMessageContainer() {
+        _.showElement(elements.warmColdMessageContainer);
+    }
+
     var intervaledFunction = function (coords) {
         if (gameState.inProgress)
             return;
@@ -51,6 +55,7 @@ var gameState = {
         }
 
         showTipAndPulsatingElementForNextPlace();
+        showWarmColdMessageContainer();
         let distance = getDistanceAndShowIt(coords);
 
         if (checkDistance(distance))
@@ -92,8 +97,13 @@ var gameState = {
         return places.length === 0;
     }
 
+    function hideWarmColdMessage() {
+        _.hideElement(elements.warmColdMessageContainer);
+    }
+
     function startGameOnPlace() {
         hideTipAndPulsationElement();
+        hideWarmColdMessage();
         let place = getNextPlaceAndRemoveIt();
         let questionsForPlace = getQuestionsForPlace(place);
 
@@ -136,7 +146,7 @@ var gameState = {
     }
 
     function showWormMessage() {
-        elements.warmColdMessageContainer.css('background-color', '#E25822');
+        elements.warmColdMessageContainer.css('background-color', '#e2585a');
         _.setTextOf(elements.warmColdMessageText, 'getting warmer...');
         _.showElement(elements.fireIcon);
         _.hideElement(elements.snowIcon);
