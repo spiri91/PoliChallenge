@@ -39,18 +39,26 @@ body.loading .loader {
     text-align: center;
 }
 
-.italicFont{
-    font-style:italic;
+.italicFont {
+    font-style: italic;
 }
 
-.justifyAlign{
+.justifyAlign {
     text-align: justify;
 }
 
-.hidden{
-    visibility:hidden;
+.hidden {
+    visibility: hidden;
 }
 
 .smallPaddingTop {
     padding-top: 1rem;
+}
+
+@font-face {
+    font-family: 'Bangers';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../Output/CustomFonts/') src: url('../Output/CustomFonts/bangers-v10-latin-regular.eot');
+    src: local('Bangers Regular'), local('Bangers-Regular'), url('../fonts/bangers-v10-latin-regular.eot?#iefix') format('embedded-opentype'), url('../Output/CustomFonts/bangers-v10-latin-regular.woff2') format('woff2'), url('../Output/CustomFonts/bangers-v10-latin-regular.woff') format('woff'), url('../Output/CustomFonts/bangers-v10-latin-regular.ttf') format('truetype'), url('../Output/CustomFonts/bangers-v10-latin-regular.svg#Bangers') format('svg');
 }

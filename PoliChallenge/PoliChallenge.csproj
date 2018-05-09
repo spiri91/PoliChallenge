@@ -295,6 +295,7 @@
     <Content Include="favicon_192.png" />
     <Content Include="favicon_512.png" />
     <Content Include="NonBower_Components\stopwatch.js" />
+    <Content Include="Output\CustomFonts\bangers-v10-latin-regular.svg" />
     <Content Include="Output\gameloader.gif" />
     <Content Include="Output\loader.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -349,6 +350,10 @@
     <Content Include="package.json" />
     <Content Include="chutzpah.json" />
     <Content Include="manifest.json" />
+    <Content Include="Output\CustomFonts\bangers-v10-latin-regular.eot" />
+    <Content Include="Output\CustomFonts\bangers-v10-latin-regular.ttf" />
+    <Content Include="Output\CustomFonts\bangers-v10-latin-regular.woff" />
+    <Content Include="Output\CustomFonts\bangers-v10-latin-regular.woff2" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
   </ItemGroup>

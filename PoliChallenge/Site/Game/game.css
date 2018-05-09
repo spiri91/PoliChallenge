@@ -75,7 +75,7 @@
 }
 
 #searchForIT {
-    margin-top: 20%;
+    margin-top: 30%;
 }
 
 .noMarginBottom {
@@ -84,9 +84,10 @@
 
 .pulse {
     -webkit-animation-name: pulsate;
-    -webkit-animation-duration: 3s;
+    -webkit-animation-duration: 5s;
     -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-iteration-count: infinite
+    -webkit-animation-iteration-count: infinite;
+    margin-bottom: 2rem;
 }
 
 .noLateralPadding {
@@ -291,4 +292,23 @@ hr {
     display: block;
     border: none;
     background-color: #DFF0C8;
+}
+
+.mainTitle {
+    font-family: 'Bangers', Fallback, sans-serif;
+    text-align: center;
+    width: 100%;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    font-size: 3.5rem;
+}
+
+.teamNameInput {
+    width: 100%;
+    position: fixed;
+    bottom: 8rem;
+}
+
+.ligthRedBorder {
+    border: 1px solid #E9967A;
 }
