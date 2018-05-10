@@ -76,6 +76,8 @@
 
 #searchForIT {
     margin-top: 30%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .noMarginBottom {
@@ -223,6 +225,8 @@ hr {
 
     .badAnswersContainer {
         padding: 0;
+        padding-left: 0 !important;
+        width: 12rem;
     }
 
     .badAnswers {
@@ -252,7 +256,7 @@ hr {
 
 .choseTeamNameBanner {
     display: block;
-    position: fixed;
+    position: absolute;
     bottom: 4rem;
     text-align: center;
     width: 100%;
@@ -260,6 +264,7 @@ hr {
 
 #teamNameSelection {
     margin-top: 1rem;
+    margin-right: 0 !important;
 }
 
 .gameLoadingGif {
@@ -305,8 +310,6 @@ hr {
 
 .teamNameInput {
     width: 100%;
-    position: fixed;
-    bottom: 8rem;
 }
 
 .ligthRedBorder {

@@ -38,3 +38,11 @@
         width: 100%;
     }
 }
+
+select{
+    padding-left: 0.2rem !important;
+}
+
+input {
+    padding-left: 0.2rem !important;
+}

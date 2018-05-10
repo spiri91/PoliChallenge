@@ -62,3 +62,18 @@ body.loading .loader {
     src: url('../Output/CustomFonts/') src: url('../Output/CustomFonts/bangers-v10-latin-regular.eot');
     src: local('Bangers Regular'), local('Bangers-Regular'), url('../fonts/bangers-v10-latin-regular.eot?#iefix') format('embedded-opentype'), url('../Output/CustomFonts/bangers-v10-latin-regular.woff2') format('woff2'), url('../Output/CustomFonts/bangers-v10-latin-regular.woff') format('woff'), url('../Output/CustomFonts/bangers-v10-latin-regular.ttf') format('truetype'), url('../Output/CustomFonts/bangers-v10-latin-regular.svg#Bangers') format('svg');
 }
+
+.row{
+   margin-left: 0 !important;
+   margin-right: 0 !important;
+}
+
+.noLateralPaddingForAllElements *{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.noLateralPadding{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

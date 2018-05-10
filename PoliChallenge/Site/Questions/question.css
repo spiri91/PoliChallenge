@@ -37,4 +37,16 @@
     .row {
         width: 100%;
     }
+
+   .col-sm-6{
+       padding-right: 0.5rem !important;
+   }
+}
+
+select {
+    padding-left: 0.2rem !important;
+}
+
+input {
+    padding-left: 0.2rem !important;
 }
