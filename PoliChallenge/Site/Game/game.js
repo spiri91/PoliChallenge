@@ -262,10 +262,21 @@ var gameState = {
         throw new Error('Bad team name');
     }
 
+    function hideBottomPart() {
+        _.hideElement(elements.choseTeamNameBanner);
+        _.hideElement(elements.bottomBar);
+    }
+
+    function showBottomPart() {
+        _.showElement(elements.bottomBar);
+    }
+
     function addEventToTeamNameTextBoxAndStartButton() {
         elements.teamNameTxt.keyup(teamNameChanged);
         elements.teamNameTxt.keypress(checkIfAlphaNumeric);
         elements.teamNameTxt.on('paste', checkPastedCode);
+        elements.teamNameTxt.focus(hideBottomPart);
+        elements.teamNameTxt.blur(showBottomPart);
         elements.startBtn.click(startGame);
     }
 
@@ -341,7 +352,7 @@ var gameState = {
 
 var gamePlay = (function (dealer, _, constants) {
     let externalElement = {
-        score: $('#score')
+        score: $('#score'),
     }
 
     let elements = {
@@ -351,7 +362,9 @@ var gamePlay = (function (dealer, _, constants) {
         answer2: $('#answer2'),
         answer3: $('#answer3'),
         answer4: $('#answer4'),
-        wrongAnsweredQuestionCount: $('#wrAnsQ')
+        wrongAnsweredQuestionCount: $('#wrAnsQ'),
+        timeLeftContainer: $('#timeLeftContainer'),
+        timeLeft: $('#timeLeft')
     }
 
     function bindEvents() {
@@ -364,17 +377,51 @@ var gamePlay = (function (dealer, _, constants) {
     let wrongAnsweredQuestions = 0;
     let _questions = [];
     let currentQuestion = {};
+    let timeLeft = constants.game.TIME_LEFT;
+
+    let intervaledFunction = () => { };
 
     function start(questions) {
         gameState.inProgress = true;
         resetWrongAnsweredQuestions();
         _questions = questions;
+
+        showTimeLeftContainer();
+        setTimeLeft();
+        startCounter();
         moveNext();
+    }
+
+    function showTimeLeftContainer() {
+        _.showElement(elements.timeLeftContainer);
+    }
+
+    function setTimeLeft() {
+        timeLeft = constants.game.TIME_LEFT;
+    }
+
+    function startCounter() {
+        intervaledFunction = setInterval(checkTimeLeft, 1000);
+    }
+
+    function checkTimeLeft() {
+        if (0 == timeLeft) {
+            _.warning(constants.game.TIMES_UP_MESSAGE);
+            moveNext();
+        }
+        else {
+            timeLeft--;
+            _.setTextOf(elements.timeLeft, timeLeft);
+        }
     }
 
     function resetWrongAnsweredQuestions() {
         wrongAnsweredQuestions = 0;
         _.setTextOf(elements.wrongAnsweredQuestionCount, wrongAnsweredQuestions);
+    }
+
+    function resetStopWatch() {
+        timeLeft = constants.game.TIME_LEFT;
     }
 
     function moveNext() {
@@ -385,12 +432,15 @@ var gamePlay = (function (dealer, _, constants) {
         }
 
         currentQuestion = _questions.shift();
+        resetStopWatch();
         showQuestion();
     }
 
     function stopGame() {
         gameState.inProgress = false;
         _.hideElement(elements.qContainer);
+        _.hideElement(elements.timeLeftContainer);
+        clearInterval(intervaledFunction);
     }
 
     function showQuestion() {

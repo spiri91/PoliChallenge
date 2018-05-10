@@ -14,7 +14,9 @@
             CORRECT_ANSWER_MESSAGE: 'Correct !!',
             WRONG_ANSWER_MESSAGE: 'Wrong :(',
             TEAM_NAME_LENGTH_MESSAGE: 'Team name must be \n at least 4 characters long',
-            LOCATION_DISABLED_MESSAGE: 'Please enable location \n service and reload \n the application!'
+            LOCATION_DISABLED_MESSAGE: 'Please enable location \n service and reload \n the application!',
+            TIME_LEFT: 120,
+            TIMES_UP_MESSAGE: "Time's up. Sorry :("
         },
         questions: {
             QUESTIONS_SELECT_PLACE: 'Select a place to edit a question of it',
