@@ -137,7 +137,7 @@ var gameState = {
     }
 
     function showWormColdMessage(distance) {
-        if (!lastKnownDistance || (distance < lastKnownDistance))
+        if (!lastKnownDistance || (distance <= lastKnownDistance))
             showWormMessage();
         else
             showColdMessage();
@@ -268,7 +268,7 @@ var gameState = {
     }
 
     function showBottomPart() {
-        _.showElement(elements.bottomBar);
+        setTimeout(() => _.showElement(elements.bottomBar), 1000);
     }
 
     function addEventToTeamNameTextBoxAndStartButton() {
