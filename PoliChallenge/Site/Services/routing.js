@@ -8,11 +8,11 @@ var content = (($) => {
     }
 
     let getHtml = (extension) => $.get("Site/" + extension + ".html");
-    let getScript = (extension) => $.get("Site/" + extension + ".js");// "-min.js");
+    let getScript = (extension) => $.get("Site/" + extension + ".js");
    
     return {
         set: (extension) => {
-            getHtml(extension).then(setContent).then(function () { return getScript(extension); });
+            return getHtml(extension).then(setContent).then(() => getScript(extension));
         }
     }
 })(jQuery);
@@ -23,16 +23,17 @@ var hash = '#';
 var router = new Navigo(root, useHash, hash);
 
 route: router.on({
-    'questions': function() {
-        content.set("Questions/question");
+    'questions': function () {
+        _.showSpinner().then(() => content.set("Questions/question")).then(_.hideSpinner);
+        
     },
-    'places': function() {
-        content.set("Places/place");
+    'places': function () {
+        _.showSpinner().then(() => content.set("Places/place")).then(_.hideSpinner);
     },
-    'hiScores': function() {
-        content.set("HiScores/hiScore");
+    'hiScores': function () {
+        _.showSpinner().then(() => content.set("HiScores/hiScore")).then(_.hideSpinner);
     },
-    '*': function() {
-        content.set("Game/game");
+    '*': function () {
+        _.showSpinner().then(() => content.set("Game/game")).then(_.hideSpinner);
     }
 }).resolve();
