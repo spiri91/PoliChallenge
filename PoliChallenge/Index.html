@@ -10,26 +10,28 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#673ab6">
     <meta name="description" content="Awesome quiz game that takes places in Politehnica Park Bucharest">
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="bower_components/jquery-confirm2/dist/jquery-confirm.min.css" rel="stylesheet" />
-    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" defer/>
+    <link href="bower_components/jquery-confirm2/dist/jquery-confirm.min.css" rel="stylesheet" defer />
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" defer/>
+
     <script src="../../bower_components/jQuery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/moment/min/moment.min.js"></script>
-    <script src="bower_components/jquery-confirm2/dist/jquery-confirm.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js" defer></script>
+    <script src="bower_components/jquery-confirm2/dist/jquery-confirm.min.js" defer></script>
     <script src="../../bower_components/Geolib/dist/geolib.min.js"></script>
     <script src="bower_components/navigo/lib/navigo.min.js"></script>
-    <script src="NonBower_Components/notify.min.js"></script>
+    <script src="NonBower_Components/notify.min.js" defer></script>
 
     <!--my general scripts and styles-->
-    <link href="Output/myStyles.css" rel="stylesheet" />
+    <link href="Output/myStyles.css" rel="stylesheet"/>
     <script src="../../Output/MyScripts/app.js"></script>
 </head>
 <body>
     <div>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <a class="navbar-brand navBarHome" href="#"><i class="fa fa-home"></i> PoliChallenge</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-label="extend">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -44,7 +46,7 @@
                         <a class="nav-link" href="mailto:spataru.ionut91@gmail.com"><i class="fa fa-envelope-o"></i> Email me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/spiri91/PoliChallenge" target="_blank"><i class="fa fa-github"></i> GitHub project</a>
+                        <a class="nav-link" href="https://github.com/spiri91/PoliChallenge" target="_blank" rel="noopener"><i class="fa fa-github"></i> GitHub project</a>
                     </li>
                 </ul>
             </div>
