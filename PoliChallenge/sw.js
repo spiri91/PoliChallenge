@@ -34,7 +34,6 @@ var filesToCache = [
     '/NonBower_Components/notify.min.js',
     // other,
     '/Output/loader.gif',
-    '/Output/gameloader.gif',
     '/manifest.json'
 ];
 
