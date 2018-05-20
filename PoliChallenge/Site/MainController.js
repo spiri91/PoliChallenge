@@ -13,13 +13,24 @@ window.onerror = function (message, file, line, col, error) {
 var mainApp = (function (entities, repo, storage, _) {
     let howToPlayBtn = $('#howToPlay');
     let body = $('#body');
+    let adminBtn = $('#addItem');
 
     var init = () => {
         return _.showSpinner()
             .then(entities.fillAll(repo, storage))
             .then(_.hideSpinner)
-            .then(showHowToPlayModal);
+            .then(showHowToPlayModal)
+            .then(chekIfUrlContainsAdmin)
     };
+
+    function chekIfUrlContainsAdmin() {
+        let urlHash = window.location.hash.substr(1);
+
+        if (urlHash.toUpperCase().indexOf('ADMIN') > -1)
+            _.showElement(adminBtn);
+        else
+            _.hideElement(adminBtn);
+    }
 
     function showHowToPlayModal() {
         let modalWasShownBefore = storage.get(storage.names.howToPlay);
