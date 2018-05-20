@@ -77,3 +77,22 @@ body.loading .loader {
 html * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
+
+#addItem > button {
+    color: #fff;
+    background-color: #007B74;
+    border-color: #007BB3;
+    font-size: 1rem;
+    padding: 0.2rem;
+}
+
+#addItem ul{
+    padding-left: 1rem;
+    background: lightgrey;
+}
+
+@media (min-width: 640px) {
+    #addItem > button {
+        margin-left: 1rem;
+    }
+}
