@@ -45,7 +45,7 @@
 
         if (message.status < 300) {
             $.notify(message.statusText, 'success');
-            return;
+            return true;
         }
 
         if (message.statusText)

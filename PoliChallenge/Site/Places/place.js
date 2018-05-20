@@ -23,8 +23,9 @@
         addEventsToBtns();
         populateListOfPlaces();
         disableButtonsForDeleteAndUpdate();
+        clearElementsOfValues();
     }
-     
+
     function populateListOfPlaces() {
         places = storage.get(storage.names.places);
 
@@ -38,7 +39,7 @@
     }
 
     function addEventsToBtns() {
-        if (true == eventsAddedToBtns) 
+        if (true == eventsAddedToBtns)
             return;
 
         elements.autoFillBtn.click(getCoords);
@@ -114,7 +115,7 @@
 
         return _.showSpinner()
             .then(() => repo.put(repo.entities.places, selectedElement, token))
-            .then(() => _.success(constants.messages.UPDATED_ITEM), _.error)
+            .then(() => _.success(constants.messages.UPDATED_ITEM), breakPromiseChain)
             .then(refresh)
             .then(init)
             .then(_.hideSpinner);
@@ -129,7 +130,7 @@
 
         _.confirm(constants.places.DELETE_PLACE, () => _.showSpinner()
             .then(() => repo.delete(repo.entities.places, selectedElement.key, token))
-            .then(() => _.success(constants.messages.DELETED_ITEM), _.error)
+            .then(() => _.success(constants.messages.DELETED_ITEM), breakPromiseChain)
             .then(refresh)
             .then(init)
             .then(_.hideSpinner));
@@ -154,10 +155,20 @@
 
         return _.showSpinner()
             .then(() => repo.post(repo.entities.places, newPlace, token))
-            .then(() => _.success(constants.messages.CREATED_ITEM), _.error)
+            .then(() => _.success(constants.messages.CREATED_ITEM), breakPromiseChain)
             .then(refresh)
             .then(init)
             .then(_.hideSpinner);
+    }
+
+    function breakPromiseChain(e) {
+        let isSuccessCallBack = _.error(e);
+
+        if (isSuccessCallBack) return;
+
+        _.hideSpinner();
+        console.log(e);
+        throw new Error('Break promise chain')
     }
 
     function refresh() {

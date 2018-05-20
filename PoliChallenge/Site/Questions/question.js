@@ -162,7 +162,7 @@
         _.confirm(constants.questions.DELETE_QUESTION, () =>
             _.showSpinner()
                 .then(() => repo.delete(repo.entities.questions, selectedQuestion.key, token))
-                .then(() => _.success(constants.messages.DELETED_ITEM), _.error)
+                .then(() => _.success(constants.messages.DELETED_ITEM), breakPromiseChain)
                 .then(refresh)
                 .then(setAllControlsToEmpty)
                 .then(init)
@@ -197,7 +197,7 @@
 
         return _.showSpinner()
             .then(() => repo.post(repo.entities.questions, newQuestion, token))
-            .then(() => _.success(constants.messages.CREATED_ITEM), _.error)
+            .then(() => _.success(constants.messages.CREATED_ITEM), breakPromiseChain)
             .then(refresh)
             .then(setAllControlsToEmpty)
             .then(init)
@@ -223,7 +223,7 @@
 
         return _.showSpinner()
             .then(() => repo.put(repo.entities.questions, newQuestion, token))
-            .then(() => _.success(constants.messages.UPDATED_ITEM), _.error)
+            .then(() => _.success(constants.messages.UPDATED_ITEM), breakPromiseChain)
             .then(refresh)
             .then(setAllControlsToEmpty)
             .then(init)
@@ -250,6 +250,17 @@
         $.each(places, function () {
             elements.places.append(new Option(this.name, this.key));
         });
+    }
+
+
+    function breakPromiseChain(e) {
+        let isSuccessCallBack = _.error(e);
+
+        if (isSuccessCallBack) return;
+
+        _.hideSpinner();
+        console.log(e);
+        throw new Error('Break promise chain')
     }
 
     init();
