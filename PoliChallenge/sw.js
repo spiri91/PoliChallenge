@@ -32,6 +32,7 @@ var filesToCache = [
     '/bower_components/moment/min/moment.min.js',
     '/bower_components/navigo/lib/navigo.min.js',
     '/NonBower_Components/notify.min.js',
+    '/NonBower_Components/cookiesMessage.js',
     // other,
     '/Output/loader.gif',
     '/manifest.json'
