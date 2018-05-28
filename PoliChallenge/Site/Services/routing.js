@@ -8,7 +8,7 @@ var content = (($) => {
     }
 
     let getHtml = (extension) => $.get("Site/" + extension + ".html");
-    let getScript = (extension) => $.get("Site/" + extension + ".js");
+    let getScript = (extension) => $.get("Site/" + extension + "-min.js");
    
     return {
         set: (extension) => {

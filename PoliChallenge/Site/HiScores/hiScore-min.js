@@ -1,0 +1,1 @@
+"use strict";!function(t,e,o,r,s){let d={tBody:$("#tableBody")};!function(t){let e=1;for(let r in t){let n=t[r];d.tBody.append("<tr><th scope='row'>"+e+"</th><td>"+n.teamName+"</td><td>"+(o=n.date,moment(o).format(s.hiScores.DATE_FORMAT))+"</td><td>"+n.score+"</td></tr > "),e++}var o}(o.get(o.names.scores).sort((t,e)=>t.score<e.score))}(repo,_,storage,entities,constants);
