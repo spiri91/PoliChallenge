@@ -17,7 +17,7 @@ namespace PoliChallenge.Business.Places
         [Required]
         public decimal Longitude { get; set; }
 
-        [MinLength(10)]
+        [Required]
         public string Observations { get; set; }
 
         public static implicit operator PlaceDTO(Place place)

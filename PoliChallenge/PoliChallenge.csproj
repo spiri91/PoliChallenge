@@ -280,9 +280,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804111840174_initial.cs" />
-    <Compile Include="Migrations\201804111840174_initial.Designer.cs">
-      <DependentUpon>201804111840174_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201806020654463_initialMigration.cs" />
+    <Compile Include="Migrations\201806020654463_initialMigration.Designer.cs">
+      <DependentUpon>201806020654463_initialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -361,8 +361,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804111840174_initial.resx">
-      <DependentUpon>201804111840174_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806020654463_initialMigration.resx">
+      <DependentUpon>201806020654463_initialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

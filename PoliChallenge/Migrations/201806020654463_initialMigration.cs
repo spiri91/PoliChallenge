@@ -3,7 +3,7 @@ namespace PoliChallenge.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class initialMigration : DbMigration
     {
         public override void Up()
         {
@@ -26,7 +26,7 @@ namespace PoliChallenge.Migrations
                         Name = c.String(nullable: false),
                         Latitude = c.Decimal(nullable: false, precision: 38, scale: 18),
                         Longitude = c.Decimal(nullable: false, precision: 38, scale: 18),
-                        Observations = c.String(),
+                        Observations = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Key);
             
