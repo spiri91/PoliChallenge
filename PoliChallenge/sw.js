@@ -35,6 +35,7 @@ var filesToCache = [
     '/NonBower_Components/cookiesMessage.js',
     // other,
     '/Output/loader.gif',
+    '/Output/CustomFonts/bangers-v10-latin-regular.woff2',
     '/manifest.json'
 ];
 
