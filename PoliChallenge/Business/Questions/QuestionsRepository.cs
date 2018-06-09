@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using PoliChallenge.Business._Core;
 using PoliChallenge.Contracts;

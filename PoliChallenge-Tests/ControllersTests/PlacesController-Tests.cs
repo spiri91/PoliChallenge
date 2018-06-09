@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using PoliChallenge.Business.HiScores;
 using PoliChallenge.Business.Places;
 using PoliChallenge.Controllers;
 using PoliChallenge_Tests._Core;

@@ -1,6 +1,4 @@
-﻿using PoliChallenge_Tests._Core;
-using System;
-using NUnit.Framework.Internal;
+﻿using System;
 using NUnit.Framework;
 using PoliChallenge.Business._Core;
 using System.Web.Http.Controllers;

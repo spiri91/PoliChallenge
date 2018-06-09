@@ -274,7 +274,6 @@
     <Compile Include="Contracts\IIsEqual.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Controllers\HiScoresController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlacesController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -295,7 +294,6 @@
     <Content Include="favicon_192.png" />
     <Content Include="favicon_512.png" />
     <Content Include="NonBower_Components\cookiesMessage.js" />
-    <Content Include="NonBower_Components\stopwatch.js" />
     <Content Include="Output\CustomFonts\bangers-v10-latin-regular.svg" />
     <Content Include="Output\loader.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -308,15 +306,26 @@
     </Content>
     <Content Include="gulpfile.js" />
     <Content Include="JS_Tests\JSTests.js" />
+    <Content Include="Output\MyScripts\app-min.js" />
     <Content Include="Output\MyScripts\app.js" />
     <Content Include="Output\myStyles.css" />
+    <Content Include="Output\myStyles.min.css" />
+    <Content Include="Site\Game\game-min.js" />
     <Content Include="Site\Game\game.css" />
     <Content Include="Site\Game\game.js" />
+    <Content Include="Site\Game\game.min.css" />
+    <Content Include="Site\HiScores\hiScore-min.js" />
     <Content Include="Site\HiScores\hiScore.css" />
     <Content Include="Site\HiScores\hiScore.js" />
+    <Content Include="Site\HiScores\hiScore.min.css" />
+    <Content Include="Site\MainController-min.js" />
+    <Content Include="Site\Places\place-min.js" />
     <Content Include="Site\Places\place.css" />
     <Content Include="Site\Places\place.js" />
+    <Content Include="Site\Places\place.min.css" />
+    <Content Include="Site\Questions\question-min.js" />
     <Content Include="Site\Questions\question.css" />
+    <Content Include="Site\Questions\question.min.css" />
     <Content Include="Site\Services\appConstants.js" />
     <Content Include="Site\Services\call.js" />
     <Content Include="Site\Services\dealer.js" />

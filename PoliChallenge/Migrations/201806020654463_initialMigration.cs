@@ -1,6 +1,5 @@
 namespace PoliChallenge.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
     
     public partial class initialMigration : DbMigration

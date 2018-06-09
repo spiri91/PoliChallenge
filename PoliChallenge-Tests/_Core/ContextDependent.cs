@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using PoliChallenge.Business.HiScores;
 using PoliChallenge.Business.Places;
 using PoliChallenge.Business.Questions;
