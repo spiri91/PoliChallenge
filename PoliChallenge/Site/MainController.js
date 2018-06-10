@@ -11,16 +11,17 @@ window.onerror = function (message, file, line, col, error) {
 };
 
 var mainApp = (function (entities, repo, storage, _) {
+    _.showSpinner();
+    entities.fillAll(repo, storage)
+
     let howToPlayBtn = $('#howToPlay');
     let body = $('#body');
     let adminBtn = $('#addItem');
 
     var init = () => {
-        return _.showSpinner()
-            .then(entities.fillAll(repo, storage))
-            .then(_.hideSpinner)
-            .then(showHowToPlayModal)
-            .then(chekIfUrlContainsAdmin)
+            showHowToPlayModal();
+            chekIfUrlContainsAdmin();
+            _.hideSpinner();
     };
 
     function chekIfUrlContainsAdmin() {
