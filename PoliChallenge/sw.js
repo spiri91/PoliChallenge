@@ -17,7 +17,7 @@ var filesToCache = [
     '/Site/Questions/question.html',
     '/Site/MainController-min.js',
     '/Site/MainSheet.css',
-    '/Output/MyScripts/app.js',
+    '/Output/MyScripts/app-min.js',
     '/Output/myStyles.min.css',
     '/sw.js',
     // bower_components,

@@ -1,7 +1,4 @@
-﻿/// <reference path="call.js" />
-
-'use strict';
-var repo = (function () {
+﻿var repo = (function () {
     const routes = {
         places: 'api/places',
         questions: 'api/questions',

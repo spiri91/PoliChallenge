@@ -37,7 +37,6 @@ var constants = (function () {
         },
     }
 })()
-/// <reference path="../../bower_components/jquery/dist/jquery.js" />
 var call = (function () {
     function makeCall({ to, action = 'GET', body = null, token = '' }) {
         return $.ajax({
@@ -60,7 +59,7 @@ var call = (function () {
 
         ajax: makeCall
     }
-})();
+})()
 var dealer = (function () {
     var shuffle = function (array) {
         if (!array)
@@ -108,7 +107,7 @@ var geo = (function () {
         get: getCoords,
         watchPosition: watchPosition
     }
-})();
+})()
 var guidGenerator = (function() {
     return {
         generate : function() {
@@ -118,7 +117,7 @@ var guidGenerator = (function() {
             });
         }
     }
-})();
+})()
 var _ = (function () {
     var props = {
         disabled: 'disabled'
@@ -256,10 +255,7 @@ var _ = (function () {
         showElement: showElement,
         setOpacityOfElement: setOpacityOfElement
     }
-})();
-/// <reference path="call.js" />
-
-'use strict';
+})()
 var repo = (function () {
     const routes = {
         places: 'api/places',
@@ -351,9 +347,6 @@ var repo = (function () {
         createHiScore: createHiScore
     };
 })(call)
-/// <reference path="../bower_components/navigo/lib/navigo.js" />
-/// <reference path="../bower_components/jquery/dist/jquery.js" />
-
 var content = (($) => {
     let getContent = (extension) => $.get("Site/" + extension);
     let setContent = (content) => {

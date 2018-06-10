@@ -1,7 +1,4 @@
-﻿/// <reference path="../bower_components/navigo/lib/navigo.js" />
-/// <reference path="../bower_components/jquery/dist/jquery.js" />
-
-var content = (($) => {
+﻿var content = (($) => {
     let getContent = (extension) => $.get("Site/" + extension);
     let setContent = (content) => {
         $('#body').html(content);

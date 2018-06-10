@@ -1,5 +1,4 @@
-﻿/// <reference path="../../bower_components/jquery/dist/jquery.js" />
-var call = (function () {
+﻿var call = (function () {
     function makeCall({ to, action = 'GET', body = null, token = '' }) {
         return $.ajax({
             url: to,
@@ -21,4 +20,4 @@ var call = (function () {
 
         ajax: makeCall
     }
-})();
+})()

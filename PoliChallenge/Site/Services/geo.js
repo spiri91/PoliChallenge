@@ -11,4 +11,4 @@
         get: getCoords,
         watchPosition: watchPosition
     }
-})();
+})()
