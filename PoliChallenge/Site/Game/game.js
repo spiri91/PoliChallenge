@@ -24,7 +24,8 @@ var gameState = {
         warmColdMessageContainer: $('#warmColdMessageContainer'),
         warmColdMessageText: $('#warmColdMessageText'),
         fireIcon: $('#fireIcon'),
-        snowIcon: $('#snowIcon')
+        snowIcon: $('#snowIcon'),
+        moveNextBtn: $('#moveNextBtn')
     }
 
     let places = [];
@@ -56,6 +57,8 @@ var gameState = {
 
         showTipAndPulsatingElementForNextPlace();
         showWarmColdMessageContainer();
+        showMoveNextBtn();
+
         let distance = getDistanceAndShowIt(coords);
 
         if (checkDistance(distance))
@@ -103,6 +106,7 @@ var gameState = {
 
     function startGameOnPlace() {
         hideTipAndPulsationElement();
+        hideMoveNextBtn();
         hideWarmColdMessage();
         let place = getNextPlaceAndRemoveIt();
         let questionsForPlace = getQuestionsForPlace(place);
@@ -231,12 +235,29 @@ var gameState = {
         else
             _.disableElements([elements.startBtn]);
     }
+
+    function handleTooltipForMoveNextBtn() {
+        elements.moveNextBtn.tooltip();
+        elements.moveNextBtn.tooltip('show');
+        setTimeout(() => {
+            elements.moveNextBtn.tooltip('hide');
+            handleTooltipForMoveNextBtn = () => { };
+        }, constants.game.SHOW_TOOLTIP_TIME_FOR_MOVE_NEXT_PLACE);
+    }
+
+    function showMoveNextBtn() {
+        _.showElement(elements.moveNextBtn);
+
+        handleTooltipForMoveNextBtn();
+    }
+
     function startGame() {
         checkIfTeamNameIsTaken();
 
         getPlacesAndQuestions();
         hideChoseTeamBanner();
         showBottomBar();
+        showMoveNextBtn();
 
         _.hideElement(elements.teamSelectionContainer);
         _.showElement(elements.mainBody);
@@ -271,13 +292,19 @@ var gameState = {
         setTimeout(() => _.showElement(elements.bottomBar), 1000);
     }
 
-    function addEventToTeamNameTextBoxAndStartButton() {
+    function moveNextPlace() {
+        getNextPlaceAndRemoveIt();
+        showTipAndPulsatingElementForNextPlace();
+    }
+
+    function addEventToTeamNameTextBoxAndStartButtonAndMoveNext() {
         elements.teamNameTxt.keyup(teamNameChanged);
         elements.teamNameTxt.keypress(checkIfAlphaNumeric);
         elements.teamNameTxt.on('paste', checkPastedCode);
         elements.teamNameTxt.focus(hideBottomPart);
         elements.teamNameTxt.blur(showBottomPart);
         elements.startBtn.click(startGame);
+        elements.moveNextBtn.click(moveNextPlace);
     }
 
     function checkPastedCode(e) {
@@ -338,9 +365,14 @@ var gameState = {
         elements.gameBody.css('visibility', 'visible');
     }
 
+    function hideMoveNextBtn() {
+        _.hideElement(elements.moveNextBtn);
+    }
+
     disableStartButton();
-    addEventToTeamNameTextBoxAndStartButton();
+    addEventToTeamNameTextBoxAndStartButtonAndMoveNext();
     hideMainBodyOfGame();
+    hideMoveNextBtn();
     hidePulsatingElementAndBottomBar();
     showChoseTeamBanner();
     addFadeInOutBottomBarEffectOnScrool();
@@ -496,6 +528,7 @@ var gamePlay = (function (dealer, _, constants) {
     bindEvents();
 
     return {
-        start: start
+        start: start,
+        moveNext: moveNext
     }
 })(dealer, _, constants);

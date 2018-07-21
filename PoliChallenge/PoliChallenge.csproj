@@ -294,6 +294,7 @@
     <Content Include="favicon_192.png" />
     <Content Include="favicon_512.png" />
     <Content Include="NonBower_Components\cookiesMessage.js" />
+    <Content Include="NonBower_Components\popper.min.js" />
     <Content Include="Output\CustomFonts\bangers-v10-latin-regular.svg" />
     <Content Include="Output\loader.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
