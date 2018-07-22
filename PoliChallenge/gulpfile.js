@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='bundle-js' ProjectOpened='default' />
+﻿/// <binding ProjectOpened='runAllMinifiers' />
 /*
 This file is the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. https://go.microsoft.com/fwlink/?LinkId=518007
@@ -12,12 +12,18 @@ gulp.task('default', function () {
 });
 
 gulp.task('runAllMinifiers', function () {
-    gulp.run('bundle-js');
+    gulp.run('default');
     gulp.run('minifyGameJS');
     gulp.run('minifyPlaceJS');
     gulp.run('minifyHiScoreJS');
     gulp.run('minifyQuestionsJS');
     gulp.run('minifyMainControllerJS');
+    gulp.run('minifyAppJs'),
+    gulp.run('minifyMyStyleCss'),
+    gulp.run('minifyGameCss'),
+    gulp.run('minifyHiScoresCss'),
+    gulp.run('minifyPlacesCss'),
+    gulp.run('minifyQuestionsCss')
 });
 
 gulp.task('bundle-js', function () {
@@ -26,10 +32,12 @@ gulp.task('bundle-js', function () {
         .pipe(gulp.dest('./Output/MyScripts/'));
 });
 
-gulp.task('MinifyAppJs', function () {
-    return gulp.src('Output/MyScripts/app.js')
-        .pipe(minifyJS())
-        .pipe(gulp.dest('./Output/MyScripts/'));
+gulp.task('minifyAppJs', function () {
+    gulp.watch(['Output/MyScripts/app.js'], function () {
+        return gulp.src('Output/MyScripts/app.js')
+            .pipe(minifyJS())
+            .pipe(gulp.dest('./Output/MyScripts/'));
+    });
 });
 
 gulp.task('minifyGameJS', function () {
