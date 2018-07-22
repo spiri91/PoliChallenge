@@ -1,0 +1,1 @@
+﻿These are javascript modules that the project needs but either have thrown an error while installing them with bower, or could move find them with a package manager.

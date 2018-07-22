@@ -443,7 +443,7 @@ var gamePlay = (function (dealer, _, constants) {
         }
         else {
             timeLeft--;
-            _.setTextOf(elements.timeLeft, timeLeft);
+            _.setTextOf(elements.timeLeft, timeLeft + "sec");
         }
     }
 
@@ -504,6 +504,7 @@ var gamePlay = (function (dealer, _, constants) {
         else {
             wrongAnsweredQuestions++;
             _.warning(constants.game.WRONG_ANSWER_MESSAGE);
+            navigator.vibrate(200);
         }
 
         showScoreAndWrongAnsweredQuestions();
