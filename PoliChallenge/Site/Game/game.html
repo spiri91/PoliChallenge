@@ -62,6 +62,7 @@
     </div>
     <h5 class="choseTeamNameBanner" id="choseTeamNameBanner">Chose your team name and start</h5>
     <div class="floatingMoveNextBtnContainer">
+        <button type="button" class="btn btn-default showMapBtn" data-toggle="modal" data-target="#myModal" id="showMapBtn"><i class="fa fa-compass"></i></button>
         <button class="btn btn-default moveNextBtn" id="moveNextBtn" data-toggle="tooltip" data-placement="top" title="If place to hard to find.. move next!"><i class="fa fa-arrow-right"></i></button>
     </div>
     <div class="bottomBar bg-dark text-center" id="bottomBar">
@@ -72,6 +73,17 @@
             <div class="col-md-6 col-sm-12 noPaddingOrMarginBottom">
                 <p id="distanceContainer" class=""><i class="fa fa-location-arrow"> </i> Distance: <span id="distance">0</span> m</p>
             </div>
+        </div>
+    </div>
+</div>
+
+<!--the map-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="le_map" id="le_map"></div>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>
 </div>

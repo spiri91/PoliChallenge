@@ -250,7 +250,7 @@ hr {
         padding-top: 1rem;
     }
 
-    #warmColdMessageContainer{
+    #warmColdMessageContainer {
         padding-top: 1% !important;
     }
 }
@@ -322,7 +322,7 @@ hr {
     color: black !important;
 }
 
-#timeLeftContainer{
+#timeLeftContainer {
     display: none;
     position: fixed;
     right: 0px;
@@ -374,10 +374,28 @@ hr {
     opacity: 0.4;
     transition-duration: 0.5s;
     border-radius: 100%;
+    color: white;
 }
 
-.moveNextBtn:hover{
-    opacity: 1;
+    .moveNextBtn:hover {
+        opacity: 1;
+        transition-duration: 0.5s;
+    }
+
+.showMapBtn {
+    opacity: 0.4;
     transition-duration: 0.5s;
+    margin-bottom: 2rem;
+    border-radius: 100%;
     color: white;
+    background-color: lightseagreen;
+}
+
+    .showMapBtn:hover {
+        opacity: 1;
+        transition-duration: 0.5s;
+    }
+
+.le_map {
+    height: 14rem;
 }

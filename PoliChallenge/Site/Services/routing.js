@@ -6,13 +6,20 @@
 
     let getHtml = (extension) => $.get("Site/" + extension + ".html");
     let getScript = (extension) => $.get("Site/" + extension + (globalDebug ? ".js" : "-min.js"));
+    let getMapScript = () => {
+        if (navigator.onLine)
+            return $.getScript(constants.mapScriptAndKey);
+
+        return null;
+    }
    
     return {
         set: (extension) => {
             return getHtml(extension).then(setContent).then(() => getScript(extension));
-        }
+        },
+        getMapScript: getMapScript
     }
-})(jQuery);
+})(jQuery, constants);
 
 var root = null;
 var useHash = true; 
@@ -31,6 +38,6 @@ route: router.on({
         _.showSpinner().then(() => content.set("HiScores/hiScore")).then(_.hideSpinner);
     },
     '*': function () {
-        _.showSpinner().then(() => content.set("Game/game")).then(_.hideSpinner);
+        _.showSpinner().then(() => content.set("Game/game")).then(content.getMapScript).then(_.hideSpinner);
     }
 }).resolve();

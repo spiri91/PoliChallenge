@@ -25,7 +25,8 @@ var gameState = {
         warmColdMessageText: $('#warmColdMessageText'),
         fireIcon: $('#fireIcon'),
         snowIcon: $('#snowIcon'),
-        moveNextBtn: $('#moveNextBtn')
+        moveNextBtn: $('#moveNextBtn'),
+        showMapBtn: $('#showMapBtn')
     }
 
     let places = [];
@@ -369,8 +370,13 @@ var gameState = {
         _.hideElement(elements.moveNextBtn);
     }
 
+    function addEventToShowMapBtn() {
+        elements.showMapBtn.click(window.myMap);
+    }
+
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButtonAndMoveNext();
+    addEventToShowMapBtn();
     hideMainBodyOfGame();
     hideMoveNextBtn();
     hidePulsatingElementAndBottomBar();
@@ -533,3 +539,41 @@ var gamePlay = (function (dealer, _, constants) {
         moveNext: moveNext
     }
 })(dealer, _, constants);
+
+function myMap() {
+    var mapCanvas = document.getElementById("le_map");
+    var mapOptions = {
+        center: new google.maps.LatLng(44.26, 26.03),
+        zoom: 16
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var infoWindow = new google.maps.InfoWindow;
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('You are here.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+        }, function () {
+            handleLocationError(true, infoWindow, map.getCenter());
+        });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    infoWindow.setPosition(pos);
+    infoWindow.setContent(browserHasGeolocation ?
+        'Error: The Geolocation service failed.' :
+        'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.open(map);
+}

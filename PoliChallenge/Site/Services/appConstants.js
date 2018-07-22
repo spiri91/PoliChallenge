@@ -1,5 +1,6 @@
 ﻿var constants = (function () {
     return {
+        mapScriptAndKey: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBsDpmZ_ZI7IoZt1GafAQeU52z2JV9R-zY&callback=myMap',
         game: {
             ENTRY_POINT: {
                 name: 'Starting Point',
