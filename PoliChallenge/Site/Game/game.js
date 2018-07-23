@@ -241,7 +241,7 @@ var gameState = {
         elements.moveNextBtn.tooltip();
         elements.moveNextBtn.tooltip('show');
         setTimeout(() => {
-            elements.moveNextBtn.tooltip('hide');
+            elements.moveNextBtn.tooltip('dispose');
             handleTooltipForMoveNextBtn = () => { };
         }, constants.game.SHOW_TOOLTIP_TIME_FOR_MOVE_NEXT_PLACE);
     }
@@ -374,6 +374,10 @@ var gameState = {
         elements.showMapBtn.click(window.myMap);
     }
 
+    function hideNavBtnIfNavigatorIsOffline() {
+        if (false == navigator.onLine) _.hideElement(elements.showMapBtn);
+    }
+
     disableStartButton();
     addEventToTeamNameTextBoxAndStartButtonAndMoveNext();
     addEventToShowMapBtn();
@@ -383,6 +387,7 @@ var gameState = {
     showChoseTeamBanner();
     addFadeInOutBottomBarEffectOnScrool();
     showGameBody();
+    hideNavBtnIfNavigatorIsOffline();
 
     window.showTipAndPulsatingElementForNextPlace = showTipAndPulsatingElementForNextPlace;
 })(geo, geolib, _, storage, dealer, repo, guidGenerator, constants);
@@ -510,7 +515,7 @@ var gamePlay = (function (dealer, _, constants) {
         else {
             wrongAnsweredQuestions++;
             _.warning(constants.game.WRONG_ANSWER_MESSAGE);
-            navigator.vibrate(200);
+            navigator.vibrate(210);
         }
 
         showScoreAndWrongAnsweredQuestions();
@@ -546,10 +551,10 @@ function myMap() {
         center: new google.maps.LatLng(44.26, 26.03),
         zoom: 16
     };
+
     var map = new google.maps.Map(mapCanvas, mapOptions);
-
     var infoWindow = new google.maps.InfoWindow;
-
+    
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
@@ -565,7 +570,6 @@ function myMap() {
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
-        // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
