@@ -198,9 +198,7 @@
         return _.showSpinner()
             .then(() => repo.post(repo.entities.questions, newQuestion, token))
             .then(() => _.success(constants.messages.CREATED_ITEM), breakPromiseChain)
-            .then(refresh)
-            .then(setAllControlsToEmpty)
-            .then(init)
+            .then(clearFieldProperties)
             .then(_.hideSpinner);
     }
 
