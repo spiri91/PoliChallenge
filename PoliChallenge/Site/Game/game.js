@@ -561,7 +561,7 @@ var gamePlay = (function (dealer, _, constants) {
 })(dealer, _, constants);
 
 function myMap() {
-    var mapCanvas = $("#le_map");
+    var mapCanvas = document.getElementById("le_map");
     var mapOptions = {
         center: new google.maps.LatLng(44.26, 26.03),
         zoom: 16
