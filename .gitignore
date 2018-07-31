@@ -265,3 +265,4 @@ PoliChallenge/App_Start/WebApiConfig.cs
 PoliChallenge/Web.config
 PoliChallenge/Web.config
 PoliChallenge/Web.config
+*.config
