@@ -59,6 +59,7 @@ var gameState = {
         showTipAndPulsatingElementForNextPlace();
         showWarmColdMessageContainer();
         showMoveNextBtn();
+        showTheMapButton();
 
         let distance = getDistanceAndShowIt(coords);
 
@@ -108,6 +109,7 @@ var gameState = {
     function startGameOnPlace() {
         hideTipAndPulsationElement();
         hideMoveNextBtn();
+        hideTheMapButton();
         hideWarmColdMessage();
         let place = getNextPlaceAndRemoveIt();
         let questionsForPlace = getQuestionsForPlace(place);
@@ -274,7 +276,11 @@ var gameState = {
 
     function checkIfTeamNameIsTaken() {
         let chosenTeamName = _.valueOf(elements.teamNameTxt).toUpperCase();
-        let teamNamesInHiScores = storage.get(storage.names.scores).map((s) => s.teamName.toUpperCase());
+        let teamNamesInHiScores = storage.get(storage.names.scores)
+
+        if (!teamNamesInHiScores) return;
+
+        teamNamesInHiScores = teamNamesInHiScores.map((s) => s.teamName.toUpperCase());
         if (teamNamesInHiScores.indexOf(chosenTeamName) == -1)
             return;
 
@@ -372,6 +378,14 @@ var gameState = {
 
     function addEventToShowMapBtn() {
         elements.showMapBtn.click(window.myMap);
+    }
+
+    function showTheMapButton() {
+        _.showElement(elements.showMapBtn);
+    }
+
+    function hideTheMapButton() {
+        _.hideElement(elements.showMapBtn);
     }
 
     function hideNavBtnIfNavigatorIsOffline() {
@@ -543,6 +557,7 @@ var gamePlay = (function (dealer, _, constants) {
         start: start,
         moveNext: moveNext
     }
+
 })(dealer, _, constants);
 
 function myMap() {
