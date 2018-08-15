@@ -285,10 +285,14 @@ var gameState = {
     function hideBottomPart() {
         _.hideElement(elements.choseTeamNameBanner);
         _.hideElement(elements.bottomBar);
+        _.hideElement(elements.showMapBtn);
     }
 
     function showBottomPart() {
-        setTimeout(() => _.showElement(elements.bottomBar), 1000);
+        setTimeout(() => {
+            _.showElement(elements.bottomBar);
+            _.showElement(elements.showMapBtn);
+        }, 800);
     }
 
     function moveNextPlace() {
