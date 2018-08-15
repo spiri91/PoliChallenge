@@ -32,7 +32,6 @@ var gameState = {
     let places = [];
     let questions = [];
     var teamName = '';
-    var teamNameWarningShown = false;
     var regex = new RegExp("^[a-zA-Z0-9]*$");
     var lastKnownDistance;
 
@@ -219,17 +218,10 @@ var gameState = {
         _.disableElements([elements.startBtn]);
     }
 
-    function showMinLenghtForTeamNameWarning() {
-        _.warning(constants.game.TEAM_NAME_LENGTH_MESSAGE);
-    }
-
     function teamNameChanged(e) {
         let name = _.valueOf(elements.teamNameTxt);
 
-        if (name.length === 1 && (false == teamNameWarningShown)) {
-            showMinLenghtForTeamNameWarning();
-            teamNameWarningShown = true;
-        }
+        if (name.length === 1) showToolTipForTeamName();
 
         if (name.length > 3) {
             _.enableElements([elements.startBtn]);
@@ -390,6 +382,15 @@ var gameState = {
 
     function hideNavBtnIfNavigatorIsOffline() {
         if (false == navigator.onLine) _.hideElement(elements.showMapBtn);
+    }
+
+    function showToolTipForTeamName() {
+        elements.teamNameTxt.tooltip();
+        elements.teamNameTxt.tooltip('show');
+        setTimeout(() => {
+            elements.teamNameTxt.tooltip('dispose');
+            showToolTipForTeamName = () => { };
+        }, constants.game.SHOW_TOOLTIP_TIME_FOR_TEAM_NAME);
     }
 
     disableStartButton();

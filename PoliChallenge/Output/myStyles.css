@@ -100,3 +100,24 @@ html * {
 #addItem{
     display: none;
 }
+
+.tooltip-inner {
+    background-color: #003340 !important;
+    color: #e3ecee;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #00acd6;
+}
+
+.tooltip.right .tooltip-arrow {
+    border-right-color: #00acd6;
+}
+
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #00acd6;
+}
+
+.tooltip.left .tooltip-arrow {
+    border-left-color: #00acd6;
+}
