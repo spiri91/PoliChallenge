@@ -121,3 +121,16 @@ html * {
 .tooltip.left .tooltip-arrow {
     border-left-color: #00acd6;
 }
+
+.shareLinks .dropdown-toggle {
+    font-size: larger !important;
+    margin-left: 2rem !important;
+    font-weight: 300 !important;
+    padding: 0.3rem !important;
+    background-color: #28a745 !important;
+    border: none !important;
+}
+
+.shareLinks .dropdown-toggle::after {
+    display: none;
+}

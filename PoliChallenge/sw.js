@@ -34,6 +34,7 @@ var filesToCache = [
     '/NonBower_Components/notify.min.js',
     '/NonBower_Components/cookiesMessage.js',
     '/NonBower_Components/popper.min.js',
+    '/NonBower_Components/shareButtons.js',
     // other,
     '/Output/loader.gif',
     '/Output/CustomFonts/bangers-v10-latin-regular.woff2',
