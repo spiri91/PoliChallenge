@@ -157,24 +157,6 @@
     padding-left: 2.5rem;
 }
 
-    .answer:hover {
-        background-color: #80808C;
-        cursor: pointer;
-        color: white;
-        font-size: x-large;
-        transition-duration: 0.5s;
-        padding-left: 3rem;
-    }
-
-        .answer:hover span {
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            border-radius: 45%;
-            transition-duration: 0.8s;
-        }
-
     .answer a {
         padding-left: 2rem;
     }
@@ -253,6 +235,24 @@ hr {
     #warmColdMessageContainer {
         padding-top: 1% !important;
     }
+
+    .answer:hover {
+        background-color: #80808C;
+        cursor: pointer;
+        color: white;
+        font-size: x-large;
+        transition-duration: 0.5s;
+        padding-left: 3rem;
+    }
+
+        .answer:hover span {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 45%;
+            transition-duration: 0.8s;
+        }
 }
 
 .choseTeamNameBanner {

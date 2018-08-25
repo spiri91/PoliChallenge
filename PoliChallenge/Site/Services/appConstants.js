@@ -5,8 +5,8 @@
             ENTRY_POINT: {
                 name: 'Starting Point',
                 observations: 'Entry point to Politehnica Park from Iuliu Maniu',
-                latitude: 44.434543,
-                longitude: 26.048769
+                latitude: 44.4347051,
+                longitude: 26.0446336
             },
             END_GAME_MESSAGE: 'You just finished the game. :) Start over?',
             ALLOWED_WRONG_ANSWERED_QUESTIONS: 2,

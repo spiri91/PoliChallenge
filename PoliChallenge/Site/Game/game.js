@@ -430,10 +430,10 @@ var gamePlay = (function (dealer, _, constants) {
     }
 
     function bindEvents() {
-        elements.answer1.click(checkAnswear);
-        elements.answer2.click(checkAnswear);
-        elements.answer3.click(checkAnswear);
-        elements.answer4.click(checkAnswear);
+        elements.answer1.parent().click(checkAnswear);
+        elements.answer2.parent().click(checkAnswear);
+        elements.answer3.parent().click(checkAnswear);
+        elements.answer4.parent().click(checkAnswear);
     }
 
     let wrongAnsweredQuestions = 0;
