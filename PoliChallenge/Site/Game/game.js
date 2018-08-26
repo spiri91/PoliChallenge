@@ -565,6 +565,9 @@ var gamePlay = (function (dealer, _, constants) {
 
 })(dealer, _, constants);
 
+var infoWindow = null;
+var map = null;
+
 function myMap() {
     var mapCanvas = document.getElementById("le_map");
     var mapOptions = {
@@ -572,13 +575,13 @@ function myMap() {
         zoom: 16
     };
 
-    var map = new google.maps.Map(mapCanvas, mapOptions);
-    var infoWindow = new google.maps.InfoWindow;
-    
-    if (navigator.geolocation) {
+    map = new google.maps.Map(mapCanvas, mapOptions);
+    infoWindow = new google.maps.InfoWindow;
+
+    myMap = () => { 
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
-                lat: position.coords.latitude,
+                lat: position.coords.latitude, 
                 lng: position.coords.longitude
             };
 
@@ -586,12 +589,10 @@ function myMap() {
             infoWindow.setContent('You are here.');
             infoWindow.open(map);
             map.setCenter(pos);
-        }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
-        });
-    } else {
-        handleLocationError(false, infoWindow, map.getCenter());
+        }, function () { handleLocationError(true, infoWindow, map.getCenter()); });
     }
+
+    myMap();
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
