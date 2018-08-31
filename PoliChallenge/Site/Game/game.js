@@ -454,13 +454,9 @@ var gamePlay = (function (dealer, _, constants) {
         moveNext();
     }
 
-    function showTimeLeftContainer() {
-        _.showElement(elements.timeLeftContainer);
-    }
+    function showTimeLeftContainer() { _.showElement(elements.timeLeftContainer); }
 
-    function setTimeLeft() {
-        timeLeft = constants.game.TIME_LEFT;
-    }
+    function setTimeLeft() { timeLeft = constants.game.TIME_LEFT; }
 
     function startCounter() {
         intervaledFunction = setInterval(checkTimeLeft, 1000);
@@ -482,9 +478,7 @@ var gamePlay = (function (dealer, _, constants) {
         _.setTextOf(elements.wrongAnsweredQuestionCount, wrongAnsweredQuestions);
     }
 
-    function resetStopWatch() {
-        timeLeft = constants.game.TIME_LEFT;
-    }
+    function resetStopWatch() { timeLeft = constants.game.TIME_LEFT; }
 
     function moveNext() {
         if (wrongAnsweredQuestions === constants.game.ALLOWED_WRONG_ANSWERED_QUESTIONS || _questions.length === 0) {
@@ -546,12 +540,11 @@ var gamePlay = (function (dealer, _, constants) {
         _.setTextOf(elements.wrongAnsweredQuestionCount, wrongAnsweredQuestions);
     }
 
-    function answerIsCorrect(text) {
-        return text === currentQuestion.correctAnswer;
-    }
+    function answerIsCorrect(text) { return text === currentQuestion.correctAnswer; }
 
     function getTextOfAnswer(ans) {
-        let text = ans.target.innerText;
+        var arr = [].slice.call(ans.originalEvent.currentTarget.children);
+        var text = arr.filter(x => x.localName == 'a')[0].innerText;
 
         return text;
     }

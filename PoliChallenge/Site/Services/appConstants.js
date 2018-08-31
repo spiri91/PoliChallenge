@@ -5,13 +5,13 @@
             ENTRY_POINT: {
                 name: 'Starting Point',
                 observations: 'Entry point to Politehnica Park from Iuliu Maniu',
-                latitude: 44.4347051,
-                longitude: 26.0446336
+                latitude: 44.4346965,
+                longitude: 26.0445764
             },
             END_GAME_MESSAGE: 'You just finished the game. :) Start over?',
             ALLOWED_WRONG_ANSWERED_QUESTIONS: 2,
             ANSWERED_QUESTION_POINTS: 10,
-            DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS: 15,
+            DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS: 20,
             CORRECT_ANSWER_MESSAGE: 'Correct !!',
             WRONG_ANSWER_MESSAGE: 'Wrong :(',
             TEAM_NAME_LENGTH_MESSAGE: 'Team name must be \n at least 4 characters long',
