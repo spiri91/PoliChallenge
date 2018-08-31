@@ -155,6 +155,8 @@
     width: 100%;
     transition-duration: 0.5s;
     padding-left: 2.5rem;
+    opacity: 0.9;
+    background-color: darkslategrey;
 }
 
     .answer a {
@@ -297,7 +299,11 @@ hr {
 .hint {
     display: block;
     border: none;
-    background-color: #DFF0C8;
+    display: block;
+    border: none;
+    background-color: darkslategray;
+    color: white;
+    opacity: 0.8;
 }
 
 .mainTitle {
@@ -307,11 +313,18 @@ hr {
     margin-top: 8rem;
     margin-bottom: 3rem;
     font-size: 3.5rem;
+    letter-spacing: 0.3rem;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .teamNameInput {
     width: 100%;
 }
+
+    .teamNameInput div {
+        padding-right: 0;
+        padding-left: 0;
+    }
 
 .ligthRedBorder {
     border: 1px solid #E9967A;
@@ -319,7 +332,8 @@ hr {
 
 .startBtn {
     font-family: 'Bangers', Fallback, sans-serif;
-    color: black !important;
+    color: white !important;
+    letter-spacing: 0.3rem;
 }
 
 #timeLeftContainer {

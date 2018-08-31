@@ -297,6 +297,9 @@
     <Content Include="NonBower_Components\popper.min.js" />
     <Content Include="NonBower_Components\ReadMe.txt" />
     <Content Include="NonBower_Components\shareButtons.js" />
+    <Content Include="Output\Bucharest.PNG" />
+    <Content Include="Output\cityMap.jpg" />
+    <Content Include="Output\cityNight.jpg" />
     <Content Include="Output\CustomFonts\bangers-v10-latin-regular.svg" />
     <Content Include="Output\loader.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

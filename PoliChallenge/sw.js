@@ -37,6 +37,7 @@ var filesToCache = [
     '/NonBower_Components/shareButtons.js',
     // other,
     '/Output/loader.gif',
+    '/Output/Bucharest.PNG',
     '/Output/CustomFonts/bangers-v10-latin-regular.woff2',
     '/manifest.json'
 ];
