@@ -6,7 +6,7 @@ window.checkDistanceValue = false;
 window.getDistanceValue = 100;
 
 window.onerror = function (message, file, line, col, error) {
-    // TODO send error message to server;
+    console.log(error);
     return false;
 };
 
@@ -19,10 +19,21 @@ var mainApp = (function (entities, repo, storage, _) {
     let adminBtn = $('#addItem');
 
     var init = () => {
-            showHowToPlayModal();
-            chekIfUrlContainsAdmin();
-            _.hideSpinner();
+        showHowToPlayModal();
+        chekIfUrlContainsAdmin();
+        _.hideSpinner();
+        addColapseNavbarEvent();
     };
+
+    function addColapseNavbarEvent() {
+        body.click(function (event) {
+            let btnColapse = $('.navbar-toggler');
+            if (btnColapse.length > 0) {
+                let collapsed = btnColapse[0].getAttribute('aria-expanded');
+                if (collapsed == 'true') btnColapse[0].click();
+            }
+        });
+    }
 
     function chekIfUrlContainsAdmin() {
         let urlHash = window.location.hash.substr(1);
