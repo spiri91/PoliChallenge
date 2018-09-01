@@ -147,3 +147,7 @@ body {
 #body{
     color: whitesmoke;
 }
+
+.gm-style{
+    color: black !important;
+}

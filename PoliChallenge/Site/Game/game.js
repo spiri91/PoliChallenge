@@ -26,7 +26,8 @@ var gameState = {
         fireIcon: $('#fireIcon'),
         snowIcon: $('#snowIcon'),
         moveNextBtn: $('#moveNextBtn'),
-        showMapBtn: $('#showMapBtn')
+        showMapBtn: $('#showMapBtn'),
+        timeLeftContainer: $('#timeLeftContainer'),
     }
 
     let places = [];
@@ -136,17 +137,14 @@ var gameState = {
     function checkDistance(distance) {
         showWormColdMessage(distance);
 
-        if (window.debugModeOn)
-            return window.checkDistanceValue;
+        if (window.debugModeOn) return window.checkDistanceValue;
 
         return distance < constants.game.DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS;
     }
 
     function showWormColdMessage(distance) {
-        if (!lastKnownDistance || (distance <= lastKnownDistance))
-            showWormMessage();
-        else
-            showColdMessage();
+        if (!lastKnownDistance || (distance <= lastKnownDistance)) showWormMessage();
+        else showColdMessage();
 
         lastKnownDistance = distance;
     }
@@ -166,8 +164,7 @@ var gameState = {
     }
 
     function getDistanceAndShowIt(coords) {
-        if (window.debugModeOn)
-            return window.getDistanceValue;
+        if (window.debugModeOn) return window.getDistanceValue;
 
         let currentLocation = {
             latitude: coords.coords.latitude,
@@ -211,7 +208,12 @@ var gameState = {
     function start() {
         showTipAndPulsatingElementForNextPlace();
         showTeamName();
+        hideTimeLeftContainer();
         geo.watchPosition(intervaledFunction, onErrorFunctionWhileGettingCoords);
+    }
+
+    function hideTimeLeftContainer() {
+        _.hideElement(elements.timeLeftContainer);
     }
 
     function disableStartButton() {
@@ -414,7 +416,7 @@ var gameState = {
 
 var gamePlay = (function (dealer, _, constants) {
     let externalElement = {
-        score: $('#score'),
+        score: $('#score')
     }
 
     let elements = {

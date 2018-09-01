@@ -19,11 +19,11 @@ gulp.task('runAllMinifiers', function () {
     gulp.run('minifyQuestionsJS');
     gulp.run('minifyMainControllerJS');
     gulp.run('minifyAppJs'),
-    gulp.run('minifyMyStyleCss'),
-    gulp.run('minifyGameCss'),
-    gulp.run('minifyHiScoresCss'),
-    gulp.run('minifyPlacesCss'),
-    gulp.run('minifyQuestionsCss')
+        gulp.run('minifyMyStyleCss'),
+        gulp.run('minifyGameCss'),
+        gulp.run('minifyHiScoresCss'),
+        gulp.run('minifyPlacesCss'),
+        gulp.run('minifyQuestionsCss')
 });
 
 gulp.task('bundle-js', function () {
@@ -123,4 +123,10 @@ gulp.task('minifyQuestionsCss', function () {
             .pipe(rename('question.min.css'))
             .pipe(gulp.dest('./Site/Questions/'));
     });
+});
+
+gulp.task('forceMinifyGameJS', function () {
+    gulp.src('Site/Game/game.js')
+        .pipe(minifyJS())
+        .pipe(gulp.dest('./Site/Game/'));
 });
