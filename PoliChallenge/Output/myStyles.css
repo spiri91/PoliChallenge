@@ -151,3 +151,22 @@ body {
 .gm-style{
     color: black !important;
 }
+
+.shareLinks li {
+    width: 100%;
+    float: inherit;
+    margin-bottom: 5px;
+    align-items: center;
+    text-align: center;
+    margin-left: 21%;
+}
+
+.shareLinks .dropdown-menu {
+    min-width: 0;
+    width: 4rem;
+    background-color: darkslategrey;
+}
+
+.shareLinks .dropdown-toggle{
+    border-radius: 20%;
+}
