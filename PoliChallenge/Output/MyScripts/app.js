@@ -5,13 +5,13 @@ var constants = (function () {
             ENTRY_POINT: {
                 name: 'Starting Point',
                 observations: 'Entry point to Politehnica Park from Iuliu Maniu',
-                latitude: 44.4346965,
-                longitude: 26.0445764
+                latitude: 44.4349506,
+                longitude: 26.0450246
             },
             END_GAME_MESSAGE: 'You just finished the game. :) Start over?',
             ALLOWED_WRONG_ANSWERED_QUESTIONS: 2,
             ANSWERED_QUESTION_POINTS: 10,
-            DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS: 20,
+            DISTANCE_TO_OBJECTIVE_WHEN_GAME_STARTS: 25,
             CORRECT_ANSWER_MESSAGE: 'Correct !!',
             WRONG_ANSWER_MESSAGE: 'Wrong :(',
             TEAM_NAME_LENGTH_MESSAGE: 'Team name must be \n at least 4 characters long',
